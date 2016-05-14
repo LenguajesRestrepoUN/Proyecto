@@ -1,0 +1,32 @@
+(defn favorite-things
+  [name & things]
+  (str "Hi, " name ", here are my favorite things: "
+       (clojure.string/join ", " things)))
+
+(favorite-things "Doreen" "gum" "shoes" "kara-te")
+
+(defn x-chop
+  "Describe the kind of chop you're inflicting on someone"
+  ([name chop-type]
+     (str "I " chop-type " chop " name "! Take that!"))
+  ([name]
+     (x-chop name "karate")))
+
+ (defn matching-part
+   [part]
+   {:name (clojure.string/replace (:name part) #"^left-" "right-")
+    :size (:size part)})
+
+ (defn symmetrize-body-parts
+   "Expects a seq of maps that have a :name and :size"
+   [asym-body-parts]
+   (loop [remaining-asym-parts asym-body-parts
+          final-body-parts []]
+
+     (if (empty? remaining-asym-parts)
+       final-body-parts
+
+       (let [[part & remaining] remaining-asym-parts]
+         (recur remaining
+                (into final-body-parts
+                      (set [part (matching-part part)])))))))

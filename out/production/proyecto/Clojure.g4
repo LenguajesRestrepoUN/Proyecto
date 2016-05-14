@@ -20,11 +20,11 @@ grammar Clojure;
 
 file: form *;
 
-form: literal
-    | list
-    | vector
-    | map
-    | reader_macro
+form: literal       #formLiteral
+    | list          #formList
+    | vector        #formVector
+    | map           #formMap
+    | reader_macro  #formReader_macro
     ;
 
 forms: form* ;
@@ -38,115 +38,93 @@ map: '{' (form form)* '}' ;
 set: '#{' forms '}' ;
 
 reader_macro
-    : lambda
-    | meta_data
-    | regex
-    | var_quote
-    | host_expr
-    | set
-    | tag
-    | discard
-    | dispatch
-    | deref
-    | quote
-    | backtick
-    | unquote
-    | unquote_splicing
-    | gensym
+    : lambda            #rmLamda
+    | meta_data         #rmMeta_data
+    | regex             #rmRegex
+    | var_quote         #rmVar_quote
+    | host_expr         #rmHost_expr
+    | set               #rmSet
+    | tag               #rmTag
+    | discard           #rmDiscard
+    | dispatch          #rmDispatch
+    | deref             #rmDeref
+    | quote             #rmQuote
+    | backtick          #rmBacktick
+    | unquote           #rmUnquote
+    | unquote_splicing  #rmUnquote_splicing
+    | gensym            #rmGensym
     ;
 
 // TJP added '&' (gather a variable number of arguments)
-quote
-    : '\'' form
-    ;
+quote : '\'' form;
 
-backtick
-    : '`' form
-    ;
+backtick : '`' form;
 
-unquote
-    : '~' form
-    ;
+unquote : '~' form;
 
-unquote_splicing
-    : '~@' form
-    ;
+unquote_splicing : '~@' form;
 
-tag
-    : '^' form form
-    ;
+tag : '^' form form;
 
-deref
-    : '@' form
-    ;
+deref : '@' form;
 
-gensym
-    : SYMBOL '#'
-    ;
+gensym : SYMBOL '#';
 
-lambda
-    : '#(' form* ')'
-    ;
+lambda : '#(' form* ')';
 
-meta_data
-    : '#^' (map form | form)
-    ;
+meta_data : '#^' (map form | form);
 
-var_quote
-    : '#\'' symbol
-    ;
+var_quote : '#\'' symbol;
 
-host_expr
-    : '#+' form form
-    ;
+host_expr : '#+' form form;
 
-discard
-    : '#_' form
-    ;
+discard : '#_' form;
 
-dispatch
-    : '#' symbol form
-    ;
+dispatch : '#' symbol form;
 
-regex
-    : '#' string
-    ;
+regex : '#' string;
 
 literal
-    : string
-    | number
-    | character
-    | nil
-    | BOOLEAN
-    | keyword
-    | symbol
-    | param_name
+    : string            #literalString
+    | number            #literalNumber
+    | character         #literalCharacter
+    | nil               #literalNil
+    | BOOLEAN           #literalBOOLEAN
+    | keyword           #literalKeyword
+    | symbol            #literalSymbol
+    | param_name        #literalParam_name
     ;
 
 string: STRING;
 hex: HEX;
 bin: BIN;
 bign: BIGN;
+
 number
-    : FLOAT
-    | hex
-    | bin
-    | bign
-    | LONG
+    : FLOAT     #numberFloat
+    | hex       #numberHex
+    | bin       #numberBin
+    | bign      #numberBign
+    | LONG      #numberLong
     ;
 
 character
-    : named_char
-    | u_hex_quad
-    | any_char
+    : named_char    #charNamed_char
+    | u_hex_quad    #charU_hex_quad
+    | any_char      #charAny_char
     ;
+
 named_char: CHAR_NAMED ;
 any_char: CHAR_ANY ;
 u_hex_quad: CHAR_U ;
 
 nil: NIL;
 
-keyword: macro_keyword | simple_keyword;
+keyword
+    : macro_keyword     #keywordMacro_keyword
+    | simple_keyword    #keywordSimple_keyword
+    ;
+
 simple_keyword: ':' symbol;
 macro_keyword: ':' ':' symbol;
 
