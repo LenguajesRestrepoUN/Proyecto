@@ -101,6 +101,42 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitFormMinus(ClojureParser.FormMinusContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code formOr}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormOr(ClojureParser.FormOrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formOr}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormOr(ClojureParser.FormOrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formAnd}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormAnd(ClojureParser.FormAndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formAnd}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormAnd(ClojureParser.FormAndContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formStr}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormStr(ClojureParser.FormStrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formStr}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormStr(ClojureParser.FormStrContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code formCallFunction}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -331,15 +367,69 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitMinus(ClojureParser.MinusContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ClojureParser#defn}.
+	 * Enter a parse tree produced by {@link ClojureParser#or}.
 	 * @param ctx the parse tree
 	 */
-	void enterDefn(ClojureParser.DefnContext ctx);
+	void enterOr(ClojureParser.OrContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ClojureParser#defn}.
+	 * Exit a parse tree produced by {@link ClojureParser#or}.
 	 * @param ctx the parse tree
 	 */
-	void exitDefn(ClojureParser.DefnContext ctx);
+	void exitOr(ClojureParser.OrContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#and}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd(ClojureParser.AndContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#and}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd(ClojureParser.AndContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#str}.
+	 * @param ctx the parse tree
+	 */
+	void enterStr(ClojureParser.StrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#str}.
+	 * @param ctx the parse tree
+	 */
+	void exitStr(ClojureParser.StrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code singleDefn}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingleDefn(ClojureParser.SingleDefnContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code singleDefn}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingleDefn(ClojureParser.SingleDefnContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code defnArity}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code defnArity}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#arity}.
+	 * @param ctx the parse tree
+	 */
+	void enterArity(ClojureParser.ArityContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#arity}.
+	 * @param ctx the parse tree
+	 */
+	void exitArity(ClojureParser.ArityContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code description}
 	 * labeled alternative in {@link ClojureParser#optDescription}.

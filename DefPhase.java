@@ -1,5 +1,3 @@
-import org.antlr.v4.runtime.tree.ParseTree;
-
 import java.util.LinkedList;
 
 public class DefPhase extends ClojureBaseListener {
@@ -44,21 +42,62 @@ public class DefPhase extends ClojureBaseListener {
     }
 
     //defn: '(' DEFN symbol optDescription '[' optargs ']' forms ')'
-    @Override public void enterDefn(ClojureParser.DefnContext ctx) {
+    @Override public void enterSingleDefn(ClojureParser.SingleDefnContext ctx) {
         String name = ctx.symbol().getText();
         FunctionSymbol var = new FunctionSymbol(name);
         currentScope.define(var);
         currentFunction = var;
+        currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
+        currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
+        currentFunction.establishCurrentArity();
+        currentCall.addLast(currentFunction);
+    }
+
+    @Override public void exitSingleDefn(ClojureParser.SingleDefnContext ctx) {
+        currentCall.removeLast();
+        if(currentCall.size() > 0)
+            currentFunction = currentCall.getLast();
+        else
+            currentFunction = null;
+    }
+
+    //defn: '(' DEFN symbol optDescription  arity+ ')'
+    @Override public void enterDefnArity(ClojureParser.DefnArityContext ctx) {
+        String name = ctx.symbol().getText();
+        FunctionSymbol var = new FunctionSymbol(name);
+        currentScope.define(var);
+        currentFunction = var;
+        currentCall.addLast(currentFunction);
+    }
+
+    @Override public void exitDefnArity(ClojureParser.DefnArityContext ctx) {
+        currentCall.removeLast();
+        if(currentCall.size() > 0)
+            currentFunction = currentCall.getLast();
+        else
+            currentFunction = null;
+    }
+
+    //arity: '(' '[' optparams ']' forms ')';
+    @Override public void enterArity(ClojureParser.ArityContext ctx) {
+        currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
+        currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
+        currentFunction.establishCurrentArity();
     }
 
     //args : literal args
     @Override public void enterArgsSymbolArgs(ClojureParser.ArgsSymbolArgsContext ctx) {
-
+        Boolean flag = false;
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
-
-        if(currentFunction.getCurrentArgument() > currentFunction.getCurrentParameter()){
+        for(Arity a : currentFunction.arity.values()){
+            if(a.getCurrentArgument() < a.getParametersNumber()) {
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
             Interpreter.error(ctx.start, "el numero de argumentos en el llamado a la funcion \"" +
-                    currentFunction.name + "\" no coincide con la declaracion.");
+                    currentFunction.name + "\" es mayor a la declaracion.");
             return;
         }
     }
@@ -67,20 +106,33 @@ public class DefPhase extends ClojureBaseListener {
     @Override public void enterArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
 
-        if(currentFunction.getCurrentArgument() > currentFunction.getCurrentParameter()){
+        Boolean flag = false;
+        for(Arity a : currentFunction.arity.values()){
+            if(a.getCurrentArgument() == a.getParametersNumber()) {
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
             Interpreter.error(ctx.start, "el numero de argumentos en el llamado a la funcion \"" +
                     currentFunction.name + "\" no coincide con la declaracion.");
             return;
         }
-
         currentFunction.setCurrentArgument(0);
     }
 
     //args:
     @Override public void enterOptargsEpsilon(ClojureParser.OptargsEpsilonContext ctx) {
-        if(currentFunction.getCurrentArgument() < currentFunction.getCurrentParameter()){
+        Boolean flag = false;
+        for(Arity a : currentFunction.arity.values()){
+            if(a.getCurrentArgument() == a.getParametersNumber()) {
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
             Interpreter.error(ctx.start, "el numero de argumentos en el llamado a la funcion \"" +
-                    currentFunction.name + "\" es menor a los parametros.");
+                    currentFunction.name + "\" no coincide con la declaracion.");
             return;
         }
     }
@@ -98,6 +150,15 @@ public class DefPhase extends ClojureBaseListener {
             return;
         }
         currentFunction = ((FunctionSymbol) symbol);
+        currentCall.addLast(currentFunction);
+    }
+
+    @Override public void exitCallFunction(ClojureParser.CallFunctionContext ctx) {
+        currentCall.removeLast();
+        if(currentCall.size() > 0)
+            currentFunction = currentCall.getLast();
+        else
+            currentFunction = null;
     }
 
     //literal: symbol

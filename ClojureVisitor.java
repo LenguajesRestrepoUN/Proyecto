@@ -65,6 +65,27 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormMinus(ClojureParser.FormMinusContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code formOr}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormOr(ClojureParser.FormOrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formAnd}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormAnd(ClojureParser.FormAndContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formStr}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormStr(ClojureParser.FormStrContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code formCallFunction}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -200,11 +221,43 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMinus(ClojureParser.MinusContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#defn}.
+	 * Visit a parse tree produced by {@link ClojureParser#or}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDefn(ClojureParser.DefnContext ctx);
+	T visitOr(ClojureParser.OrContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#and}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnd(ClojureParser.AndContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#str}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStr(ClojureParser.StrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code singleDefn}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingleDefn(ClojureParser.SingleDefnContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code defnArity}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#arity}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArity(ClojureParser.ArityContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code description}
 	 * labeled alternative in {@link ClojureParser#optDescription}.

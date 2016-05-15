@@ -11,6 +11,7 @@ form: literal       #formLiteral
     | minus         #formMinus
     | or            #formOr
     | and           #formAnd
+    | str           #formStr
     | callFunction  #formCallFunction
     | reader_macro  #formReader_macro
     ;
@@ -43,8 +44,13 @@ minus: '(' MINUS forms ')';
 
 or: '(' OR forms ')';
 and: '(' AND forms ')';
+str: '(' STR forms ')';
 
-defn: '(' DEFN symbol optDescription '[' optparams ']' forms ')';
+defn: '(' DEFN symbol optDescription '[' optparams ']' forms ')'    #singleDefn
+    | '(' DEFN symbol optDescription  arity+ ')'    #defnArity
+    ;
+
+arity: '(' '[' optparams ']' forms ')';
 
 optDescription: STRING      #description
               |             #noDescription
@@ -62,8 +68,8 @@ optargs : args  #optargsArgs
      |          #optargsEpsilon
      ;
 
-args : form args               #argsSymbolArgs
-    | form                     #argsSymbol
+args : form args    #argsSymbolArgs
+    | form          #argsSymbol
     ;
 
 callFunction: '(' symbol optargs ')' ;
@@ -169,6 +175,7 @@ SUM: '+';
 MINUS: '-';
 OR: 'or';
 AND: 'and';
+STR: 'str';
 
 STRING : '"' ( ~'"' | '\\' '"' )* '"' ;
 

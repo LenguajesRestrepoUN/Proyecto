@@ -1,0 +1,4 @@
+(defn hola "hola" [q e] (println q))
+(defn hola2 "hola" [a b c] (println "hola"))
+(hola2 4 2 3)
+(hola (hola2 1 2 4) 4)

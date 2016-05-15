@@ -2,66 +2,109 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e42f20c4-97cf-4334-82f2-94298a460e4f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DefPhase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FunctionSymbol.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Interpreter.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/Clojure.tokens" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureBaseListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureBaseVisitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureLexer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureLexer.tokens" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/ClojureVisitor.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Clojure.g4" afterPath="$PROJECT_DIR$/Clojure.g4" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Clojure.tokens" afterPath="$PROJECT_DIR$/Clojure.tokens" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureBaseListener.java" afterPath="$PROJECT_DIR$/ClojureBaseListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureBaseVisitor.java" afterPath="$PROJECT_DIR$/ClojureBaseVisitor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureLexer.java" afterPath="$PROJECT_DIR$/ClojureLexer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureLexer.tokens" afterPath="$PROJECT_DIR$/ClojureLexer.tokens" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureListener.java" afterPath="$PROJECT_DIR$/ClojureListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureParser.java" afterPath="$PROJECT_DIR$/ClojureParser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ClojureVisitor.java" afterPath="$PROJECT_DIR$/ClojureVisitor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GlobalScope.java" afterPath="$PROJECT_DIR$/GlobalScope.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Scope.java" afterPath="$PROJECT_DIR$/Scope.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Symbol.java" afterPath="$PROJECT_DIR$/Symbol.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/Test.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/VariableSymbol.java" afterPath="$PROJECT_DIR$/VariableSymbol.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Arity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aux_input" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureBaseListener.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureBaseListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureBaseVisitor.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureBaseVisitor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureLexer.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureLexer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureListener.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Any_charContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Any_charContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ArgsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ArgsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ArgsSymbolArgsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ArgsSymbolArgsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ArgsSymbolContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ArgsSymbolContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$BacktickContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$BacktickContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$BignContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$BignContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$BinContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$BinContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CallFunctionContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CallFunctionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharAny_charContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharAny_charContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharNamed_charContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharNamed_charContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharU_hex_quadContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharU_hex_quadContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharacterContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$CharacterContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefSymbolContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefSymbolContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefSymbolFormContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefSymbolFormContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefnContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DefnContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DerefContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DerefContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DescriptionContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DescriptionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DiscardContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DiscardContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DispatchContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$DispatchContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FileContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FileContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormCallFunctionContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormCallFunctionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormDefContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormDefContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormDefnContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormDefnContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormLiteralContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormLiteralContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormMinusContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormMinusContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormPrintContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormPrintContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormPrintlnContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormPrintlnContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormReader_macroContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormReader_macroContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormSumContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormSumContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$FormsContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$GensymContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$GensymContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$HexContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$HexContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Host_exprContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Host_exprContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$KeywordContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$KeywordContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$KeywordMacro_keywordContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$KeywordMacro_keywordContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$KeywordSimple_keywordContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$KeywordSimple_keywordContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LambdaContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LambdaContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ListContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ListContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralBOOLEANContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralBOOLEANContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralCharacterContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralCharacterContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralKeywordContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralKeywordContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralListContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralListContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralMapContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralMapContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralNilContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralNilContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralNumberContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralNumberContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralParam_nameContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralParam_nameContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralStringContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralStringContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralSymbolContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralSymbolContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralVectorContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$LiteralVectorContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Macro_keywordContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Macro_keywordContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$MapContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$MapContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Meta_dataContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Meta_dataContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$MinusContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$MinusContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Named_charContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Named_charContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NilContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NilContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NoDescriptionContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NoDescriptionContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Ns_symbolContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Ns_symbolContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberBignContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberBignContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberBinContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberBinContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Param_nameContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Param_nameContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberFloatContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberFloatContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberHexContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberHexContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberLongContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$NumberLongContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptDescriptionContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptDescriptionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptargsArgsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptargsArgsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptargsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptargsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptargsEpsilonContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptargsEpsilonContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptparamsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptparamsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptparamsEpsilonContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptparamsEpsilonContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptparamsParamsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$OptparamsParamsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ParamsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ParamsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ParamsSymbolContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ParamsSymbolContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ParamsSymbolParamsContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$ParamsSymbolParamsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$PrintContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$PrintContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$PrintlnContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$PrintlnContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$QuoteContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$QuoteContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Reader_macroContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Reader_macroContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RegexContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RegexContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmBacktickContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmBacktickContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmDerefContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmDerefContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmDiscardContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmDiscardContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmDispatchContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmDispatchContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmGensymContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmGensymContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmHost_exprContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmHost_exprContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmLamdaContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmLamdaContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmMeta_dataContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmMeta_dataContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmQuoteContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmQuoteContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmRegexContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmRegexContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmSetContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmSetContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmTagContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmTagContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmUnquoteContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmUnquoteContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmUnquote_splicingContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmUnquote_splicingContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmVar_quoteContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$RmVar_quoteContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$SetContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$SetContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Simple_keywordContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Simple_keywordContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Simple_symContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$Simple_symContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$StringContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$StringContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$SumContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$SumContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$SymbolContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$SymbolContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$TagContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$TagContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$U_hex_quadContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$U_hex_quadContext.class" />
@@ -71,9 +114,27 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$VectorContext.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser$VectorContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureParser.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureVisitor.class" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureVisitor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/DefPhase.class" afterPath="$PROJECT_DIR$/out/production/proyecto/DefPhase.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/FunctionSymbol.class" afterPath="$PROJECT_DIR$/out/production/proyecto/FunctionSymbol.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/Interpreter.class" afterPath="$PROJECT_DIR$/out/production/proyecto/Interpreter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clojure.g4" afterPath="$PROJECT_DIR$/Clojure.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clojure.tokens" afterPath="$PROJECT_DIR$/Clojure.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureBaseListener.java" afterPath="$PROJECT_DIR$/ClojureBaseListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureBaseVisitor.java" afterPath="$PROJECT_DIR$/ClojureBaseVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureLexer.java" afterPath="$PROJECT_DIR$/ClojureLexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureLexer.tokens" afterPath="$PROJECT_DIR$/ClojureLexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureListener.java" afterPath="$PROJECT_DIR$/ClojureListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureParser.java" afterPath="$PROJECT_DIR$/ClojureParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClojureVisitor.java" afterPath="$PROJECT_DIR$/ClojureVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DefPhase.java" afterPath="$PROJECT_DIR$/DefPhase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FunctionSymbol.java" afterPath="$PROJECT_DIR$/FunctionSymbol.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input" afterPath="$PROJECT_DIR$/input" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/proyecto/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/Clojure.g4" afterPath="$PROJECT_DIR$/out/production/proyecto/Clojure.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/Clojure.tokens" afterPath="$PROJECT_DIR$/out/production/proyecto/Clojure.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/ClojureLexer.tokens" afterPath="$PROJECT_DIR$/out/production/proyecto/ClojureLexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/proyecto/input" afterPath="$PROJECT_DIR$/out/production/proyecto/input" />
     </list>
     <ignored path="proyecto.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,8 +167,8 @@
       <file leaf-file-name="Clojure.g4" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Clojure.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -116,33 +177,9 @@
       <file leaf-file-name="DefPhase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DefPhase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="60" column="81" selection-start-line="60" selection-start-column="81" selection-end-line="60" selection-end-column="81" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClojureBaseListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClojureBaseListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="365" column="84" selection-start-line="365" selection-start-column="84" selection-end-line="365" selection-end-column="84" />
+            <state relative-caret-position="3009">
+              <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalScope.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GlobalScope.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -150,35 +187,21 @@
       <file leaf-file-name="FunctionSymbol.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FunctionSymbol.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="136">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Arity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Arity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#574#575#0" expanded="true" />
-                <element signature="e#637#638#0" expanded="true" />
-                <element signature="e#691#692#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Scope.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scope.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Symbol.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Symbol.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -186,8 +209,18 @@
       <file leaf-file-name="input" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="221">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClojureBaseListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClojureBaseListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="448" column="7" selection-start-line="448" selection-start-column="7" selection-end-line="448" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -225,11 +258,13 @@
         <option value="$PROJECT_DIR$/src/Clojure.g4" />
         <option value="$PROJECT_DIR$/Scope.java" />
         <option value="$PROJECT_DIR$/GlobalScope.java" />
-        <option value="$PROJECT_DIR$/FunctionSymbol.java" />
         <option value="$PROJECT_DIR$/Interpreter.java" />
+        <option value="$PROJECT_DIR$/Arity.java" />
+        <option value="$PROJECT_DIR$/FunctionSymbol.java" />
         <option value="$PROJECT_DIR$/DefPhase.java" />
-        <option value="$PROJECT_DIR$/input" />
+        <option value="$PROJECT_DIR$/aux_input" />
         <option value="$PROJECT_DIR$/Clojure.g4" />
+        <option value="$PROJECT_DIR$/input" />
       </list>
     </option>
   </component>
@@ -252,7 +287,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -270,6 +305,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -290,9 +326,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -796,11 +831,12 @@
       <workItem from="1463254928824" duration="797000" />
       <workItem from="1463257641620" duration="8528000" />
       <workItem from="1463269702620" duration="16189000" />
+      <workItem from="1463338174558" duration="6548000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37600000" />
+    <option name="totallyTimeSpent" value="44148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -818,26 +854,26 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.50970876" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24386252" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.50970876" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24386252" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18532526" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.49029127" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.49029127" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -858,7 +894,11 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -866,29 +906,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GlobalScope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VariableSymbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#97#98#0" expanded="false" />
+            <element signature="e#130#131#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1178,9 +1203,27 @@
         <state relative-caret-position="68">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding>
-            <element signature="e#97#98#0" expanded="true" />
-            <element signature="e#130#131#0" expanded="true" />
+            <element signature="e#97#98#0" expanded="false" />
+            <element signature="e#130#131#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1188,14 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1210,60 +1245,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ClojureBaseListener.java">
+    <entry file="file://$PROJECT_DIR$/aux_input">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="365" column="84" selection-start-line="365" selection-start-column="84" selection-end-line="365" selection-end-column="84" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FunctionSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#637#638#0" expanded="true" />
-            <element signature="e#691#692#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-195">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="221">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClojureBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="448" column="7" selection-start-line="448" selection-start-column="7" selection-end-line="448" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FunctionSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DefPhase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="60" column="81" selection-start-line="60" selection-start-column="81" selection-end-line="60" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="3009">
+          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Clojure.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding />
         </state>
       </provider>

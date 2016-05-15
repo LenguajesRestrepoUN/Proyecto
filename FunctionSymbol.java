@@ -1,36 +1,47 @@
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class FunctionSymbol extends Symbol {
 
-    HashMap<Integer, String> parameters = new HashMap<>();
-    Map<String, Symbol> arguments = new LinkedHashMap<String, Symbol>();
-    public Integer currentParameter;
-    public Integer currentArgument;
-    ClojureParser.DefnContext ctx;
+    public HashMap<Integer, Arity> arity = new HashMap<>();
+    Integer currentArityNumber = 0;
+    Arity currentArity;
 
     public FunctionSymbol(String name) {
         super(name);
-        currentParameter = 0;
-        currentArgument = 0;
+    }
+
+    public Integer getAritySize(){
+        return arity.size();
+    }
+
+    public Integer getCurrentArityNumber() {
+        return currentArityNumber;
+    }
+
+    public void setCurrentArityNumber(Integer currentArityNumber) {
+        this.currentArityNumber = currentArityNumber;
+    }
+
+    public void establishCurrentArity(){
+        currentArity = arity.get(currentArityNumber);
     }
 
     public Integer getCurrentArgument() {
-        return currentArgument;
+        return currentArity.getCurrentArgument();
     }
 
     public void setCurrentArgument(Integer currentArgument) {
-        this.currentArgument = currentArgument;
+        for(Arity a : arity.values())
+            a.currentArgument = currentArgument;
     }
 
-    public void addParameter(String name){ parameters.put(currentParameter,name); }
+    public void addParameter(String name){ currentArity.parameters.put(currentArity.getCurrentParameter(),name); }
 
-    public Integer getCurrentParameter() { return currentParameter; }
+    public Integer getCurrentParameter() { return currentArity.getCurrentParameter(); }
 
-    public void setCurrentParameter(Integer currentParameter) { this.currentParameter = currentParameter; }
+    public void setCurrentParameter(Integer currentParameter) { currentArity.currentParameter = currentParameter; }
 
     public String toString() {
-        return "function"+super.toString() + ":" + parameters.values();
+        return "function"+super.toString() + ":" + arity.size();
     }
 }
