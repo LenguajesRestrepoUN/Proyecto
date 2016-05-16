@@ -17,6 +17,16 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitFile(ClojureParser.FileContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ClojureParser#priorForm}.
+	 * @param ctx the parse tree
+	 */
+	void enterPriorForm(ClojureParser.PriorFormContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#priorForm}.
+	 * @param ctx the parse tree
+	 */
+	void exitPriorForm(ClojureParser.PriorFormContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code formLiteral}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -137,6 +147,102 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitFormStr(ClojureParser.FormStrContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code formLoop}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormLoop(ClojureParser.FormLoopContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formLoop}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormLoop(ClojureParser.FormLoopContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formsi}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormsi(ClojureParser.FormsiContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formsi}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormsi(ClojureParser.FormsiContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formMayor}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormMayor(ClojureParser.FormMayorContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formMayor}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormMayor(ClojureParser.FormMayorContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formMenor}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormMenor(ClojureParser.FormMenorContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formMenor}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormMenor(ClojureParser.FormMenorContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formMayorIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormMayorIgual(ClojureParser.FormMayorIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formMayorIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormMayorIgual(ClojureParser.FormMayorIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formMenorIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormMenorIgual(ClojureParser.FormMenorIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formMenorIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormMenorIgual(ClojureParser.FormMenorIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormIgual(ClojureParser.FormIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormIgual(ClojureParser.FormIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formInc}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormInc(ClojureParser.FormIncContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formInc}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormInc(ClojureParser.FormIncContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code formCallFunction}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -148,6 +254,18 @@ public interface ClojureListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFormCallFunction(ClojureParser.FormCallFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formRecur}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormRecur(ClojureParser.FormRecurContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formRecur}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormRecur(ClojureParser.FormRecurContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code formReader_macro}
 	 * labeled alternative in {@link ClojureParser#form}.
@@ -303,6 +421,46 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitForms(ClojureParser.FormsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ClojureParser#list}.
+	 * @param ctx the parse tree
+	 */
+	void enterList(ClojureParser.ListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#list}.
+	 * @param ctx the parse tree
+	 */
+	void exitList(ClojureParser.ListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#vector}.
+	 * @param ctx the parse tree
+	 */
+	void enterVector(ClojureParser.VectorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#vector}.
+	 * @param ctx the parse tree
+	 */
+	void exitVector(ClojureParser.VectorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#map}.
+	 * @param ctx the parse tree
+	 */
+	void enterMap(ClojureParser.MapContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#map}.
+	 * @param ctx the parse tree
+	 */
+	void exitMap(ClojureParser.MapContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#set}.
+	 * @param ctx the parse tree
+	 */
+	void enterSet(ClojureParser.SetContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#set}.
+	 * @param ctx the parse tree
+	 */
+	void exitSet(ClojureParser.SetContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code defSymbol}
 	 * labeled alternative in {@link ClojureParser#def}.
 	 * @param ctx the parse tree
@@ -397,40 +555,6 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitStr(ClojureParser.StrContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code singleDefn}
-	 * labeled alternative in {@link ClojureParser#defn}.
-	 * @param ctx the parse tree
-	 */
-	void enterSingleDefn(ClojureParser.SingleDefnContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code singleDefn}
-	 * labeled alternative in {@link ClojureParser#defn}.
-	 * @param ctx the parse tree
-	 */
-	void exitSingleDefn(ClojureParser.SingleDefnContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code defnArity}
-	 * labeled alternative in {@link ClojureParser#defn}.
-	 * @param ctx the parse tree
-	 */
-	void enterDefnArity(ClojureParser.DefnArityContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code defnArity}
-	 * labeled alternative in {@link ClojureParser#defn}.
-	 * @param ctx the parse tree
-	 */
-	void exitDefnArity(ClojureParser.DefnArityContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ClojureParser#arity}.
-	 * @param ctx the parse tree
-	 */
-	void enterArity(ClojureParser.ArityContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ClojureParser#arity}.
-	 * @param ctx the parse tree
-	 */
-	void exitArity(ClojureParser.ArityContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code description}
 	 * labeled alternative in {@link ClojureParser#optDescription}.
 	 * @param ctx the parse tree
@@ -503,6 +627,54 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitParamsSymbol(ClojureParser.ParamsSymbolContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code optLoopParamsParams}
+	 * labeled alternative in {@link ClojureParser#optLoopParams}.
+	 * @param ctx the parse tree
+	 */
+	void enterOptLoopParamsParams(ClojureParser.OptLoopParamsParamsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code optLoopParamsParams}
+	 * labeled alternative in {@link ClojureParser#optLoopParams}.
+	 * @param ctx the parse tree
+	 */
+	void exitOptLoopParamsParams(ClojureParser.OptLoopParamsParamsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code optLoopParamsEpsilon}
+	 * labeled alternative in {@link ClojureParser#optLoopParams}.
+	 * @param ctx the parse tree
+	 */
+	void enterOptLoopParamsEpsilon(ClojureParser.OptLoopParamsEpsilonContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code optLoopParamsEpsilon}
+	 * labeled alternative in {@link ClojureParser#optLoopParams}.
+	 * @param ctx the parse tree
+	 */
+	void exitOptLoopParamsEpsilon(ClojureParser.OptLoopParamsEpsilonContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code loopParamsSymbolParams}
+	 * labeled alternative in {@link ClojureParser#loopParams}.
+	 * @param ctx the parse tree
+	 */
+	void enterLoopParamsSymbolParams(ClojureParser.LoopParamsSymbolParamsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code loopParamsSymbolParams}
+	 * labeled alternative in {@link ClojureParser#loopParams}.
+	 * @param ctx the parse tree
+	 */
+	void exitLoopParamsSymbolParams(ClojureParser.LoopParamsSymbolParamsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code loopParamsSymbol}
+	 * labeled alternative in {@link ClojureParser#loopParams}.
+	 * @param ctx the parse tree
+	 */
+	void enterLoopParamsSymbol(ClojureParser.LoopParamsSymbolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code loopParamsSymbol}
+	 * labeled alternative in {@link ClojureParser#loopParams}.
+	 * @param ctx the parse tree
+	 */
+	void exitLoopParamsSymbol(ClojureParser.LoopParamsSymbolContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code optargsArgs}
 	 * labeled alternative in {@link ClojureParser#optargs}.
 	 * @param ctx the parse tree
@@ -551,6 +723,40 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitArgsSymbol(ClojureParser.ArgsSymbolContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code singleDefn}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingleDefn(ClojureParser.SingleDefnContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code singleDefn}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingleDefn(ClojureParser.SingleDefnContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code defnArity}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code defnArity}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#arity}.
+	 * @param ctx the parse tree
+	 */
+	void enterArity(ClojureParser.ArityContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#arity}.
+	 * @param ctx the parse tree
+	 */
+	void exitArity(ClojureParser.ArityContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ClojureParser#callFunction}.
 	 * @param ctx the parse tree
 	 */
@@ -561,45 +767,119 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitCallFunction(ClojureParser.CallFunctionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ClojureParser#list}.
+	 * Enter a parse tree produced by {@link ClojureParser#loop}.
 	 * @param ctx the parse tree
 	 */
-	void enterList(ClojureParser.ListContext ctx);
+	void enterLoop(ClojureParser.LoopContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ClojureParser#list}.
+	 * Exit a parse tree produced by {@link ClojureParser#loop}.
 	 * @param ctx the parse tree
 	 */
-	void exitList(ClojureParser.ListContext ctx);
+	void exitLoop(ClojureParser.LoopContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ClojureParser#vector}.
+	 * Enter a parse tree produced by {@link ClojureParser#recur}.
 	 * @param ctx the parse tree
 	 */
-	void enterVector(ClojureParser.VectorContext ctx);
+	void enterRecur(ClojureParser.RecurContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ClojureParser#vector}.
+	 * Exit a parse tree produced by {@link ClojureParser#recur}.
 	 * @param ctx the parse tree
 	 */
-	void exitVector(ClojureParser.VectorContext ctx);
+	void exitRecur(ClojureParser.RecurContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ClojureParser#map}.
+	 * Enter a parse tree produced by the {@code siTrueFalse}
+	 * labeled alternative in {@link ClojureParser#siOptForm}.
 	 * @param ctx the parse tree
 	 */
-	void enterMap(ClojureParser.MapContext ctx);
+	void enterSiTrueFalse(ClojureParser.SiTrueFalseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ClojureParser#map}.
+	 * Exit a parse tree produced by the {@code siTrueFalse}
+	 * labeled alternative in {@link ClojureParser#siOptForm}.
 	 * @param ctx the parse tree
 	 */
-	void exitMap(ClojureParser.MapContext ctx);
+	void exitSiTrueFalse(ClojureParser.SiTrueFalseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ClojureParser#set}.
+	 * Enter a parse tree produced by the {@code siTrue}
+	 * labeled alternative in {@link ClojureParser#siOptForm}.
 	 * @param ctx the parse tree
 	 */
-	void enterSet(ClojureParser.SetContext ctx);
+	void enterSiTrue(ClojureParser.SiTrueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ClojureParser#set}.
+	 * Exit a parse tree produced by the {@code siTrue}
+	 * labeled alternative in {@link ClojureParser#siOptForm}.
 	 * @param ctx the parse tree
 	 */
-	void exitSet(ClojureParser.SetContext ctx);
+	void exitSiTrue(ClojureParser.SiTrueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#si}.
+	 * @param ctx the parse tree
+	 */
+	void enterSi(ClojureParser.SiContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#si}.
+	 * @param ctx the parse tree
+	 */
+	void exitSi(ClojureParser.SiContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#mayor}.
+	 * @param ctx the parse tree
+	 */
+	void enterMayor(ClojureParser.MayorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#mayor}.
+	 * @param ctx the parse tree
+	 */
+	void exitMayor(ClojureParser.MayorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#menor}.
+	 * @param ctx the parse tree
+	 */
+	void enterMenor(ClojureParser.MenorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#menor}.
+	 * @param ctx the parse tree
+	 */
+	void exitMenor(ClojureParser.MenorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#mayorIgual}.
+	 * @param ctx the parse tree
+	 */
+	void enterMayorIgual(ClojureParser.MayorIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#mayorIgual}.
+	 * @param ctx the parse tree
+	 */
+	void exitMayorIgual(ClojureParser.MayorIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#menorIgual}.
+	 * @param ctx the parse tree
+	 */
+	void enterMenorIgual(ClojureParser.MenorIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#menorIgual}.
+	 * @param ctx the parse tree
+	 */
+	void exitMenorIgual(ClojureParser.MenorIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#igual}.
+	 * @param ctx the parse tree
+	 */
+	void enterIgual(ClojureParser.IgualContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#igual}.
+	 * @param ctx the parse tree
+	 */
+	void exitIgual(ClojureParser.IgualContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#inc}.
+	 * @param ctx the parse tree
+	 */
+	void enterInc(ClojureParser.IncContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#inc}.
+	 * @param ctx the parse tree
+	 */
+	void exitInc(ClojureParser.IncContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code rmLamda}
 	 * labeled alternative in {@link ClojureParser#reader_macro}.

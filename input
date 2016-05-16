@@ -1,14 +1,7 @@
-(defn x-chop
-  "Describe the kind of chop you're inflicting on someone"
-  ([name chop-type]
-     (str "I " chop-type " chop " name "! Take that!"))
-  ([name]
-     (x-chop name "karate")))
-
-(x-chop "Kanye West" "slap")
-(x-chop "Kanye East")
-
-(defn hola "hola" [q e] (println q))
-(defn hola2 "hola" [a b c] (println "hola"))
-(hola2 4 2 3)
-(hola (hola2 1 2 4) 4)
+(loop [iteration 0]
+  (println (str "Iteration " iteration))
+  (if (> iteration 3)
+    (println "Goodbye!")
+    (recur (inc iteration))
+  )
+)

@@ -5,6 +5,8 @@ public class FunctionSymbol extends Symbol {
     public HashMap<Integer, Arity> arity = new HashMap<>();
     Integer currentArityNumber = 0;
     Arity currentArity;
+    Boolean hasRecur = false;
+    Boolean inDeclaration = true;
 
     public FunctionSymbol(String name) {
         super(name);
@@ -43,5 +45,21 @@ public class FunctionSymbol extends Symbol {
 
     public String toString() {
         return "function"+super.toString() + ":" + arity.size();
+    }
+
+    public Boolean getHasRecur() {
+        return hasRecur;
+    }
+
+    public void setHasRecur(Boolean hasRecur) {
+        this.hasRecur = hasRecur;
+    }
+
+    public Boolean getInDeclaration() {
+        return inDeclaration;
+    }
+
+    public void setInDeclaration(Boolean inDeclaration) {
+        this.inDeclaration = inDeclaration;
     }
 }

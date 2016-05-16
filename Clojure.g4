@@ -1,6 +1,8 @@
 grammar Clojure;
 
-file: form *;
+file: priorForm *;
+
+priorForm: form;
 
 form: literal       #formLiteral
     | def           #formDef
@@ -12,7 +14,16 @@ form: literal       #formLiteral
     | or            #formOr
     | and           #formAnd
     | str           #formStr
+    | loop          #formLoop
+    | si            #formsi
+    | mayor         #formMayor
+    | menor         #formMenor
+    | mayorIgual    #formMayorIgual
+    | menorIgual    #formMenorIgual
+    | igual         #formIgual
+    | inc           #formInc
     | callFunction  #formCallFunction
+    | recur         #formRecur
     | reader_macro  #formReader_macro
     ;
 
@@ -30,7 +41,12 @@ literal
     | map               #literalMap
     ;
 
-forms: form* ;
+forms: priorForm* ;
+
+list: '\'(' forms ')' ;
+vector: '[' forms ']' ;
+map: '{' (form form)* '}' ;
+set: '#{' forms '}' ;
 
 def: '(' DEF symbol ')'        #defSymbol
    | '(' DEF symbol form')'    #defSymbolForm
@@ -46,12 +62,6 @@ or: '(' OR forms ')';
 and: '(' AND forms ')';
 str: '(' STR forms ')';
 
-defn: '(' DEFN symbol optDescription '[' optparams ']' forms ')'    #singleDefn
-    | '(' DEFN symbol optDescription  arity+ ')'    #defnArity
-    ;
-
-arity: '(' '[' optparams ']' forms ')';
-
 optDescription: STRING      #description
               |             #noDescription
               ;
@@ -60,8 +70,16 @@ optparams : params  #optparamsParams
      |              #optparamsEpsilon
      ;
 
-params : symbol params               #paramsSymbolParams
-    | symbol                         #paramsSymbol
+params : symbol params      #paramsSymbolParams
+    | symbol                #paramsSymbol
+    ;
+
+optLoopParams : loopParams  #optLoopParamsParams
+     |                      #optLoopParamsEpsilon
+     ;
+
+loopParams : symbol form loopParams      #loopParamsSymbolParams
+    | symbol form                        #loopParamsSymbol
     ;
 
 optargs : args  #optargsArgs
@@ -72,15 +90,30 @@ args : form args    #argsSymbolArgs
     | form          #argsSymbol
     ;
 
+defn: '(' DEFN symbol optDescription '[' optparams ']' forms ')'    #singleDefn
+    | '(' DEFN symbol optDescription  arity+ ')'                    #defnArity
+    ;
+
+arity: '(' '[' optparams ']' forms ')';
+
 callFunction: '(' symbol optargs ')' ;
 
-list: '\'(' forms ')' ;
+loop: '(' LOOP '[' optLoopParams ']' forms ')';
 
-vector: '[' forms ']' ;
+recur: '(' RECUR optargs ')';
 
-map: '{' (form form)* '}' ;
+siOptForm: form form    #siTrueFalse
+         | form         #siTrue
+         ;
 
-set: '#{' forms '}' ;
+si: '(' SI form siOptForm ')';
+
+mayor: '(' MAYOR forms ')';
+menor: '(' MENOR forms ')';
+mayorIgual: '(' MAYORIGUAL forms ')';
+menorIgual: '(' MENORIGUAL forms ')';
+igual: '(' IGUAL forms ')';
+inc: '(' INC form ')';
 
 reader_macro
     : lambda            #rmLamda
@@ -176,6 +209,16 @@ MINUS: '-';
 OR: 'or';
 AND: 'and';
 STR: 'str';
+LOOP: 'loop';
+RECUR: 'recur';
+SI: 'if';
+INC: 'inc';
+
+MAYOR: '>';
+MENOR: '<';
+MAYORIGUAL: '>=';
+MENORIGUAL: '<=';
+IGUAL: '=';
 
 STRING : '"' ( ~'"' | '\\' '"' )* '"' ;
 

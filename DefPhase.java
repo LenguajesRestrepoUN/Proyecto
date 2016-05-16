@@ -41,6 +41,22 @@ public class DefPhase extends ClojureBaseListener {
         currentFunction.addParameter(name);
     }
 
+    //loopParams :  symbol form
+    @Override public void enterLoopParamsSymbol(ClojureParser.LoopParamsSymbolContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+        currentFunction.setCurrentParameter(currentFunction.getCurrentParameter() + 1);
+        currentFunction.addParameter(name);
+    }
+
+    //loopParams : symbol form loopParams
+    @Override public void enterLoopParamsSymbolParams(ClojureParser.LoopParamsSymbolParamsContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+        currentFunction.setCurrentParameter(currentFunction.getCurrentParameter() + 1);
+        currentFunction.addParameter(name);
+    }
+
     //defn: '(' DEFN symbol optDescription '[' optargs ']' forms ')'
     @Override public void enterSingleDefn(ClojureParser.SingleDefnContext ctx) {
         String name = ctx.symbol().getText();
@@ -54,6 +70,27 @@ public class DefPhase extends ClojureBaseListener {
     }
 
     @Override public void exitSingleDefn(ClojureParser.SingleDefnContext ctx) {
+        currentFunction.setInDeclaration(false);
+        currentCall.removeLast();
+        if(currentCall.size() > 0)
+            currentFunction = currentCall.getLast();
+        else
+            currentFunction = null;
+    }
+
+    //loop: '(' LOOP '[' optLoopParams ']' forms ')'
+    @Override public void enterLoop(ClojureParser.LoopContext ctx) {
+        FunctionSymbol var = new FunctionSymbol("loop");
+        currentScope.define(var);
+        currentFunction = var;
+        currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
+        currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
+        currentFunction.establishCurrentArity();
+        currentCall.addLast(currentFunction);
+    }
+
+    @Override public void exitLoop(ClojureParser.LoopContext ctx) {
+        currentFunction.setInDeclaration(false);
         currentCall.removeLast();
         if(currentCall.size() > 0)
             currentFunction = currentCall.getLast();
@@ -71,6 +108,7 @@ public class DefPhase extends ClojureBaseListener {
     }
 
     @Override public void exitDefnArity(ClojureParser.DefnArityContext ctx) {
+        currentFunction.setInDeclaration(false);
         currentCall.removeLast();
         if(currentCall.size() > 0)
             currentFunction = currentCall.getLast();
@@ -159,6 +197,21 @@ public class DefPhase extends ClojureBaseListener {
             currentFunction = currentCall.getLast();
         else
             currentFunction = null;
+    }
+
+    //recur: '(' RECUR optargs ')'
+    @Override public void enterFormRecur(ClojureParser.FormRecurContext ctx) {
+        if(currentFunction == null)
+            Interpreter.error(ctx.getStart(), "Debe estar en una funcion para hacer recursion");
+    }
+
+    @Override public void exitFormRecur(ClojureParser.FormRecurContext ctx) {
+        currentFunction.setHasRecur(true);
+    }
+
+    @Override public void enterPriorForm(ClojureParser.PriorFormContext ctx) {
+        if(currentFunction != null && currentFunction.getInDeclaration() && currentFunction.getHasRecur())
+            Interpreter.error(ctx.getStart(), "Recur debe estar al final de la funcion");
     }
 
     //literal: symbol

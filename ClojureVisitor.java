@@ -16,6 +16,12 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFile(ClojureParser.FileContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ClojureParser#priorForm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPriorForm(ClojureParser.PriorFormContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code formLiteral}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -86,12 +92,75 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormStr(ClojureParser.FormStrContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code formLoop}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormLoop(ClojureParser.FormLoopContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formsi}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormsi(ClojureParser.FormsiContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formMayor}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormMayor(ClojureParser.FormMayorContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formMenor}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormMenor(ClojureParser.FormMenorContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formMayorIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormMayorIgual(ClojureParser.FormMayorIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formMenorIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormMenorIgual(ClojureParser.FormMenorIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formIgual}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormIgual(ClojureParser.FormIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formInc}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormInc(ClojureParser.FormIncContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code formCallFunction}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFormCallFunction(ClojureParser.FormCallFunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formRecur}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormRecur(ClojureParser.FormRecurContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code formReader_macro}
 	 * labeled alternative in {@link ClojureParser#form}.
@@ -183,6 +252,30 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitForms(ClojureParser.FormsContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ClojureParser#list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitList(ClojureParser.ListContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#vector}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVector(ClojureParser.VectorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#map}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMap(ClojureParser.MapContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#set}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSet(ClojureParser.SetContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code defSymbol}
 	 * labeled alternative in {@link ClojureParser#def}.
 	 * @param ctx the parse tree
@@ -239,26 +332,6 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStr(ClojureParser.StrContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code singleDefn}
-	 * labeled alternative in {@link ClojureParser#defn}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSingleDefn(ClojureParser.SingleDefnContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code defnArity}
-	 * labeled alternative in {@link ClojureParser#defn}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDefnArity(ClojureParser.DefnArityContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ClojureParser#arity}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArity(ClojureParser.ArityContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code description}
 	 * labeled alternative in {@link ClojureParser#optDescription}.
 	 * @param ctx the parse tree
@@ -301,6 +374,34 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParamsSymbol(ClojureParser.ParamsSymbolContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code optLoopParamsParams}
+	 * labeled alternative in {@link ClojureParser#optLoopParams}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOptLoopParamsParams(ClojureParser.OptLoopParamsParamsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code optLoopParamsEpsilon}
+	 * labeled alternative in {@link ClojureParser#optLoopParams}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOptLoopParamsEpsilon(ClojureParser.OptLoopParamsEpsilonContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code loopParamsSymbolParams}
+	 * labeled alternative in {@link ClojureParser#loopParams}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLoopParamsSymbolParams(ClojureParser.LoopParamsSymbolParamsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code loopParamsSymbol}
+	 * labeled alternative in {@link ClojureParser#loopParams}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLoopParamsSymbol(ClojureParser.LoopParamsSymbolContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code optargsArgs}
 	 * labeled alternative in {@link ClojureParser#optargs}.
 	 * @param ctx the parse tree
@@ -329,35 +430,99 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArgsSymbol(ClojureParser.ArgsSymbolContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code singleDefn}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingleDefn(ClojureParser.SingleDefnContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code defnArity}
+	 * labeled alternative in {@link ClojureParser#defn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#arity}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArity(ClojureParser.ArityContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link ClojureParser#callFunction}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCallFunction(ClojureParser.CallFunctionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#list}.
+	 * Visit a parse tree produced by {@link ClojureParser#loop}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitList(ClojureParser.ListContext ctx);
+	T visitLoop(ClojureParser.LoopContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#vector}.
+	 * Visit a parse tree produced by {@link ClojureParser#recur}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVector(ClojureParser.VectorContext ctx);
+	T visitRecur(ClojureParser.RecurContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#map}.
+	 * Visit a parse tree produced by the {@code siTrueFalse}
+	 * labeled alternative in {@link ClojureParser#siOptForm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMap(ClojureParser.MapContext ctx);
+	T visitSiTrueFalse(ClojureParser.SiTrueFalseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#set}.
+	 * Visit a parse tree produced by the {@code siTrue}
+	 * labeled alternative in {@link ClojureParser#siOptForm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSet(ClojureParser.SetContext ctx);
+	T visitSiTrue(ClojureParser.SiTrueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#si}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSi(ClojureParser.SiContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#mayor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMayor(ClojureParser.MayorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#menor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMenor(ClojureParser.MenorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#mayorIgual}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMayorIgual(ClojureParser.MayorIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#menorIgual}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMenorIgual(ClojureParser.MenorIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#igual}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIgual(ClojureParser.IgualContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#inc}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInc(ClojureParser.IncContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code rmLamda}
 	 * labeled alternative in {@link ClojureParser#reader_macro}.
