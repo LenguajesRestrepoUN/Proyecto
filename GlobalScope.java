@@ -5,7 +5,6 @@ public class GlobalScope implements Scope{
 
     Scope enclosingScope; // null if global (outermost) scope
     Map<String, Symbol> symbols = new LinkedHashMap<String, Symbol>();
-    public Integer counter = 1;
 
     public GlobalScope(Scope enclosingScope) {
         this.enclosingScope = enclosingScope;
@@ -34,14 +33,6 @@ public class GlobalScope implements Scope{
 
     public String toString() {
         return getScopeName()+":"+symbols.keySet().toString();
-    }
-
-    public Integer getCounter(){
-        return counter;
-    }
-
-    public void setCounter(Integer i){
-        counter = i;
     }
 
     public String getScopeName() {

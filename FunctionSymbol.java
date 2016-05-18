@@ -1,19 +1,32 @@
 import java.util.HashMap;
 
-public class FunctionSymbol extends Symbol {
+public class FunctionSymbol extends Symbol implements Scope {
 
     public HashMap<Integer, Arity> arity = new HashMap<>();
     Integer currentArityNumber = 0;
     Arity currentArity;
-    Boolean hasRecur = false;
     Boolean inDeclaration = true;
+    Scope enclosingScope;
+    ClojureParser.AuxformsContext ctx;
+    Integer currentArgument = 0;
 
-    public FunctionSymbol(String name) {
+    public FunctionSymbol(String name, Scope enclosingScope) {
         super(name);
+        this.enclosingScope = enclosingScope;
     }
 
-    public Integer getAritySize(){
-        return arity.size();
+    public Integer getParametersNumber(){ return currentArity.getParametersNumber(); }
+
+    public void setArity(Arity a){
+        currentArity = a;
+    }
+
+    public String getParameter(Integer i){
+        return currentArity.parameters.get(i);
+    }
+
+    public void addArgument(String name, Symbol s){
+        currentArity.arguments.put(name, s);
     }
 
     public Integer getCurrentArityNumber() {
@@ -35,24 +48,35 @@ public class FunctionSymbol extends Symbol {
     public void setCurrentArgument(Integer currentArgument) {
         for(Arity a : arity.values())
             a.currentArgument = currentArgument;
+        this.currentArgument = currentArgument;
     }
 
     public void addParameter(String name){ currentArity.parameters.put(currentArity.getCurrentParameter(),name); }
 
+    public void setHasRest(Boolean hasRest) { currentArity.setHasRest(hasRest); }
+
     public Integer getCurrentParameter() { return currentArity.getCurrentParameter(); }
+
+    public Integer getDestructors() {
+        return currentArity.getDestructors();
+    }
+
+    public void setDestructors(Integer destructors) {
+        currentArity.setDestructors(destructors);
+    }
 
     public void setCurrentParameter(Integer currentParameter) { currentArity.currentParameter = currentParameter; }
 
     public String toString() {
-        return "function"+super.toString() + ":" + arity.size();
+        return "function " +  name;
     }
 
     public Boolean getHasRecur() {
-        return hasRecur;
+        return currentArity.getHasRecur();
     }
 
     public void setHasRecur(Boolean hasRecur) {
-        this.hasRecur = hasRecur;
+        currentArity.setHasRecur(hasRecur);
     }
 
     public Boolean getInDeclaration() {
@@ -61,5 +85,45 @@ public class FunctionSymbol extends Symbol {
 
     public void setInDeclaration(Boolean inDeclaration) {
         this.inDeclaration = inDeclaration;
+    }
+
+    public Symbol resolve(String name) {
+        Symbol s = currentArity.arguments.get(name);
+        if ( s!=null )
+            return s;
+
+        if ( getEnclosingScope() != null ) {
+            return getEnclosingScope().resolve(name);
+        }
+        return null;
+    }
+
+    public void define(Symbol sym) {
+        currentArity.arguments.put(sym.name, sym);
+        sym.scope = this;
+    }
+
+    public Scope getEnclosingScope() {
+        return enclosingScope;
+    }
+
+    public String getScopeName() {
+        return name;
+    }
+
+    public ClojureParser.AuxformsContext getCtx() {
+        return ctx;
+    }
+
+    public void setCtx(ClojureParser.AuxformsContext ctx) {
+        this.ctx = ctx;
+    }
+
+    public ClojureParser.ArityContext getArityCtx() {
+        return currentArity.getArityCtx();
+    }
+
+    public void setArityCtx(ClojureParser.ArityContext arityCtx) {
+        currentArity.setArityCtx(arityCtx);
     }
 }

@@ -1,6 +1,15 @@
 (defn x-chop
   "Describe the kind of chop you're inflicting on someone"
   ([name chop-type]
+     (str "I " chop-type " chop " name "! Take that!")
+     (recur name chop-type)
+     )
+  ([name]
+     (recur name)))
+
+(defn x-chop
+  "Describe the kind of chop you're inflicting on someone"
+  ([name chop-type]
      (str "I " chop-type " chop " name "! Take that!"))
   ([name]
      (x-chop name "karate")))
@@ -8,10 +17,10 @@
 (x-chop "Kanye West" "slap")
 (x-chop "Kanye East")
 
-(defn hola "hola" [q e] (print "hola"))
+(defn hola "hola" [q e & f] (print "hola") (println q))
 (defn hola2 "hola" [a b c] (println "hola"))
 (hola2 4 2 3)
-(hola (hola2 1 2 3) 4)
+(hola (hola2 1 2 3) 4 6 7)
 
 (loop [iteration 0]
   (println (str "Iteration " iteration))
@@ -20,3 +29,27 @@
     (recur (inc iteration))
   )
 )
+
+(defn my-first
+  [ a b [first-thing] c [second-thing]]
+  (println a)
+  (println b)
+  (println c)
+  (println first-thing)
+  (println second-thing)
+)
+
+(my-first "hola1" "hola2" ["oven" "bike" "war-axe"] "hola3" ["oven" "bike" "war-axe"])
+
+(defn x-chop
+  "Describe the kind of chop you're inflicting on someone"
+  ([name chop-type]
+     (str "I " chop-type " chop " name "! Take that!")
+     (recur name chop-type)
+     )
+  ([name]
+     (recur name "lol")
+     ))
+
+(def x 0)
+(let [x 1] x)

@@ -38,7 +38,7 @@ public class Interpreter {
 
             ParseTree tree = parser.file();
 
-            System.out.println(tree.toStringTree(parser));
+            //System.out.println(tree.toStringTree(parser));
 
             ParseTreeWalker walker = new ParseTreeWalker();
             DefPhase def = new DefPhase();

@@ -12,17 +12,58 @@ public class DefPhase extends ClojureBaseListener {
         currentScope = globals;
         currentCall = new LinkedList<>();
     }
+    @Override public void exitFile(ClojureParser.FileContext ctx) {
+      Visitor visitor = new Visitor();
+        visitor.globals = globals;
+        visitor.currentScope = globals;
+        visitor.visitFile(ctx);
+    }
 
     //def: '(' DEF symbol ')'
     @Override public void enterDefSymbol(ClojureParser.DefSymbolContext ctx) {
         String name = ctx.symbol().getText();
-        defineVar(null, name);
+        VariableSymbol var = new VariableSymbol(name, null);
+        globals.define(var);
     }
 
     //def: '(' DEF symbol form')'
     @Override public void enterDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
         String name = ctx.symbol().getText();
+        VariableSymbol var = new VariableSymbol(name, null);
+        globals.define(var);
+    }
+
+    //symbols: symbol symbols
+    @Override public void enterSymbolsSymbol(ClojureParser.SymbolsSymbolContext ctx) {
+        String name = ctx.symbol().getText();
         defineVar(null, name);
+    }
+
+    //params: '[' symbol symbols ']' params
+    @Override public void enterParamsDestructuringParams(ClojureParser.ParamsDestructuringParamsContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+        currentFunction.setCurrentParameter(currentFunction.getCurrentParameter() + 1);
+        currentFunction.setDestructors(currentFunction.getDestructors() + 1);
+        currentFunction.addParameter("destructor" + currentFunction.getDestructors());
+    }
+
+    //params: '[' symbol symbols ']'
+    @Override public void enterParamsDestructuring(ClojureParser.ParamsDestructuringContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+        currentFunction.setCurrentParameter(currentFunction.getCurrentParameter() + 1);
+        currentFunction.setDestructors(currentFunction.getDestructors() + 1);
+        currentFunction.addParameter("destructor" + currentFunction.getDestructors());
+    }
+
+    //params: AMPER symbol
+    @Override public void enterParamsRestParameter(ClojureParser.ParamsRestParameterContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+        currentFunction.setCurrentParameter(currentFunction.getCurrentParameter() + 1);
+        currentFunction.addParameter(name);
+        currentFunction.setHasRest(true);
     }
 
     //params : symbol params
@@ -57,19 +98,33 @@ public class DefPhase extends ClojureBaseListener {
         currentFunction.addParameter(name);
     }
 
-    //defn: '(' DEFN symbol optDescription '[' optargs ']' forms ')'
+    //letParams : symbol form letParams
+    @Override public void enterLetParamsSymbolParams(ClojureParser.LetParamsSymbolParamsContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+    }
+
+    @Override public void enterLetParamsSymbol(ClojureParser.LetParamsSymbolContext ctx) {
+        String name = ctx.symbol().getText();
+        defineVar(null, name);
+    }
+
+    //defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')
     @Override public void enterSingleDefn(ClojureParser.SingleDefnContext ctx) {
         String name = ctx.symbol().getText();
-        FunctionSymbol var = new FunctionSymbol(name);
+        FunctionSymbol var = new FunctionSymbol(name, currentScope);
         currentScope.define(var);
+        var.setCtx(ctx.auxforms());
         currentFunction = var;
         currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
         currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
         currentFunction.establishCurrentArity();
         currentCall.addLast(currentFunction);
+        currentScope = var;
     }
 
     @Override public void exitSingleDefn(ClojureParser.SingleDefnContext ctx) {
+        currentScope = currentScope.getEnclosingScope();
         currentFunction.setInDeclaration(false);
         currentCall.removeLast();
         if(currentCall.size() > 0)
@@ -80,16 +135,18 @@ public class DefPhase extends ClojureBaseListener {
 
     //loop: '(' LOOP '[' optLoopParams ']' forms ')'
     @Override public void enterLoop(ClojureParser.LoopContext ctx) {
-        FunctionSymbol var = new FunctionSymbol("loop");
+        FunctionSymbol var = new FunctionSymbol("loop", currentScope);
         currentScope.define(var);
         currentFunction = var;
         currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
         currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
         currentFunction.establishCurrentArity();
         currentCall.addLast(currentFunction);
+        currentScope = var;
     }
 
     @Override public void exitLoop(ClojureParser.LoopContext ctx) {
+        currentScope = currentScope.getEnclosingScope();
         currentFunction.setInDeclaration(false);
         currentCall.removeLast();
         if(currentCall.size() > 0)
@@ -98,16 +155,29 @@ public class DefPhase extends ClojureBaseListener {
             currentFunction = null;
     }
 
+    //let: '(' '[' letParams ']' forms ')'
+    @Override public void enterLet(ClojureParser.LetContext ctx) {
+        BlockScope var = new BlockScope("let", currentScope);
+        currentScope.define(var);
+        currentScope = var;
+    }
+
+    @Override public void exitLet(ClojureParser.LetContext ctx) {
+        currentScope = currentScope.getEnclosingScope();
+    }
+
     //defn: '(' DEFN symbol optDescription  arity+ ')'
     @Override public void enterDefnArity(ClojureParser.DefnArityContext ctx) {
         String name = ctx.symbol().getText();
-        FunctionSymbol var = new FunctionSymbol(name);
+        FunctionSymbol var = new FunctionSymbol(name, currentScope);
         currentScope.define(var);
         currentFunction = var;
         currentCall.addLast(currentFunction);
+        currentScope = var;
     }
 
     @Override public void exitDefnArity(ClojureParser.DefnArityContext ctx) {
+        currentScope = currentScope.getEnclosingScope();
         currentFunction.setInDeclaration(false);
         currentCall.removeLast();
         if(currentCall.size() > 0)
@@ -121,14 +191,15 @@ public class DefPhase extends ClojureBaseListener {
         currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
         currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
         currentFunction.establishCurrentArity();
+        currentFunction.setArityCtx(ctx);
     }
 
-    //args : literal args
+    //args : form args
     @Override public void enterArgsSymbolArgs(ClojureParser.ArgsSymbolArgsContext ctx) {
         Boolean flag = false;
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         for(Arity a : currentFunction.arity.values()){
-            if(a.getCurrentArgument() < a.getParametersNumber()) {
+            if(a.getHasRest() || a.getCurrentArgument() < a.getParametersNumber()) {
                 flag = true;
                 break;
             }
@@ -140,15 +211,23 @@ public class DefPhase extends ClojureBaseListener {
         }
     }
 
-    //args : literal
+    //args : form
     @Override public void enterArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
 
         Boolean flag = false;
         for(Arity a : currentFunction.arity.values()){
-            if(a.getCurrentArgument() == a.getParametersNumber()) {
-                flag = true;
-                break;
+            if(a.getHasRest()){
+                if (a.getCurrentArgument() >= a.getParametersNumber() - 1) {
+                    flag = true;
+                    break;
+                }
+            }
+            else {
+                if (a.getCurrentArgument() == a.getParametersNumber()) {
+                    flag = true;
+                    break;
+                }
             }
         }
         if(!flag){
@@ -163,9 +242,15 @@ public class DefPhase extends ClojureBaseListener {
     @Override public void enterOptargsEpsilon(ClojureParser.OptargsEpsilonContext ctx) {
         Boolean flag = false;
         for(Arity a : currentFunction.arity.values()){
-            if(a.getCurrentArgument() == a.getParametersNumber()) {
+            if(a.getHasRest()){
                 flag = true;
                 break;
+            }
+            else {
+                if (a.getCurrentArgument() == a.getParametersNumber()) {
+                    flag = true;
+                    break;
+                }
             }
         }
         if(!flag){
@@ -209,9 +294,10 @@ public class DefPhase extends ClojureBaseListener {
         currentFunction.setHasRecur(true);
     }
 
-    @Override public void enterPriorForm(ClojureParser.PriorFormContext ctx) {
+    //forms: priorForm
+    @Override public void enterFormsForm(ClojureParser.FormsFormContext ctx) {
         if(currentFunction != null && currentFunction.getInDeclaration() && currentFunction.getHasRecur())
-            Interpreter.error(ctx.getStart(), "Recur debe estar al final de la funcion");
+            Interpreter.error(ctx.getStart(), "Recur debe estar al final de la funcion o al final del Arity");
     }
 
     //literal: symbol

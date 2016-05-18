@@ -1,8 +1,14 @@
 grammar Clojure;
 
-file: priorForm *;
+file: mainForm;
 
-priorForm: form;
+mainForm: form mainForm       #mainForms
+        | form                #mainFormForm
+        ;
+
+priorForm: form priorForm       #priorForms
+         | form                 #priorFormForm
+         ;
 
 form: literal       #formLiteral
     | def           #formDef
@@ -11,6 +17,8 @@ form: literal       #formLiteral
     | print         #formPrint
     | sum           #formSum
     | minus         #formMinus
+    | mult          #formMult
+    | div           #formDiv
     | or            #formOr
     | and           #formAnd
     | str           #formStr
@@ -22,6 +30,18 @@ form: literal       #formLiteral
     | menorIgual    #formMenorIgual
     | igual         #formIgual
     | inc           #formInc
+    | hacer         #formHacer
+    | when          #formWhen
+    | isNil         #formIsNil
+    | nth           #formNth
+    | contains      #formContains
+    | conj          #formConj
+    | get           #formGet
+    | first         #formFirst
+    | let           #formLet
+    | functionMap   #formFunctionMap
+    | take          #formTake
+    | reduce        #formReduce
     | callFunction  #formCallFunction
     | recur         #formRecur
     | reader_macro  #formReader_macro
@@ -39,9 +59,13 @@ literal
     | list              #literalList
     | vector            #literalVector
     | map               #literalMap
+    | set               #literalSet
     ;
 
-forms: priorForm* ;
+forms: priorForm    #formsForm
+     |              #formsEpsilon
+     ;
+auxforms: forms;
 
 list: '\'(' forms ')' ;
 vector: '[' forms ']' ;
@@ -52,11 +76,13 @@ def: '(' DEF symbol ')'        #defSymbol
    | '(' DEF symbol form')'    #defSymbolForm
    ;
 
-println: '(' PRINTLN forms ')';
+println: '(' PRINTLN form ')';
 print: '(' PRINT forms ')';
 
 sum: '(' SUM forms ')';
 minus: '(' MINUS forms ')';
+mult: '(' MULT forms ')';
+div: '(' DIV forms ')';
 
 or: '(' OR forms ')';
 and: '(' AND forms ')';
@@ -67,12 +93,18 @@ optDescription: STRING      #description
               ;
 
 optparams : params  #optparamsParams
-     |              #optparamsEpsilon
-     ;
+          |         #optparamsEpsilon
+          ;
+symbols: symbol symbols      #symbolsSymbol
+       |                     #symbolsEpsilon
+       ;
 
-params : symbol params      #paramsSymbolParams
-    | symbol                #paramsSymbol
-    ;
+params : symbol params                      #paramsSymbolParams
+       | symbol                             #paramsSymbol
+       | AMPER symbol                       #paramsRestParameter
+       | '[' symbol symbols ']' params      #paramsDestructuringParams
+       | '[' symbol symbols ']'             #paramsDestructuring
+       ;
 
 optLoopParams : loopParams  #optLoopParamsParams
      |                      #optLoopParamsEpsilon
@@ -90,7 +122,7 @@ args : form args    #argsSymbolArgs
     | form          #argsSymbol
     ;
 
-defn: '(' DEFN symbol optDescription '[' optparams ']' forms ')'    #singleDefn
+defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')'    #singleDefn
     | '(' DEFN symbol optDescription  arity+ ')'                    #defnArity
     ;
 
@@ -107,13 +139,65 @@ siOptForm: form form    #siTrueFalse
          ;
 
 si: '(' SI form siOptForm ')';
-
+hacer: '(' HACER forms ')';
 mayor: '(' MAYOR forms ')';
 menor: '(' MENOR forms ')';
 mayorIgual: '(' MAYORIGUAL forms ')';
 menorIgual: '(' MENORIGUAL forms ')';
 igual: '(' IGUAL forms ')';
 inc: '(' INC form ')';
+when: '(' WHEN forms ')';
+isNil: '(' ISNIL form ')';
+
+vl: vector     #vlVector
+  | list       #vlList
+  ;
+
+vm: vector  #vmVector
+  | map     #vmMap
+  ;
+
+defecto: form   #defaultForm
+       |        #defaultEpsilon
+       ;
+
+nth: '(' NTH vl form')';
+get: '(' GET vm form defecto')';
+contains: '(' CONTAINS set form ')';
+
+vls: vector     #vlsVector
+   | list       #vlsList
+   | set        #vlsSet
+   ;
+
+conj: '(' CONJ vls form ')';
+first: '(' FIRST vl ')';
+
+ms: map     #msMap
+  | set     #msSet
+  ;
+
+keywordGet: '(' keyword ms ')'  #firstKeywordGet
+          | '(' ms keyword ')'  #lastKeywordGet
+          ;
+
+letParams : symbol form letParams      #letParamsSymbolParams
+          | symbol form                #letParamsSymbol
+          ;
+
+let: '(' LET '[' letParams ']' forms ')';
+
+functionMap: '(' MAP form vls ')';
+
+vlsm: vector    #vlsmVector
+   | list       #vlsmList
+   | set        #vlsmSet
+   | map        #vlsmMap
+   ;
+
+take: '(' TAKE LONG vlsm')';
+
+reduce: '(' REDUCE form vls')';
 
 reader_macro
     : lambda            #rmLamda
@@ -206,6 +290,8 @@ PRINTLN: 'println';
 PRINT: 'print';
 SUM: '+';
 MINUS: '-';
+MULT: '*';
+DIV: '/';
 OR: 'or';
 AND: 'and';
 STR: 'str';
@@ -213,14 +299,26 @@ LOOP: 'loop';
 RECUR: 'recur';
 SI: 'if';
 INC: 'inc';
-
 MAYOR: '>';
 MENOR: '<';
 MAYORIGUAL: '>=';
 MENORIGUAL: '<=';
 IGUAL: '=';
-
+HACER: 'do';
+WHEN: 'when';
+ISNIL: 'nil?';
+NTH: 'nth';
+GET: 'get';
+CONTAINS: 'contains?';
+CONJ: 'conj';
+FIRST: 'first';
+MAP: 'map';
 STRING : '"' ( ~'"' | '\\' '"' )* '"' ;
+AMPER: '&';
+NIL: 'nil';
+LET: 'let';
+TAKE: 'take';
+REDUCE: 'reduce';
 
 FLOAT
     : '-'? [0-9]+ FLOAT_TAIL
@@ -259,8 +357,6 @@ CHAR_NAMED
            | 'backspace' ) ;
 
 CHAR_ANY : '\\' . ;
-
-NIL : 'nil';
 
 BOOLEAN : 'true'
         | 'false'
