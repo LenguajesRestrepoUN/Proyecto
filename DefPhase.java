@@ -6,6 +6,7 @@ public class DefPhase extends ClojureBaseListener {
     public static Scope currentScope;
     public static LinkedList<FunctionSymbol> currentCall;
     FunctionSymbol currentFunction;
+    Visitor visitor = new Visitor();
 
     @Override public void enterFile(ClojureParser.FileContext ctx) {
         globals = new GlobalScope(null);
@@ -13,10 +14,22 @@ public class DefPhase extends ClojureBaseListener {
         currentCall = new LinkedList<>();
     }
     @Override public void exitFile(ClojureParser.FileContext ctx) {
-      Visitor visitor = new Visitor();
+        //visitor.globals = globals;
+        //visitor.currentScope = currentScope;
+        //visitor.visitFile(ctx);
+    }
+
+    @Override public void exitAuxform(ClojureParser.AuxformContext ctx) {
         visitor.globals = globals;
-        visitor.currentScope = globals;
-        visitor.visitFile(ctx);
+        visitor.currentScope = currentScope;
+        visitor.visitAuxform(ctx);
+    }
+
+    //mainForms: form
+    @Override public void exitMainFormForm(ClojureParser.MainFormFormContext ctx) {
+        visitor.globals = globals;
+        visitor.currentScope = currentScope;
+        visitor.visitMainFormForm(ctx);
     }
 
     //def: '(' DEF symbol ')'

@@ -1,11 +1,18 @@
 (defn hola "hola"
 ([a] (+ a 1) (* a 4))
-([c d] (println(+ c c)) (* d d))
+([c d]
+(println (+ c c))
+ (* d d))
 )
 (hola 1)
 (hola 3 4)
 
-(defn hola2 "hola" [a b c d] (println (+ a a 4)) (println (- b b -4)) (println (/ c c 1)) (* d d 2))
+(def a 1)
+(println a)
+(def a 2)
+(println a)
 
- (hola2 2 3 4 5)
+(defn hola "hola" [b c d] (println (+ a a 4)) (println (- b b -4)) (println (/ c c 1)) (* d d (+ 1 1)))
+
+(hola 3 4 5)
 

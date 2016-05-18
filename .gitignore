@@ -7,3 +7,4 @@ out/production/proyecto/ClojureLexer.tokens
 out/production/proyecto/Clojure.tokens
 out/production/proyecto/aux_input
 out/production/proyecto/input
+out/production/proyecto/.gitignore

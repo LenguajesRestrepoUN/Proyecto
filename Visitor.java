@@ -9,11 +9,17 @@ public class Visitor extends ClojureBaseVisitor<String>{
     public static FormReclaimer currentReclaimer;
     FunctionSymbol currentFunction;
 
-    //mainForm: form mainForm
-    @Override public String visitMainForms(ClojureParser.MainFormsContext ctx) {
+    @Override public String visitAuxform(ClojureParser.AuxformContext ctx) {
         String r = visit(ctx.form());
         System.out.println(r);
-        visit(ctx.mainForm());
+        return r;
+    }
+
+    //mainForm: auxform mainForm
+    @Override public String visitMainForms(ClojureParser.MainFormsContext ctx) {
+        String r = visit(ctx.auxform());
+        //System.out.println(r);
+        //visit(ctx.mainForm());
         return r;
     }
     //mainForms: form
@@ -135,7 +141,12 @@ public class Visitor extends ClojureBaseVisitor<String>{
             currentReclaimer = reclaimers.getLast();
         else
             currentReclaimer = null;
-        return Double.toString(sum);
+
+        String tmp = Double.toString(sum);
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(tmp);
+        }
+        return tmp;
     }
 
     //mult: '(' MULT forms ')'
@@ -196,11 +207,19 @@ public class Visitor extends ClojureBaseVisitor<String>{
             currentReclaimer = reclaimers.getLast();
         else
             currentReclaimer = null;
-        return Double.toString(sum);
+
+        String tmp = Double.toString(sum);
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(tmp);
+        }
+        return tmp;
     }
 
     //literal: STRING
     @Override public String visitLiteralString(ClojureParser.LiteralStringContext ctx) {
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(ctx.STRING().getText());
+        }
         return ctx.STRING().getText();
     }
 
@@ -230,6 +249,19 @@ public class Visitor extends ClojureBaseVisitor<String>{
         return currentScope.resolve(ctx.symbol().getText()).toString();
     }
 
+    //def: '(' DEF symbol ')'
+    @Override public String visitDefSymbol(ClojureParser.DefSymbolContext ctx) {
+        String name = ctx.symbol().getText();
+        return "Variable " + name;
+    }
+
+    //def: '(' DEF symbol form')'
+    @Override public String visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
+        String name = ctx.symbol().getText();
+        Symbol s = currentScope.resolve(name);
+        s.value = visit(ctx.form());
+        return "Variable " + name;
+    }
     //literal: symbol
     @Override public String visitLiteralSymbol(ClojureParser.LiteralSymbolContext ctx) {
         String name = ctx.symbol().getText();

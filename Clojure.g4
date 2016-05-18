@@ -2,9 +2,11 @@ grammar Clojure;
 
 file: mainForm;
 
-mainForm: form mainForm       #mainForms
-        | form                #mainFormForm
+mainForm: auxform mainForm       #mainForms
+        | form                   #mainFormForm
         ;
+
+auxform: form;
 
 priorForm: form priorForm       #priorForms
          | form                 #priorFormForm

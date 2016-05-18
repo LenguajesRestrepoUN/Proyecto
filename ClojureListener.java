@@ -41,6 +41,16 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitMainFormForm(ClojureParser.MainFormFormContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ClojureParser#auxform}.
+	 * @param ctx the parse tree
+	 */
+	void enterAuxform(ClojureParser.AuxformContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#auxform}.
+	 * @param ctx the parse tree
+	 */
+	void exitAuxform(ClojureParser.AuxformContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code priorForms}
 	 * labeled alternative in {@link ClojureParser#priorForm}.
 	 * @param ctx the parse tree

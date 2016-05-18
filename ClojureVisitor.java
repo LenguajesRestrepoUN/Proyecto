@@ -30,6 +30,12 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMainFormForm(ClojureParser.MainFormFormContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ClojureParser#auxform}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAuxform(ClojureParser.AuxformContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code priorForms}
 	 * labeled alternative in {@link ClojureParser#priorForm}.
 	 * @param ctx the parse tree
