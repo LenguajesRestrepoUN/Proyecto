@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class Visitor extends ClojureBaseVisitor<String>{
+public class Visitor extends ClojureBaseVisitor<Data>{
 
     public static GlobalScope globals;
     public static Scope currentScope;
@@ -9,43 +9,41 @@ public class Visitor extends ClojureBaseVisitor<String>{
     public static FormReclaimer currentReclaimer;
     FunctionSymbol currentFunction;
 
-    @Override public String visitAuxform(ClojureParser.AuxformContext ctx) {
-        String r = visit(ctx.form());
-        System.out.println(r);
+    @Override public Data visitAuxform(ClojureParser.AuxformContext ctx) {
+        Data r = visit(ctx.form());
+        System.out.println(r.getData());
         return r;
     }
 
     //mainForm: auxform mainForm
-    @Override public String visitMainForms(ClojureParser.MainFormsContext ctx) {
-        String r = visit(ctx.auxform());
-        //System.out.println(r);
-        //visit(ctx.mainForm());
-        return r;
+    @Override public Data visitMainForms(ClojureParser.MainFormsContext ctx) {
+        return visit(ctx.auxform());
     }
+
     //mainForms: form
-    @Override public String visitMainFormForm(ClojureParser.MainFormFormContext ctx) {
-        String r = visit(ctx.form());
-        System.out.println(r);
+    @Override public Data visitMainFormForm(ClojureParser.MainFormFormContext ctx) {
+        Data r = visit(ctx.form());
+        System.out.println(r.getData());
         return r;
     }
 
     //priorForm: form priorForm
-    @Override public String visitPriorForms(ClojureParser.PriorFormsContext ctx) {
+    @Override public Data visitPriorForms(ClojureParser.PriorFormsContext ctx) {
         visit(ctx.form());
         return visit(ctx.priorForm());
     }
     //priorForm: form
-    @Override public String visitPriorFormForm(ClojureParser.PriorFormFormContext ctx) {
+    @Override public Data visitPriorFormForm(ClojureParser.PriorFormFormContext ctx) {
         return visit(ctx.form());
     }
 
     //forms: priorForm
-    @Override public String visitFormsForm(ClojureParser.FormsFormContext ctx) {
+    @Override public Data visitFormsForm(ClojureParser.FormsFormContext ctx) {
         return visit(ctx.priorForm());
     }
 
     //args : form args
-    @Override public String visitArgsSymbolArgs(ClojureParser.ArgsSymbolArgsContext ctx) {
+    @Override public Data visitArgsSymbolArgs(ClojureParser.ArgsSymbolArgsContext ctx) {
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         visitChildren(ctx.form());
         visitChildren(ctx.args());
@@ -53,14 +51,14 @@ public class Visitor extends ClojureBaseVisitor<String>{
     }
 
     //args : form
-    @Override public String visitArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
+    @Override public Data visitArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         visit(ctx.form());
         return null;
     }
 
     //callFunction: '(' SYMBOL optargs ')'
-    @Override public String visitCallFunction(ClojureParser.CallFunctionContext ctx) {
+    @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
         String name = ctx.symbol().getText();
         Symbol symbol = currentScope.resolve(name);
         currentFunction = ((FunctionSymbol) symbol);
@@ -73,7 +71,7 @@ public class Visitor extends ClojureBaseVisitor<String>{
 
         visit(ctx.optargs());
 
-        String r = null;
+        Data r = null;
         if(currentFunction.getCtx() != null) {
             for(int i = 1; i <= currentFunction.getParametersNumber(); i++){
                 Symbol s = currentFunction.resolve(currentFunction.getParameter(i));
@@ -116,25 +114,25 @@ public class Visitor extends ClojureBaseVisitor<String>{
     }
 
     //arity: '(' '[' optparams ']' forms ')';
-    @Override public String visitArity(ClojureParser.ArityContext ctx) {
+    @Override public Data visitArity(ClojureParser.ArityContext ctx) {
         return visit(ctx.forms());
     }
 
     //println: '(' PRINTLN form ')';
-    @Override public String visitPrintln(ClojureParser.PrintlnContext ctx) {
+    @Override public Data visitPrintln(ClojureParser.PrintlnContext ctx) {
         System.out.println(visit(ctx.form()));
-        return null;
+        return new Cadena("nil");
     }
 
     //sum: '(' SUM forms ')'
-    @Override public String visitSum(ClojureParser.SumContext ctx) {
+    @Override public Data visitSum(ClojureParser.SumContext ctx) {
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visit(ctx.forms());
         double sum = 0;
-        for(String a: currentReclaimer.getArguments()){
-            sum += Double.parseDouble(a);
+        for(Data a: currentReclaimer.getArguments()){
+            sum += ((Double) a.getData());
         }
         reclaimers.removeLast();
         if(reclaimers.size() > 0)
@@ -142,33 +140,38 @@ public class Visitor extends ClojureBaseVisitor<String>{
         else
             currentReclaimer = null;
 
-        String tmp = Double.toString(sum);
+        Numero numero = new Numero(sum);
         if(currentReclaimer != null){
-            currentReclaimer.addArgument(tmp);
+            currentReclaimer.addArgument(numero);
         }
-        return tmp;
+        return numero;
     }
 
     //mult: '(' MULT forms ')'
-    @Override public String visitMult(ClojureParser.MultContext ctx) {
+    @Override public Data visitMult(ClojureParser.MultContext ctx) {
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visitChildren(ctx);
         double mult = 1;
-        for(String a: currentReclaimer.getArguments()){
-            mult *= Double.parseDouble(a);
+        for(Data a: currentReclaimer.getArguments()){
+            mult *= ((Double) a.getData());
         }
         reclaimers.removeLast();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
             currentReclaimer = null;
-        return Double.toString(mult);
+
+        Numero numero = new Numero(mult);
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(numero);
+        }
+        return numero;
     }
 
     //div: '(' DIV forms ')';
-    @Override public String visitDiv(ClojureParser.DivContext ctx) {
+    @Override public Data visitDiv(ClojureParser.DivContext ctx) {
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -176,9 +179,9 @@ public class Visitor extends ClojureBaseVisitor<String>{
         if(currentReclaimer.getArguments().size() < 2){
             Interpreter.error(ctx.getStart(), "Se necesitan al menos dos argumentos para dividir");
         }
-        double div = Double.parseDouble(currentReclaimer.getArgument(1));
+        double div = ((Double) (currentReclaimer.getArgument(1).getData()));
         for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
-            div = div / Double.parseDouble(currentReclaimer.getArgument(i));
+            div = div / ((Double) (currentReclaimer.getArgument(i).getData()));
         }
 
         reclaimers.removeLast();
@@ -186,11 +189,16 @@ public class Visitor extends ClojureBaseVisitor<String>{
             currentReclaimer = reclaimers.getLast();
         else
             currentReclaimer = null;
-        return Double.toString(div);
+
+        Numero numero = new Numero(div);
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(numero);
+        }
+        return numero;
     }
 
     //minus: '(' MINUS forms ')';
-    @Override public String visitMinus(ClojureParser.MinusContext ctx) {
+    @Override public Data visitMinus(ClojureParser.MinusContext ctx) {
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -198,9 +206,9 @@ public class Visitor extends ClojureBaseVisitor<String>{
         if(currentReclaimer.getArguments().size() < 2){
             Interpreter.error(ctx.getStart(), "Se necesitan al menos dos argumentos para restar");
         }
-        double sum = Double.parseDouble(currentReclaimer.getArgument(1));
+        double sum = ((Double) (currentReclaimer.getArgument(1).getData()));
         for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
-            sum = sum - Double.parseDouble(currentReclaimer.getArgument(i));
+            sum = sum - ((Double) (currentReclaimer.getArgument(i).getData()));
         }
         reclaimers.removeLast();
         if(reclaimers.size() > 0)
@@ -208,62 +216,66 @@ public class Visitor extends ClojureBaseVisitor<String>{
         else
             currentReclaimer = null;
 
-        String tmp = Double.toString(sum);
+        Numero numero = new Numero(sum);
         if(currentReclaimer != null){
-            currentReclaimer.addArgument(tmp);
+            currentReclaimer.addArgument(numero);
         }
-        return tmp;
+        return numero;
     }
 
     //literal: STRING
-    @Override public String visitLiteralString(ClojureParser.LiteralStringContext ctx) {
+    @Override public Data visitLiteralString(ClojureParser.LiteralStringContext ctx) {
+        Cadena cadena = new Cadena(ctx.STRING().getText());
         if(currentReclaimer != null){
-            currentReclaimer.addArgument(ctx.STRING().getText());
+            currentReclaimer.addArgument(cadena);
         }
-        return ctx.STRING().getText();
+        return cadena;
     }
 
     //number: LONG
-    @Override public String visitNumberLong(ClojureParser.NumberLongContext ctx) {
+    @Override public Data visitNumberLong(ClojureParser.NumberLongContext ctx) {
+        Numero numero = new Numero(Double.parseDouble(ctx.LONG().getText()));
         if(currentReclaimer != null){
-            currentReclaimer.addArgument(ctx.LONG().getText());
+            currentReclaimer.addArgument(numero);
         }
-        return ctx.LONG().getText();
+        return numero;
     }
 
     //number: FLOAT
-    @Override public String visitNumberFloat(ClojureParser.NumberFloatContext ctx) {
+    @Override public Data visitNumberFloat(ClojureParser.NumberFloatContext ctx) {
+        Numero numero = new Numero(Double.parseDouble(ctx.FLOAT().getText()));
         if(currentReclaimer != null){
-            currentReclaimer.addArgument(ctx.FLOAT().getText());
+            currentReclaimer.addArgument(numero);
         }
-        return ctx.FLOAT().getText();
+        return numero;
     }
 
     //defn: '(' DEFN symbol optDescription  arity+ ')'
-    @Override public String visitDefnArity(ClojureParser.DefnArityContext ctx) {
-        return currentScope.resolve(ctx.symbol().getText()).toString();
+    @Override public Data visitDefnArity(ClojureParser.DefnArityContext ctx) {
+        return new Cadena(currentScope.resolve(ctx.symbol().getText()).toString());
     }
 
     //defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')
-    @Override public String visitSingleDefn(ClojureParser.SingleDefnContext ctx) {
-        return currentScope.resolve(ctx.symbol().getText()).toString();
+    @Override public Data visitSingleDefn(ClojureParser.SingleDefnContext ctx) {
+        return new Cadena(currentScope.resolve(ctx.symbol().getText()).toString());
     }
 
     //def: '(' DEF symbol ')'
-    @Override public String visitDefSymbol(ClojureParser.DefSymbolContext ctx) {
+    @Override public Data visitDefSymbol(ClojureParser.DefSymbolContext ctx) {
         String name = ctx.symbol().getText();
-        return "Variable " + name;
+        return new Cadena("Variable " + name);
     }
 
     //def: '(' DEF symbol form')'
-    @Override public String visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
+    @Override public Data visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
         String name = ctx.symbol().getText();
         Symbol s = currentScope.resolve(name);
         s.value = visit(ctx.form());
-        return "Variable " + name;
+        return new Cadena("Variable " + name);
     }
+
     //literal: symbol
-    @Override public String visitLiteralSymbol(ClojureParser.LiteralSymbolContext ctx) {
+    @Override public Data visitLiteralSymbol(ClojureParser.LiteralSymbolContext ctx) {
         String name = ctx.symbol().getText();
         if(currentReclaimer != null){
             currentReclaimer.addArgument(currentScope.resolve(name).value);

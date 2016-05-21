@@ -2,7 +2,6 @@ proyecto.iml
 *.class
 out/production/proyecto/.idea/workspace.xml
 out/production/proyecto/Clojure.g4
-.idea/workspace.xml
 out/production/proyecto/ClojureLexer.tokens
 out/production/proyecto/Clojure.tokens
 out/production/proyecto/aux_input

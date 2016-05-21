@@ -12,6 +12,8 @@ public class DefPhase extends ClojureBaseListener {
         globals = new GlobalScope(null);
         currentScope = globals;
         currentCall = new LinkedList<>();
+        visitor.globals = globals;
+        visitor.currentScope = currentScope;
     }
     @Override public void exitFile(ClojureParser.FileContext ctx) {
         //visitor.globals = globals;
@@ -20,15 +22,11 @@ public class DefPhase extends ClojureBaseListener {
     }
 
     @Override public void exitAuxform(ClojureParser.AuxformContext ctx) {
-        visitor.globals = globals;
-        visitor.currentScope = currentScope;
         visitor.visitAuxform(ctx);
     }
 
     //mainForms: form
     @Override public void exitMainFormForm(ClojureParser.MainFormFormContext ctx) {
-        visitor.globals = globals;
-        visitor.currentScope = currentScope;
         visitor.visitMainFormForm(ctx);
     }
 
@@ -220,7 +218,6 @@ public class DefPhase extends ClojureBaseListener {
         if(!flag){
             Interpreter.error(ctx.start, "el numero de argumentos en el llamado a la funcion \"" +
                     currentFunction.name + "\" es mayor a la declaracion.");
-            return;
         }
     }
 
@@ -237,7 +234,7 @@ public class DefPhase extends ClojureBaseListener {
                 }
             }
             else {
-                if (a.getCurrentArgument() == a.getParametersNumber()) {
+                if (a.getCurrentArgument().equals(a.getParametersNumber())) {
                     flag = true;
                     break;
                 }
@@ -260,7 +257,7 @@ public class DefPhase extends ClojureBaseListener {
                 break;
             }
             else {
-                if (a.getCurrentArgument() == a.getParametersNumber()) {
+                if (a.getCurrentArgument().equals(a.getParametersNumber())) {
                     flag = true;
                     break;
                 }
@@ -269,7 +266,6 @@ public class DefPhase extends ClojureBaseListener {
         if(!flag){
             Interpreter.error(ctx.start, "el numero de argumentos en el llamado a la funcion \"" +
                     currentFunction.name + "\" no coincide con la declaracion.");
-            return;
         }
     }
 
@@ -318,7 +314,6 @@ public class DefPhase extends ClojureBaseListener {
         String name = ctx.symbol().getText();
         if(currentScope.resolve(name) == null){
             Interpreter.error(ctx.symbol().getStart(), "la variable con nombre \"" + name + "\" no ha sido declarada");
-            return;
         }
     }
 

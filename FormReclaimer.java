@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
 public class FormReclaimer {
-    ArrayList<String> arguments = new ArrayList<>();
+    ArrayList<Data> arguments = new ArrayList<>();
 
-    public ArrayList<String> getArguments() {
+    public ArrayList<Data> getArguments() {
         return arguments;
     }
 
-    public void addArgument(String argument){
+    public void addArgument(Data argument){
         arguments.add(argument);
     }
 
-    public String getArgument(int i){
+    public Data getArgument(int i){
         return arguments.get(i-1);
     }
 }
