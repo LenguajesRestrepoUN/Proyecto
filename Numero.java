@@ -19,4 +19,18 @@ public class Numero implements Data{
     public String toString() {
         return Double.toString(numero);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Numero))
+            return false;
+        if(((Numero) o).numero != numero)
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Double.hashCode(numero);
+    }
 }

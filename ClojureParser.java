@@ -2208,8 +2208,8 @@ public class ClojureParser extends Parser {
 
 	public static class PrintlnContext extends ParserRuleContext {
 		public TerminalNode PRINTLN() { return getToken(ClojureParser.PRINTLN, 0); }
-		public FormContext form() {
-			return getRuleContext(FormContext.class,0);
+		public FormsContext forms() {
+			return getRuleContext(FormsContext.class,0);
 		}
 		public PrintlnContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2241,7 +2241,7 @@ public class ClojureParser extends Parser {
 			setState(290);
 			match(PRINTLN);
 			setState(291);
-			form();
+			forms();
 			setState(292);
 			match(T__1);
 			}
@@ -5048,11 +5048,11 @@ public class ClojureParser extends Parser {
 
 	public static class ConjContext extends ParserRuleContext {
 		public TerminalNode CONJ() { return getToken(ClojureParser.CONJ, 0); }
-		public VlsContext vls() {
-			return getRuleContext(VlsContext.class,0);
+		public List<FormContext> form() {
+			return getRuleContexts(FormContext.class);
 		}
-		public FormContext form() {
-			return getRuleContext(FormContext.class,0);
+		public FormContext form(int i) {
+			return getRuleContext(FormContext.class,i);
 		}
 		public ConjContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -5084,7 +5084,7 @@ public class ClojureParser extends Parser {
 			setState(532);
 			match(CONJ);
 			setState(533);
-			vls();
+			form();
 			setState(534);
 			form();
 			setState(535);
@@ -7815,7 +7815,7 @@ public class ClojureParser extends Parser {
 		"\2\u011c\u011d\7\30\2\2\u011d\u011e\5\u00b0Y\2\u011e\u011f\5\n\6\2\u011f"+
 		"\u0120\7\4\2\2\u0120\u0122\3\2\2\2\u0121\u0116\3\2\2\2\u0121\u011b\3\2"+
 		"\2\2\u0122\33\3\2\2\2\u0123\u0124\7\n\2\2\u0124\u0125\7\32\2\2\u0125\u0126"+
-		"\5\n\6\2\u0126\u0127\7\4\2\2\u0127\35\3\2\2\2\u0128\u0129\7\n\2\2\u0129"+
+		"\5\16\b\2\u0126\u0127\7\4\2\2\u0127\35\3\2\2\2\u0128\u0129\7\n\2\2\u0129"+
 		"\u012a\7\33\2\2\u012a\u012b\5\16\b\2\u012b\u012c\7\4\2\2\u012c\37\3\2"+
 		"\2\2\u012d\u012e\7\n\2\2\u012e\u012f\7\34\2\2\u012f\u0130\5\16\b\2\u0130"+
 		"\u0131\7\4\2\2\u0131!\3\2\2\2\u0132\u0133\7\n\2\2\u0133\u0134\7\35\2\2"+
@@ -7887,7 +7887,7 @@ public class ClojureParser extends Parser {
 		"\4\2\2\u020fi\3\2\2\2\u0210\u0214\5\24\13\2\u0211\u0214\5\22\n\2\u0212"+
 		"\u0214\5\30\r\2\u0213\u0210\3\2\2\2\u0213\u0211\3\2\2\2\u0213\u0212\3"+
 		"\2\2\2\u0214k\3\2\2\2\u0215\u0216\7\n\2\2\u0216\u0217\7\62\2\2\u0217\u0218"+
-		"\5j\66\2\u0218\u0219\5\n\6\2\u0219\u021a\7\4\2\2\u021am\3\2\2\2\u021b"+
+		"\5\n\6\2\u0218\u0219\5\n\6\2\u0219\u021a\7\4\2\2\u021am\3\2\2\2\u021b"+
 		"\u021c\7\n\2\2\u021c\u021d\7\63\2\2\u021d\u021e\5^\60\2\u021e\u021f\7"+
 		"\4\2\2\u021fo\3\2\2\2\u0220\u0223\5\26\f\2\u0221\u0223\5\30\r\2\u0222"+
 		"\u0220\3\2\2\2\u0222\u0221\3\2\2\2\u0223q\3\2\2\2\u0224\u0225\7\n\2\2"+

@@ -19,4 +19,16 @@ public class Cadena implements Data{
     public String toString() {
         return cadena;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Cadena))
+            return false;
+        return cadena.equals(((Cadena) o).cadena);
+    }
+
+    @Override
+    public int hashCode() {
+        return cadena.hashCode();
+    }
 }

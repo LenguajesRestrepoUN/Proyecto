@@ -78,7 +78,7 @@ def: '(' DEF symbol ')'        #defSymbol
    | '(' DEF symbol form')'    #defSymbolForm
    ;
 
-println: '(' PRINTLN form ')';
+println: '(' PRINTLN forms ')';
 print: '(' PRINT forms ')';
 
 sum: '(' SUM forms ')';
@@ -172,7 +172,7 @@ vls: vector     #vlsVector
    | set        #vlsSet
    ;
 
-conj: '(' CONJ vls form ')';
+conj: '(' CONJ form form ')'; //Just vls
 first: '(' FIRST vl ')';
 
 ms: map     #msMap

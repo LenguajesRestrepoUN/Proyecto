@@ -118,10 +118,83 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return visit(ctx.forms());
     }
 
-    //println: '(' PRINTLN form ')';
+    //conj: '(' CONJ form form ')'
+    @Override public Data visitConj(ClojureParser.ConjContext ctx) {
+        Data r = visit(ctx.form(1));
+        VLS c =  (VLS)(visit(ctx.form(0)));
+        c.addData(r);
+        return c;
+    }
+
+    //list: '\'(' forms ')'
+    @Override public Data visitList(ClojureParser.ListContext ctx) {
+        FormReclaimer reclaimer = new FormReclaimer();
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visitChildren(ctx);
+        Lista lista = new Lista();
+
+        for(Data a: currentReclaimer.getArguments()){
+            lista.addData(a);
+        }
+
+        reclaimers.removeLast();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(lista);
+        }
+        return lista;
+    }
+
+    //set: '#{' forms '}' ;
+    @Override public Data visitSet(ClojureParser.SetContext ctx) {
+        FormReclaimer reclaimer = new FormReclaimer();
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visitChildren(ctx);
+        Conjunto set = new Conjunto();
+
+        for(Data a: currentReclaimer.getArguments()){
+            set.addData(a);
+        }
+
+        reclaimers.removeLast();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(set);
+        }
+        return set;
+    }
+
+    //println: '(' PRINTLN forms ')';
     @Override public Data visitPrintln(ClojureParser.PrintlnContext ctx) {
-        System.out.println(visit(ctx.form()));
-        return new Cadena("nil");
+        FormReclaimer reclaimer = new FormReclaimer();
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(ctx.forms());
+        for(Data a: currentReclaimer.getArguments()){
+            System.out.println(a);
+        }
+
+        reclaimers.removeLast();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Nil nil = new Nil();
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(nil);
+        }
+        return nil;
     }
 
     //sum: '(' SUM forms ')'
