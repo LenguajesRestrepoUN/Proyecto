@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -5,6 +6,8 @@ public class BlockScope extends Symbol implements Scope {
 
     Map<String, Symbol> arguments = new LinkedHashMap<String, Symbol>();
     Scope enclosingScope;
+    JFrame frame;
+    JTextArea intel;
 
     public BlockScope(String name, Scope scope){
         super(name);
@@ -36,4 +39,11 @@ public class BlockScope extends Symbol implements Scope {
     }
 
     public String toString() { return "Block<" + name + ">:" + arguments.values(); }
+
+    public void updateFrame(){
+        intel.setText(toString());
+        frame.setVisible(true);
+        if(enclosingScope != null)
+            enclosingScope.updateFrame();
+    }
 }

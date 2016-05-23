@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,10 +11,26 @@ public class FunctionSymbol extends Symbol implements Scope {
     Scope enclosingScope;
     ClojureParser.AuxformsContext ctx;
     Integer currentArgument = 0;
+    JFrame frame;
+    JTextArea intel;
 
     public FunctionSymbol(String name, Scope enclosingScope) {
         super(name);
         this.enclosingScope = enclosingScope;
+        this.enclosingScope = enclosingScope;
+        frame = new JFrame("Global scope");
+        intel = new JTextArea(15, 40);
+        intel.setLineWrap(true);
+        intel.setWrapStyleWord(true);
+        intel.setEditable(false);
+        JScrollPane scroller = new JScrollPane(intel);
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        JPanel panel = new JPanel();
+        panel.add(scroller);
+        frame.add(panel);
+        frame.setSize(600, 350);
+        frame.setVisible(false);
     }
 
     public Integer getParametersNumber(){ return currentArity.getParametersNumber(); }
@@ -69,7 +86,14 @@ public class FunctionSymbol extends Symbol implements Scope {
     public void setCurrentParameter(Integer currentParameter) { currentArity.currentParameter = currentParameter; }
 
     public String toString() {
-        return "function " +  name;
+        StringBuilder builder = new StringBuilder();
+        builder.append("Scope: " + "function " +  name + " con Arity de " + arity.size());
+        if(enclosingScope != null)
+            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
+
+        builder.append("Variables en memoria:\n");
+
+        return builder.toString();
     }
 
     public Boolean getHasRecur() {
@@ -126,5 +150,12 @@ public class FunctionSymbol extends Symbol implements Scope {
 
     public void setArityCtx(ClojureParser.ArityContext arityCtx) {
         currentArity.setArityCtx(arityCtx);
+    }
+
+    public void updateFrame(){
+        intel.setText(toString());
+        frame.setVisible(true);
+        if(enclosingScope != null)
+            enclosingScope.updateFrame();
     }
 }

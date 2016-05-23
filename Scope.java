@@ -7,5 +7,7 @@ public interface Scope {
 
     public Symbol resolve(String name);
 
+    public void updateFrame();
+
 }
 

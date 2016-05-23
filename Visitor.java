@@ -1,3 +1,10 @@
+import org.antlr.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.RuleContext;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 public class Visitor extends ClojureBaseVisitor<Data>{
@@ -8,9 +15,44 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     public static LinkedList<FormReclaimer> reclaimers = new LinkedList<>();
     public static FormReclaimer currentReclaimer;
     FunctionSymbol currentFunction;
+    JFrame frame;
+    JTextArea intel;
+    Boolean next;
+    //ParseTree tree;
+    Data data;
+    RuleContext rule;
+
+    public  Visitor(){
+        frame = new JFrame("Console");
+        intel = new JTextArea(15, 40);
+        intel.setLineWrap(true);
+        intel.setWrapStyleWord(true);
+        intel.setEditable(false);
+        JScrollPane scroller = new JScrollPane(intel);
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        JPanel panel = new JPanel();
+        panel.add(scroller);
+        JButton back = new JButton("Next");
+        back.addActionListener(new NextListener());
+        frame.add(BorderLayout.SOUTH, back);
+        frame.add(panel);
+        frame.setSize(600, 350);
+        frame.setVisible(true);
+        next = false;
+    }
+
+    class NextListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            next = true;
+            //data = visit(rule);
+            System.out.println(true);
+        }
+    }
 
     @Override public Data visitAuxform(ClojureParser.AuxformContext ctx) {
         Data r = visit(ctx.form());
+        intel.append("--> " + r.getData() + "\n");
         System.out.println(r.getData());
         return r;
     }
@@ -23,6 +65,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     //mainForms: form
     @Override public Data visitMainFormForm(ClojureParser.MainFormFormContext ctx) {
         Data r = visit(ctx.form());
+        intel.append("--> " + r.getData() + "\n");
         System.out.println(r.getData());
         return r;
     }
@@ -341,9 +384,17 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //def: '(' DEF symbol form')'
     @Override public Data visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
+        next = false;
+        int count;
+        while(!next){
+            System.out.print("");
+        }
         String name = ctx.symbol().getText();
         Symbol s = currentScope.resolve(name);
+        //rule = ctx.form();
         s.value = visit(ctx.form());
+        //s.value = data;
+        currentScope.updateFrame();
         return new Cadena("Variable " + name);
     }
 
