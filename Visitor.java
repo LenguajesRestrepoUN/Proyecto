@@ -22,6 +22,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     Data data;
     RuleContext rule;
 
+
     public  Visitor(){
         frame = new JFrame("Console");
         intel = new JTextArea(15, 40);
@@ -46,7 +47,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         public void actionPerformed(ActionEvent e){
             next = true;
             //data = visit(rule);
-            System.out.println(true);
         }
     }
 
@@ -95,6 +95,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //args : form
     @Override public Data visitArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         visit(ctx.form());
         return null;
@@ -102,6 +106,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //callFunction: '(' SYMBOL optargs ')'
     @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         String name = ctx.symbol().getText();
         Symbol symbol = currentScope.resolve(name);
         currentFunction = ((FunctionSymbol) symbol);
@@ -163,6 +171,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //conj: '(' CONJ form form ')'
     @Override public Data visitConj(ClojureParser.ConjContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         Data r = visit(ctx.form(1));
         VLS c =  (VLS)(visit(ctx.form(0)));
         c.addData(r);
@@ -171,6 +183,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //list: '\'(' forms ')'
     @Override public Data visitList(ClojureParser.ListContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -195,6 +211,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //set: '#{' forms '}' ;
     @Override public Data visitSet(ClojureParser.SetContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -219,6 +239,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //println: '(' PRINTLN forms ')';
     @Override public Data visitPrintln(ClojureParser.PrintlnContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -242,6 +266,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //sum: '(' SUM forms ')'
     @Override public Data visitSum(ClojureParser.SumContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -265,6 +293,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //mult: '(' MULT forms ')'
     @Override public Data visitMult(ClojureParser.MultContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -288,6 +320,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //div: '(' DIV forms ')';
     @Override public Data visitDiv(ClojureParser.DivContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -315,6 +351,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //minus: '(' MINUS forms ')';
     @Override public Data visitMinus(ClojureParser.MinusContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         FormReclaimer reclaimer = new FormReclaimer();
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
@@ -341,6 +381,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //literal: STRING
     @Override public Data visitLiteralString(ClojureParser.LiteralStringContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         Cadena cadena = new Cadena(ctx.STRING().getText());
         if(currentReclaimer != null){
             currentReclaimer.addArgument(cadena);
@@ -350,6 +394,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //number: LONG
     @Override public Data visitNumberLong(ClojureParser.NumberLongContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         Numero numero = new Numero(Double.parseDouble(ctx.LONG().getText()));
         if(currentReclaimer != null){
             currentReclaimer.addArgument(numero);
@@ -359,6 +407,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //number: FLOAT
     @Override public Data visitNumberFloat(ClojureParser.NumberFloatContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         Numero numero = new Numero(Double.parseDouble(ctx.FLOAT().getText()));
         if(currentReclaimer != null){
             currentReclaimer.addArgument(numero);
@@ -368,24 +420,25 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //defn: '(' DEFN symbol optDescription  arity+ ')'
     @Override public Data visitDefnArity(ClojureParser.DefnArityContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         return new Cadena(currentScope.resolve(ctx.symbol().getText()).toString());
     }
 
     //defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')
     @Override public Data visitSingleDefn(ClojureParser.SingleDefnContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         return new Cadena(currentScope.resolve(ctx.symbol().getText()).toString());
-    }
-
-    //def: '(' DEF symbol ')'
-    @Override public Data visitDefSymbol(ClojureParser.DefSymbolContext ctx) {
-        String name = ctx.symbol().getText();
-        return new Cadena("Variable " + name);
     }
 
     //def: '(' DEF symbol form')'
     @Override public Data visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
         next = false;
-        int count;
         while(!next){
             System.out.print("");
         }
@@ -400,6 +453,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //literal: symbol
     @Override public Data visitLiteralSymbol(ClojureParser.LiteralSymbolContext ctx) {
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
         String name = ctx.symbol().getText();
         if(currentReclaimer != null){
             currentReclaimer.addArgument(currentScope.resolve(name).value);
