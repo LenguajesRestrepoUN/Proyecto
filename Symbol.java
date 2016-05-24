@@ -30,6 +30,12 @@ public class Symbol {
     }
 
     public String toString() {
-        return "Variable \"" + name + "\", tipo : " +  value.getClass().getName() + ", valor: " + value;
+        StringBuilder builder = new StringBuilder("Variable \"" + name + "\"");
+        if(value != null)
+            builder.append(", tipo : " +  value.getClass().getName() + ", valor: " + value);
+        else
+            builder.append(", no inicializada todavia");
+        builder.append("\n");
+        return builder.toString();
     }
 }

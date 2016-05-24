@@ -1,6 +1,3 @@
-import org.antlr.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.RuleContext;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,17 +12,16 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     public static LinkedList<FormReclaimer> reclaimers = new LinkedList<>();
     public static FormReclaimer currentReclaimer;
     FunctionSymbol currentFunction;
-    JFrame frame;
-    JTextArea intel;
+    public JFrame frame;
+    public JTextArea intel;
+    public JTabbedPane scopesTabs;
     Boolean next;
-    //ParseTree tree;
-    Data data;
-    RuleContext rule;
-
 
     public  Visitor(){
         frame = new JFrame("Console");
         intel = new JTextArea(15, 40);
+
+        JTabbedPane consoleTabs = new JTabbedPane();
         intel.setLineWrap(true);
         intel.setWrapStyleWord(true);
         intel.setEditable(false);
@@ -34,11 +30,19 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         JPanel panel = new JPanel();
         panel.add(scroller);
-        JButton back = new JButton("Next");
-        back.addActionListener(new NextListener());
-        frame.add(BorderLayout.SOUTH, back);
-        frame.add(panel);
-        frame.setSize(600, 350);
+        consoleTabs.addTab("Cosonle", panel);
+
+        scopesTabs =new JTabbedPane();
+
+
+
+
+
+        JButton nextB = new JButton("Next");
+        nextB.addActionListener(new NextListener());
+        frame.add(BorderLayout.SOUTH, nextB);
+
+
         frame.setVisible(true);
         next = false;
     }
@@ -46,14 +50,36 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     class NextListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             next = true;
-            //data = visit(rule);
         }
+    }
+
+    public void block(){
+        next = false;
+        while(!next){
+            System.out.print("");
+        }
+    }
+
+    public void updateFrames(){
+        currentScope.updateFrame();
+        for(FormReclaimer r : reclaimers)
+            r.updateFrame();
+    }
+
+    @Override
+    public Data visitFile(ClojureParser.FileContext ctx) {
+        visitChildren(ctx);
+        intel.append("End of simulation");
+        System.out.println("End of simulation");
+        return null;
     }
 
     @Override public Data visitAuxform(ClojureParser.AuxformContext ctx) {
         Data r = visit(ctx.form());
         intel.append("--> " + r.getData() + "\n");
         System.out.println(r.getData());
+        updateFrames();
+        block();
         return r;
     }
 
@@ -67,6 +93,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         Data r = visit(ctx.form());
         intel.append("--> " + r.getData() + "\n");
         System.out.println(r.getData());
+        updateFrames();
+        block();
         return r;
     }
 
@@ -95,10 +123,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //args : form
     @Override public Data visitArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
+        block();
+        currentScope.updateFrame();
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         visit(ctx.form());
         return null;
@@ -106,17 +132,15 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //callFunction: '(' SYMBOL optargs ')'
     @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
+        updateFrames();
+        block();
         String name = ctx.symbol().getText();
         Symbol symbol = currentScope.resolve(name);
         currentFunction = ((FunctionSymbol) symbol);
         currentCall.addLast(currentFunction);
         currentScope = ((FunctionSymbol) symbol);
 
-        FormReclaimer reclaimer = new FormReclaimer();
+        FormReclaimer reclaimer = new FormReclaimer(name);
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
 
@@ -147,8 +171,13 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             }
         }
 
+        updateFrames();
+        block();
+
         currentFunction.setCurrentArgument(0);
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -171,54 +200,68 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //conj: '(' CONJ form form ')'
     @Override public Data visitConj(ClojureParser.ConjContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion conj");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
         Data r = visit(ctx.form(1));
         VLS c =  (VLS)(visit(ctx.form(0)));
         c.addData(r);
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
         return c;
     }
 
     //list: '\'(' forms ')'
     @Override public Data visitList(ClojureParser.ListContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("estructura lista");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visitChildren(ctx);
+
         Lista lista = new Lista();
 
-        for(Data a: currentReclaimer.getArguments()){
+        for(Data a: currentReclaimer.getArguments())
             lista.addData(a);
-        }
+
+        updateFrames();
+        block();
 
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
             currentReclaimer = null;
 
-        if(currentReclaimer != null){
+        if(currentReclaimer != null)
             currentReclaimer.addArgument(lista);
-        }
+
         return lista;
     }
 
     //set: '#{' forms '}' ;
     @Override public Data visitSet(ClojureParser.SetContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("estructura set");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visitChildren(ctx);
+        block();
         Conjunto set = new Conjunto();
 
         for(Data a: currentReclaimer.getArguments()){
@@ -226,6 +269,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         }
 
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -239,19 +284,20 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //println: '(' PRINTLN forms ')';
     @Override public Data visitPrintln(ClojureParser.PrintlnContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("println");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visit(ctx.forms());
         for(Data a: currentReclaimer.getArguments()){
             System.out.println(a);
+            intel.append("--> " + a + "\n");
         }
 
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -266,11 +312,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //sum: '(' SUM forms ')'
     @Override public Data visitSum(ClojureParser.SumContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion sumar");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visit(ctx.forms());
@@ -278,7 +322,11 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         for(Data a: currentReclaimer.getArguments()){
             sum += ((Double) a.getData());
         }
+        updateFrames();
+        block();
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -293,11 +341,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //mult: '(' MULT forms ')'
     @Override public Data visitMult(ClojureParser.MultContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion multiplicar");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visitChildren(ctx);
@@ -305,7 +351,11 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         for(Data a: currentReclaimer.getArguments()){
             mult *= ((Double) a.getData());
         }
+        updateFrames();
+        block();
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -320,11 +370,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //div: '(' DIV forms ')';
     @Override public Data visitDiv(ClojureParser.DivContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion dividir");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visitChildren(ctx);
@@ -335,8 +383,11 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
             div = div / ((Double) (currentReclaimer.getArgument(i).getData()));
         }
-
+        updateFrames();
+        block();
         reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -351,11 +402,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //minus: '(' MINUS forms ')';
     @Override public Data visitMinus(ClojureParser.MinusContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        FormReclaimer reclaimer = new FormReclaimer();
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion resta");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
         visitChildren(ctx);
@@ -366,7 +415,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
             sum = sum - ((Double) (currentReclaimer.getArgument(i).getData()));
         }
-        reclaimers.removeLast();
+        updateFrames();
+        block();
+
+        currentReclaimer.destroyReclaimer();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -381,86 +433,65 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //literal: STRING
     @Override public Data visitLiteralString(ClojureParser.LiteralStringContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
         Cadena cadena = new Cadena(ctx.STRING().getText());
         if(currentReclaimer != null){
             currentReclaimer.addArgument(cadena);
         }
+        updateFrames();
+        block();
         return cadena;
     }
 
     //number: LONG
     @Override public Data visitNumberLong(ClojureParser.NumberLongContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
         Numero numero = new Numero(Double.parseDouble(ctx.LONG().getText()));
         if(currentReclaimer != null){
             currentReclaimer.addArgument(numero);
         }
+        updateFrames();
+        block();
         return numero;
     }
 
     //number: FLOAT
     @Override public Data visitNumberFloat(ClojureParser.NumberFloatContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
         Numero numero = new Numero(Double.parseDouble(ctx.FLOAT().getText()));
         if(currentReclaimer != null){
             currentReclaimer.addArgument(numero);
         }
+        updateFrames();
+        block();
         return numero;
     }
 
     //defn: '(' DEFN symbol optDescription  arity+ ')'
     @Override public Data visitDefnArity(ClojureParser.DefnArityContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        return new Cadena(currentScope.resolve(ctx.symbol().getText()).toString());
+        return new Cadena(((FunctionSymbol) (currentScope.resolve(ctx.symbol().getText()))).toString2() );
     }
 
     //defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')
     @Override public Data visitSingleDefn(ClojureParser.SingleDefnContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
-        return new Cadena(currentScope.resolve(ctx.symbol().getText()).toString());
+        return new Cadena(((FunctionSymbol) (currentScope.resolve(ctx.symbol().getText()))).toString2());
     }
 
     //def: '(' DEF symbol form')'
     @Override public Data visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
         String name = ctx.symbol().getText();
         Symbol s = currentScope.resolve(name);
-        //rule = ctx.form();
         s.value = visit(ctx.form());
-        //s.value = data;
-        currentScope.updateFrame();
+        updateFrames();
+        block();
         return new Cadena("Variable " + name);
     }
 
     //literal: symbol
     @Override public Data visitLiteralSymbol(ClojureParser.LiteralSymbolContext ctx) {
-        next = false;
-        while(!next){
-            System.out.print("");
-        }
         String name = ctx.symbol().getText();
         if(currentReclaimer != null){
             currentReclaimer.addArgument(currentScope.resolve(name).value);
         }
+        updateFrames();
+        block();
         return currentScope.resolve(name).value;
     }
 }

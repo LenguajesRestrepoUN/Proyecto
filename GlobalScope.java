@@ -23,7 +23,8 @@ public class GlobalScope implements Scope{
         panel.add(scroller);
         frame.add(panel);
         frame.setSize(600, 350);
-        frame.setVisible(false);
+        frame.setVisible(true);
+        intel.append(toString());
     }
 
     public Symbol resolve(String name) {
@@ -54,8 +55,12 @@ public class GlobalScope implements Scope{
             builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
 
         builder.append("Variables en memoria:\n");
-        for(Symbol s : symbols.values())
-            builder.append(s.toString() + "\n");
+        for(Symbol s : symbols.values()) {
+            if(!(s instanceof FunctionSymbol))
+                builder.append(s.toString() + "\n");
+            else
+                builder.append("funcion " +  s.name + " con Arity de " + ((FunctionSymbol) s).arity.size() + "\n");
+        }
         return builder.toString();
     }
 
@@ -65,7 +70,6 @@ public class GlobalScope implements Scope{
 
     public void updateFrame(){
         intel.setText(toString());
-        frame.setVisible(true);
         if(enclosingScope != null)
             enclosingScope.updateFrame();
     }

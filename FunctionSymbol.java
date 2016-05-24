@@ -85,9 +85,13 @@ public class FunctionSymbol extends Symbol implements Scope {
 
     public void setCurrentParameter(Integer currentParameter) { currentArity.currentParameter = currentParameter; }
 
+    public String toString2(){
+        return "Funcion " +  name + " con Arity igual a " + arity.size();
+    }
+
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Scope: " + "function " +  name + " con Arity de " + arity.size());
+        builder.append("Scope: " + "Funcion " +  name + " con Arity igual a " + arity.size() + "\n");
         if(enclosingScope != null)
             builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
 

@@ -9,7 +9,7 @@ public class Lista implements Data, VLS{
     }
 
     public void addData(Data data){
-        lista.addFirst(data);
+        lista.addLast(data);
     }
 
     public Object getData(){
