@@ -4,6 +4,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.Token;
 
+import java.util.Scanner;
+
 public class Interpreter {
     public static Symbol.Type getType(int tokenType) {
         switch ( tokenType ) {
@@ -15,9 +17,16 @@ public class Interpreter {
         return Symbol.Type.tINVALID;
     }
 
-    public static void error(Token t, String msg) {
+    public static String entrada;
+
+    public static void error(Token t, String msg){
+        Visitor.intel.setText(String.format("<%d:%d> Error semantico: %s\n", t.getLine(), t.getCharPositionInLine(), msg));
         System.err.printf("<%d:%d> Error semantico: %s\n", t.getLine(), t.getCharPositionInLine(), msg);
-        System.exit(0);
+        Interpreter.exit();
+    }
+    static String auxs = null;
+    static void exit(){
+        String  a = auxs;
     }
 
     public static void main(String[] args) throws Exception {
@@ -29,16 +38,14 @@ public class Interpreter {
                 lexer = new ClojureLexer(new ANTLRFileStream(args[0]));
             else
                 lexer = new ClojureLexer(new ANTLRInputStream(System.in));
-            //ANTLRFileStream input = new ANTLRFileStream("input2.txt");
-            //lexer = new ClojureLexer(input);
 
             CommonTokenStream tokens = new CommonTokenStream(lexer);
 
             ClojureParser parser = new ClojureParser(tokens);
 
-            ParseTree tree = parser.file();
+            entrada = lexer.getInputStream().toString();
 
-            //System.out.println(tree.toStringTree(parser));
+            ParseTree tree = parser.file();
 
             ParseTreeWalker walker = new ParseTreeWalker();
             DefPhase def = new DefPhase();

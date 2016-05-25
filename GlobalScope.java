@@ -6,12 +6,12 @@ public class GlobalScope implements Scope{
 
     Scope enclosingScope; // null if global (outermost) scope
     Map<String, Symbol> symbols = new LinkedHashMap<String, Symbol>();
-    JFrame frame;
+    JPanel panel;
     JTextArea intel;
     
     public GlobalScope(Scope enclosingScope) {
         this.enclosingScope = enclosingScope;
-        frame = new JFrame("Global scope");
+        panel = new JPanel();
         intel = new JTextArea(15, 40);
         intel.setLineWrap(true);
         intel.setWrapStyleWord(true);
@@ -19,11 +19,8 @@ public class GlobalScope implements Scope{
         JScrollPane scroller = new JScrollPane(intel);
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        JPanel panel = new JPanel();
         panel.add(scroller);
-        frame.add(panel);
-        frame.setSize(600, 350);
-        frame.setVisible(true);
+        Visitor.scopesTabs.add("Global Scope", panel);
         intel.append(toString());
     }
 
@@ -59,7 +56,7 @@ public class GlobalScope implements Scope{
             if(!(s instanceof FunctionSymbol))
                 builder.append(s.toString() + "\n");
             else
-                builder.append("funcion " +  s.name + " con Arity de " + ((FunctionSymbol) s).arity.size() + "\n");
+                builder.append("funcion " +  s.name + " con Arity igual a " + ((FunctionSymbol) s).arity.size() + "\n");
         }
         return builder.toString();
     }

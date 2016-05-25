@@ -11,10 +11,11 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     public static LinkedList<FunctionSymbol> currentCall = new LinkedList<>();
     public static LinkedList<FormReclaimer> reclaimers = new LinkedList<>();
     public static FormReclaimer currentReclaimer;
+    public static JFrame frame;
+    public static JTabbedPane scopesTabs;
+    public static JTabbedPane recalimersTabs;
+    public static JTextArea intel;
     FunctionSymbol currentFunction;
-    public JFrame frame;
-    public JTextArea intel;
-    public JTabbedPane scopesTabs;
     Boolean next;
 
     public  Visitor(){
@@ -32,18 +33,35 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         panel.add(scroller);
         consoleTabs.addTab("Cosonle", panel);
 
-        scopesTabs =new JTabbedPane();
+        scopesTabs = new JTabbedPane();
+        recalimersTabs = new JTabbedPane();
 
+        JTextArea intel2 = new JTextArea(15, 40);
+        intel2.setLineWrap(true);
+        intel2.setWrapStyleWord(true);
+        intel2.setEditable(false);
+        JScrollPane scroller2 = new JScrollPane(intel2);
+        scroller2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        intel2.setText(Interpreter.entrada);
+        JPanel panel2 = new JPanel();
+        panel2.add(scroller2);
+        recalimersTabs.addTab("Input", panel2);
 
-
-
+        Box box = new Box(BoxLayout.Y_AXIS);
+        Box box2 = new Box(BoxLayout.X_AXIS);
+        box2.add(consoleTabs);
+        box2.add(scopesTabs);
+        box.add(box2);
+        box.add(recalimersTabs);
+        frame.add(box);
 
         JButton nextB = new JButton("Next");
         nextB.addActionListener(new NextListener());
         frame.add(BorderLayout.SOUTH, nextB);
 
-
         frame.setVisible(true);
+        frame.setSize(1400, 750);
         next = false;
     }
 
@@ -66,12 +84,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             r.updateFrame();
     }
 
-    @Override
-    public Data visitFile(ClojureParser.FileContext ctx) {
-        visitChildren(ctx);
-        intel.append("End of simulation");
+    public void endSimulation(){
+        intel.append("\nEnd of simulation");
         System.out.println("End of simulation");
-        return null;
+        updateFrames();
     }
 
     @Override public Data visitAuxform(ClojureParser.AuxformContext ctx) {
@@ -130,12 +146,14 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return null;
     }
 
-    //callFunction: '(' SYMBOL optargs ')'
-    @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
+    @Override public Data visitRecur(ClojureParser.RecurContext ctx) {
         updateFrames();
         block();
-        String name = ctx.symbol().getText();
-        Symbol symbol = currentScope.resolve(name);
+
+        String name = currentScope.getScopeName();
+        ClojureParser.OptargsContext optargs = ctx.optargs();
+
+        Symbol symbol = currentScope.getEnclosingScope().resolve(name);
         currentFunction = ((FunctionSymbol) symbol);
         currentCall.addLast(currentFunction);
         currentScope = ((FunctionSymbol) symbol);
@@ -144,7 +162,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
 
-        visit(ctx.optargs());
+        updateFrames();
+        block();
+
+        visit(optargs);
 
         Data r = null;
         if(currentFunction.getCtx() != null) {
@@ -153,6 +174,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
                 s.value = currentReclaimer.getArgument(i);
                 currentFunction.addArgument(s.name, s);
             }
+            currentReclaimer.arguments.clear();
             r = visit(currentFunction.ctx);
         }
         else{
@@ -165,6 +187,73 @@ public class Visitor extends ClojureBaseVisitor<Data>{
                         currentFunction.addArgument(s.name, s);
 
                     }
+                    currentReclaimer.arguments.clear();
+                    r = visit(currentFunction.getArityCtx());
+                    break;
+                }
+            }
+        }
+
+        updateFrames();
+        block();
+
+        currentFunction.setCurrentArgument(0);
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        currentCall.removeLast();
+        if(currentCall.size() > 0)
+            currentFunction = currentCall.getLast();
+        else
+            currentFunction = null;
+
+        //currentScope = currentScope.getEnclosingScope();
+        return r;
+    }
+
+    //callFunction: '(' SYMBOL optargs ')'
+    @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
+        String name = ctx.symbol().getText();
+        Symbol symbol = currentScope.resolve(name);
+        currentFunction = ((FunctionSymbol) symbol);
+        currentCall.addLast(currentFunction);
+        currentScope = ((FunctionSymbol) symbol);
+
+        FormReclaimer reclaimer = new FormReclaimer(name);
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        updateFrames();
+        block();
+
+        visit(ctx.optargs());
+
+        Data r = null;
+        if(currentFunction.getCtx() != null) {
+            for(int i = 1; i <= currentFunction.getParametersNumber(); i++){
+                Symbol s = currentFunction.resolve(currentFunction.getParameter(i));
+                s.value = currentReclaimer.getArgument(i);
+                currentFunction.addArgument(s.name, s);
+            }
+            currentReclaimer.arguments.clear();
+            r = visit(currentFunction.ctx);
+        }
+        else{
+            for(Arity a : currentFunction.arity.values()){
+                if(currentReclaimer.arguments.size() == a.getParametersNumber()) {
+                    currentFunction.setArity(a);
+                    for(int i = 1; i <= currentFunction.getParametersNumber(); i++) {
+                        Symbol s = currentFunction.resolve(currentFunction.getParameter(i));
+                        s.value = currentReclaimer.getArgument(i);
+                        currentFunction.addArgument(s.name, s);
+
+                    }
+                    currentReclaimer.arguments.clear();
                     r = visit(currentFunction.getArityCtx());
                     break;
                 }
@@ -219,6 +308,34 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         else
             currentReclaimer = null;
         return c;
+    }
+
+    //nth: '(' NTH form form')';
+    @Override public Data visitNth(ClojureParser.NthContext ctx) {
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("NTH");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        Data vl = visit(ctx.form(0));
+        if(!(vl instanceof Lista))
+            Interpreter.error(ctx.getStart(), "NTH recibe una lista");
+        Lista list = (Lista)(vl);
+        Data n = visit(ctx.form(1));
+        if(!(n instanceof Numero))
+            Interpreter.error(ctx.getStart(), "NTH recibe un numero esntero");
+        Data data = list.lista.get( (int) (((Numero)(n)).numero));
+
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+        return data;
     }
 
     //list: '\'(' forms ')'
@@ -308,6 +425,37 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(nil);
         }
         return nil;
+    }
+
+    //str: '(' STR forms ')'
+    @Override public Data visitStr(ClojureParser.StrContext ctx) {
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("STR");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(ctx.forms());
+
+        StringBuilder bulBuilder =  new StringBuilder();
+        for(Data a: currentReclaimer.getArguments()){
+            bulBuilder.append(((String) a.getData()));
+        }
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Cadena cadena = new Cadena(bulBuilder.toString());
+        if(currentReclaimer != null){
+            currentReclaimer.addArgument(cadena);
+        }
+        return cadena;
     }
 
     //sum: '(' SUM forms ')'
@@ -400,6 +548,25 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return numero;
     }
 
+    //def: '(' DEF symbol form')'
+    @Override public Data visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
+        FormReclaimer reclaimer = new FormReclaimer("definir variable");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        updateFrames();
+        block();
+        String name = ctx.symbol().getText();
+        Symbol s = currentScope.resolve(name);
+        s.value = visit(ctx.form());
+
+        currentReclaimer.destroyReclaimer();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+        return new Cadena("Variable " + name);
+    }
+
     //minus: '(' MINUS forms ')';
     @Override public Data visitMinus(ClojureParser.MinusContext ctx) {
         updateFrames();
@@ -433,7 +600,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //literal: STRING
     @Override public Data visitLiteralString(ClojureParser.LiteralStringContext ctx) {
-        Cadena cadena = new Cadena(ctx.STRING().getText());
+        String s = ctx.STRING().getText();
+        s = s.substring(1, s.length()-1);
+        Cadena cadena = new Cadena(s);
         if(currentReclaimer != null){
             currentReclaimer.addArgument(cadena);
         }
@@ -466,22 +635,14 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //defn: '(' DEFN symbol optDescription  arity+ ')'
     @Override public Data visitDefnArity(ClojureParser.DefnArityContext ctx) {
+        updateFrames();
         return new Cadena(((FunctionSymbol) (currentScope.resolve(ctx.symbol().getText()))).toString2() );
     }
 
     //defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')
     @Override public Data visitSingleDefn(ClojureParser.SingleDefnContext ctx) {
-        return new Cadena(((FunctionSymbol) (currentScope.resolve(ctx.symbol().getText()))).toString2());
-    }
-
-    //def: '(' DEF symbol form')'
-    @Override public Data visitDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
-        String name = ctx.symbol().getText();
-        Symbol s = currentScope.resolve(name);
-        s.value = visit(ctx.form());
         updateFrames();
-        block();
-        return new Cadena("Variable " + name);
+        return new Cadena(((FunctionSymbol) (currentScope.resolve(ctx.symbol().getText()))).toString2());
     }
 
     //literal: symbol

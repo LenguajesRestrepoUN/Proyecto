@@ -5,15 +5,14 @@ public class FormReclaimer {
     ArrayList<Data> arguments = new ArrayList<>();
     public String name;
     public static Integer queuesNum = 0;
-    JFrame frame;
+    JPanel panel;
     JTextArea intel;
     public String funcion;
 
     public FormReclaimer(String f) {
         funcion = f;
         queuesNum++;
-        name = "Cola " + queuesNum;
-        frame = new JFrame(name);
+        name = "Queue " + queuesNum;
         intel = new JTextArea(15, 40);
         intel.setLineWrap(true);
         intel.setWrapStyleWord(true);
@@ -21,13 +20,13 @@ public class FormReclaimer {
         JScrollPane scroller = new JScrollPane(intel);
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.add(scroller);
-        frame.add(panel);
-        frame.setSize(600, 350);
+        Visitor.recalimersTabs.add(name, panel);
+        Visitor.recalimersTabs.setSelectedIndex(queuesNum);
+
         intel.append("------------------- " + name + "--------------------------\n");
         intel.append("Parametros para " + funcion + ":\n\n");
-        frame.setVisible(true);
     }
 
     public void updateFrame(){
@@ -53,7 +52,6 @@ public class FormReclaimer {
 
     public void destroyReclaimer(){
         queuesNum--;
-        frame.dispose();
+        Visitor.recalimersTabs.remove(panel);
     }
-
 }

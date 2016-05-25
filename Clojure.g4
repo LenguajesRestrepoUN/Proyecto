@@ -163,7 +163,8 @@ defecto: form   #defaultForm
        |        #defaultEpsilon
        ;
 
-nth: '(' NTH vl form')';
+//nth: '(' NTH vl form')';
+nth: '(' NTH form form')';
 get: '(' GET vm form defecto')';
 contains: '(' CONTAINS set form ')';
 

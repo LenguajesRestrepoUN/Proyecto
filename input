@@ -1,9 +1,15 @@
-'(1 2 3)
-(def a '(1 2 3))
-(println a)
-(conj a 4)
-(conj '(1 2 3) "Hola")
-(conj a '(8 "Hola"))
-#{11 1 1 2 2 4 3 "Hola" "Hola" #{1 2 3 4} #{1 2 3 4 5} #{1 2 3 4} '(1 2 3) '(1 2 3)}
-(conj #{1 2 3 4 5 #{1 2}} 1)
+(def l (conj '(4 5 6) "hola"))
+(println l)
+(def name (nth l 0))
+(println name)
 
+(defn x-chop
+  "Describe the kind of chop you're inflicting on someone"
+  ([name chop-type]
+     (+ 1 2)
+     (str "I " chop-type " chop " name "! Take that!"))
+  ([name]
+     (recur name "karate")))
+
+(x-chop "Kanye West" "slap")
+(x-chop "Kanye East")

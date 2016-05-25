@@ -16,9 +16,7 @@ public class DefPhase extends ClojureBaseListener {
         visitor.currentScope = currentScope;
     }
     @Override public void exitFile(ClojureParser.FileContext ctx) {
-        //visitor.globals = globals;
-        //visitor.currentScope = currentScope;
-        //visitor.visitFile(ctx);
+        visitor.endSimulation();
     }
 
     @Override public void exitAuxform(ClojureParser.AuxformContext ctx) {

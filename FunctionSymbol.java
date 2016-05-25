@@ -11,14 +11,12 @@ public class FunctionSymbol extends Symbol implements Scope {
     Scope enclosingScope;
     ClojureParser.AuxformsContext ctx;
     Integer currentArgument = 0;
-    JFrame frame;
+    JPanel panel;
     JTextArea intel;
 
     public FunctionSymbol(String name, Scope enclosingScope) {
         super(name);
         this.enclosingScope = enclosingScope;
-        this.enclosingScope = enclosingScope;
-        frame = new JFrame("Global scope");
         intel = new JTextArea(15, 40);
         intel.setLineWrap(true);
         intel.setWrapStyleWord(true);
@@ -28,9 +26,8 @@ public class FunctionSymbol extends Symbol implements Scope {
         scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         JPanel panel = new JPanel();
         panel.add(scroller);
-        frame.add(panel);
-        frame.setSize(600, 350);
-        frame.setVisible(false);
+        Visitor.scopesTabs.add("Function " + name, panel);
+        intel.append(toString());
     }
 
     public Integer getParametersNumber(){ return currentArity.getParametersNumber(); }
@@ -96,7 +93,10 @@ public class FunctionSymbol extends Symbol implements Scope {
             builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
 
         builder.append("Variables en memoria:\n");
-
+        if(currentArity != null)
+            for(Symbol s : currentArity.arguments.values()) {
+                    builder.append(s.toString() + "\n");
+            }
         return builder.toString();
     }
 
@@ -158,7 +158,6 @@ public class FunctionSymbol extends Symbol implements Scope {
 
     public void updateFrame(){
         intel.setText(toString());
-        frame.setVisible(true);
         if(enclosingScope != null)
             enclosingScope.updateFrame();
     }
