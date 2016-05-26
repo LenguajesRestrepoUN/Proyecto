@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class Lista implements Data, VLS{
+public class Lista implements Data, VLS, VL{
 
     public LinkedList<Data> lista;
 
@@ -22,7 +22,14 @@ public class Lista implements Data, VLS{
 
     @Override
     public String toString() {
-        return "lista: " + lista.toString();
+        return lista.toString();
+    }
+
+    @Override
+    public Data getDataWithNTH(Integer n) {
+        if(lista.size() < n)
+            return null;
+        return lista.get(n);
     }
 
     @Override

@@ -146,6 +146,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return null;
     }
 
+    //recur: '(' RECUR optargs ')';
     @Override public Data visitRecur(ClojureParser.RecurContext ctx) {
         updateFrames();
         block();
@@ -319,14 +320,15 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
 
-        Data vl = visit(ctx.form(0));
-        if(!(vl instanceof Lista))
-            Interpreter.error(ctx.getStart(), "NTH recibe una lista");
-        Lista list = (Lista)(vl);
+        Data tmp = visit(ctx.form(0));
+        if(!(tmp instanceof VL))
+            Interpreter.error(ctx.getStart(), "NTH recibe una lista o un vector");
+        VL vl = (VL)(tmp);
         Data n = visit(ctx.form(1));
         if(!(n instanceof Numero))
             Interpreter.error(ctx.getStart(), "NTH recibe un numero esntero");
-        Data data = list.lista.get( (int) (((Numero)(n)).numero));
+
+        Data data = vl.getDataWithNTH( (int) (((Numero)(n)).numero));
 
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
@@ -514,6 +516,84 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(numero);
         }
         return numero;
+    }
+
+    //igual: '(' IGUAL forms ')';
+    @Override public Data visitIgual(ClojureParser.IgualContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion igual");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(ctx.forms());
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(ctx.getStart(), "Se necesitan al un argumentos para igualar");
+
+        Boolean flag = true;
+
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+            if( !(currentReclaimer.getArgument(i).equals(currentReclaimer.getArgument(i-1)))){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
+    }
+
+    //mayor: '(' MAYOR forms ')';
+    @Override public Data visitMayor(ClojureParser.MayorContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion igual");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(ctx.forms());
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(ctx.getStart(), "Se necesitan al un argumentos para igualar");
+
+        Boolean flag = true;
+
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+            if( ((Numero)(currentReclaimer.getArgument(i))).compareTo((Numero)(currentReclaimer.getArgument(i-1))) < 0){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
     }
 
     //div: '(' DIV forms ')';

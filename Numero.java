@@ -1,5 +1,5 @@
 
-public class Numero implements Data{
+public class Numero implements Data, Comparable<Numero>{
 
     public double numero;
 
@@ -32,5 +32,10 @@ public class Numero implements Data{
     @Override
     public int hashCode() {
         return Double.hashCode(numero);
+    }
+
+    @Override
+    public int compareTo(Numero o) {
+        return Double.compare(((Numero) o).numero, numero);
     }
 }

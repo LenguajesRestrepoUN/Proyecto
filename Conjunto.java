@@ -22,7 +22,7 @@ public class Conjunto implements Data, VLS{
 
     @Override
     public String toString() {
-        return "set: " + set.toString();
+        return set.toString();
     }
 
     @Override
@@ -43,4 +43,5 @@ public class Conjunto implements Data, VLS{
     public int hashCode() {
         return set.hashCode();
     }
+
 }

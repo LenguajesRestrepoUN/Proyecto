@@ -16,9 +16,7 @@ public class Cadena implements Data{
     }
 
     @Override
-    public String toString() {
-        return cadena;
-    }
+    public String toString() { return "\"" + cadena + "\""; }
 
     @Override
     public boolean equals(Object o) {
