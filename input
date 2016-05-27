@@ -1,23 +1,8 @@
-(= 1)
-(= 1 1)
-(> 4 3 2 1)
-(> 4 3 2 3)
-(def lista (conj '(4 5 6) "hola"))
-(println lista)
-(def name (nth lista 0))
-(println name)
-
-(defn x-chop
-  "Describe the kind of chop you're inflicting on someone"
-  ([name chop-type]
-     (+ 1 2)
-     (str "I " chop-type " chop " name "! Take that!"))
-  ([name]
-     (recur name "karate")))
-
-(x-chop "Kanye West" "slap")
-(x-chop "Kanye East")
-
-
-
-
+(if (<= 1 -1)
+    (do
+        (+ 1 2)
+        (- 1 2)
+        (* 4 4)
+    )
+    (- 1 2)
+)

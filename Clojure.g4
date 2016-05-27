@@ -50,11 +50,11 @@ form: literal       #formLiteral
     ;
 
 literal
-    : STRING            #literalString
+    : STRING            #literalString //ya
     | number            #literalNumber
     | character         #literalCharacter
     | nil               #literalNil
-    | BOOLEAN           #literalBOOLEAN
+    | BOOLEAN           #literalBOOLEAN //ya
     | keyword           #literalKeyword
     | symbol            #literalSymbol
     | PARAM_NAME        #literalParam_name
@@ -69,26 +69,26 @@ forms: priorForm    #formsForm
      ;
 auxforms: forms;
 
-list: '\'(' forms ')' ;
+list: '\'(' forms ')' ; //ya
 vector: '[' forms ']' ;
 map: '{' (form form)* '}' ;
-set: '#{' forms '}' ;
+set: '#{' forms '}' ; //ya
 
-def: '(' DEF symbol ')'        #defSymbol
+def: '(' DEF symbol ')'        #defSymbol //ya
    | '(' DEF symbol form')'    #defSymbolForm
    ;
 
-println: '(' PRINTLN forms ')';
+println: '(' PRINTLN forms ')'; //ya
 print: '(' PRINT forms ')';
 
-sum: '(' SUM forms ')';
-minus: '(' MINUS forms ')';
-mult: '(' MULT forms ')';
-div: '(' DIV forms ')';
+sum: '(' SUM forms ')'; //ya
+minus: '(' MINUS forms ')'; //ya
+mult: '(' MULT forms ')'; //ya
+div: '(' DIV forms ')'; //ya
 
 or: '(' OR forms ')';
 and: '(' AND forms ')';
-str: '(' STR forms ')';
+str: '(' STR forms ')'; //ya
 
 optDescription: STRING      #description
               |             #noDescription
@@ -124,83 +124,86 @@ args : form args    #argsSymbolArgs
     | form          #argsSymbol
     ;
 
-defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')'    #singleDefn
+defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')'    #singleDefn //ya
     | '(' DEFN symbol optDescription  arity+ ')'                    #defnArity
     ;
 
 arity: '(' '[' optparams ']' forms ')';
 
-callFunction: '(' symbol optargs ')' ;
+callFunction: '(' symbol optargs ')' ; //ya
 
 loop: '(' LOOP '[' optLoopParams ']' forms ')';
 
-recur: '(' RECUR optargs ')';
+recur: '(' RECUR optargs ')'; //ya
 
-siOptForm: form form    #siTrueFalse
-         | form         #siTrue
-         ;
+siFalseForm: form         #falseForm
+           |              #falseEpsilon
+           ;
 
-si: '(' SI form siOptForm ')';
+si: '(' SI form form siFalseForm ')'; //ya
 hacer: '(' HACER forms ')';
-mayor: '(' MAYOR forms ')';
-menor: '(' MENOR forms ')';
-mayorIgual: '(' MAYORIGUAL forms ')';
-menorIgual: '(' MENORIGUAL forms ')';
-igual: '(' IGUAL forms ')';
-inc: '(' INC form ')';
+mayor: '(' MAYOR forms ')'; //ya
+menor: '(' MENOR forms ')'; //ya
+mayorIgual: '(' MAYORIGUAL forms ')'; //ya
+menorIgual: '(' MENORIGUAL forms ')'; //ya
+igual: '(' IGUAL forms ')'; //ya
+inc: '(' INC form ')'; //ya
 when: '(' WHEN forms ')';
 isNil: '(' ISNIL form ')';
 
-vl: vector     #vlVector
+/*vl: vector     #vlVector
   | list       #vlList
-  ;
+  ;*/
 
-vm: vector  #vmVector
+/*vm: vector  #vmVector
   | map     #vmMap
-  ;
+  ;*/
+
+/*vls: vector     #vlsVector
+   | list       #vlsList
+   | set        #vlsSet
+   ;*/
+
+/*ms: map     #msMap
+  | set     #msSet
+  ;*/
+
+/*vlsm: vector    #vlsmVector
+   | list       #vlsmList
+   | set        #vlsmSet
+   | map        #vlsmMap
+   ;*/
 
 defecto: form   #defaultForm
        |        #defaultEpsilon
        ;
 
-//nth: '(' NTH vl form')';
-nth: '(' NTH form form')';
-get: '(' GET vm form defecto')';
+nth: '(' NTH form form')'; // ya, just vl
+get: '(' GET form form defecto')'; //just vm
 contains: '(' CONTAINS set form ')';
 
-vls: vector     #vlsVector
-   | list       #vlsList
-   | set        #vlsSet
-   ;
+conj: '(' CONJ form form ')'; //ya, Just vls
+first: '(' FIRST form ')'; // just vl
 
-conj: '(' CONJ form form ')'; //Just vls
-first: '(' FIRST vl ')';
-
-ms: map     #msMap
-  | set     #msSet
-  ;
-
-keywordGet: '(' keyword ms ')'  #firstKeywordGet
-          | '(' ms keyword ')'  #lastKeywordGet
+//just ms
+keywordGet: '(' keyword form ')'  #firstKeywordGet
+          | '(' form keyword ')'  #lastKeywordGet
           ;
+
+//functionMap: '(' MAP form vls ')';
+functionMap: '(' MAP form form ')'; //just vls
+
+//take: '(' TAKE LONG vlsm')';
+take: '(' TAKE LONG form')'; //just vlsm
+
+//reduce: '(' REDUCE form vls')';
+reduce: '(' REDUCE form form')'; //juest vls
 
 letParams : symbol form letParams      #letParamsSymbolParams
           | symbol form                #letParamsSymbol
           ;
 
 let: '(' LET '[' letParams ']' forms ')';
-
-functionMap: '(' MAP form vls ')';
-
-vlsm: vector    #vlsmVector
-   | list       #vlsmList
-   | set        #vlsmSet
-   | map        #vlsmMap
-   ;
-
-take: '(' TAKE LONG vlsm')';
-
-reduce: '(' REDUCE form vls')';
 
 reader_macro
     : lambda            #rmLamda
@@ -267,7 +270,7 @@ named_char: CHAR_NAMED ;
 any_char: CHAR_ANY ;
 u_hex_quad: CHAR_U ;
 
-nil: NIL;
+nil: NIL; //ya
 
 keyword
     : macro_keyword     #keywordMacro_keyword
@@ -277,7 +280,7 @@ keyword
 simple_keyword: ':' symbol;
 macro_keyword: ':' ':' symbol;
 
-symbol: ns_symbol
+symbol: ns_symbol //ya
         | simple_sym
         ;
 

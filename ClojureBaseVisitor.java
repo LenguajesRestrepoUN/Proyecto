@@ -688,14 +688,14 @@ public class ClojureBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSiTrueFalse(ClojureParser.SiTrueFalseContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFalseForm(ClojureParser.FalseFormContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSiTrue(ClojureParser.SiTrueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFalseEpsilon(ClojureParser.FalseEpsilonContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

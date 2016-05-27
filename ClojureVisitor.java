@@ -662,19 +662,19 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRecur(ClojureParser.RecurContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code siTrueFalse}
-	 * labeled alternative in {@link ClojureParser#siOptForm}.
+	 * Visit a parse tree produced by the {@code falseForm}
+	 * labeled alternative in {@link ClojureParser#siFalseForm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSiTrueFalse(ClojureParser.SiTrueFalseContext ctx);
+	T visitFalseForm(ClojureParser.FalseFormContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code siTrue}
-	 * labeled alternative in {@link ClojureParser#siOptForm}.
+	 * Visit a parse tree produced by the {@code falseEpsilon}
+	 * labeled alternative in {@link ClojureParser#siFalseForm}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSiTrue(ClojureParser.SiTrueContext ctx);
+	T visitFalseEpsilon(ClojureParser.FalseEpsilonContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ClojureParser#si}.
 	 * @param ctx the parse tree

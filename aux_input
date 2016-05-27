@@ -1,3 +1,23 @@
+(= 1)
+(= 1 1)
+(> 4 3 2 1)
+(> 4 3 2 3)
+(def lista (conj '(4 5 6) "hola"))
+(println lista)
+(def name (nth lista 0))
+(println name)
+
+(defn x-chop
+  "Describe the kind of chop you're inflicting on someone"
+  ([name chop-type]
+     (+ 1 2)
+     (str "I " chop-type " chop " name "! Take that!"))
+  ([name]
+     (recur name "karate")))
+
+(x-chop "Kanye West" "slap")
+(x-chop "Kanye East")
+
 (defn hola "hola"
 ([a] (+ a 1) (* a 4))
 ([c d]
@@ -15,25 +35,6 @@
 (defn hola "hola" [b c d] (println (+ a a 4)) (println (+ b b -8)) (println (/ c c 1)) (* d d (+ 1 1)))
 
 (hola (+ 1 3) 4 5)
-
-(defn x-chop
-  "Describe the kind of chop you're inflicting on someone"
-  ([name chop-type]
-     (str "I " chop-type " chop " name "! Take that!")
-     (recur name chop-type)
-     )
-  ([name]
-     (recur name)))
-
-(defn x-chop
-  "Describe the kind of chop you're inflicting on someone"
-  ([name chop-type]
-     (str "I " chop-type " chop " name "! Take that!"))
-  ([name]
-     (x-chop name "karate")))
-
-(x-chop "Kanye West" "slap")
-(x-chop "Kanye East")
 
 (defn hola "hola" [q e & f] (print "hola") (println q))
 (defn hola2 "hola" [a b c] (println "hola"))
