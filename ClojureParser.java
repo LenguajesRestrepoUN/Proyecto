@@ -1,4 +1,4 @@
-// Generated from C:/Users/jccaleroe/Documents/Proyecto\Clojure.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Orlando S/Desktop/proyecto clojure/v1\Clojure.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -36,17 +36,16 @@ public class ClojureParser extends Parser {
 		RULE_arity = 31, RULE_callFunction = 32, RULE_loop = 33, RULE_recur = 34, 
 		RULE_siFalseForm = 35, RULE_si = 36, RULE_hacer = 37, RULE_mayor = 38, 
 		RULE_menor = 39, RULE_mayorIgual = 40, RULE_menorIgual = 41, RULE_igual = 42, 
-		RULE_inc = 43, RULE_when = 44, RULE_isNil = 45, RULE_vl = 46, RULE_vm = 47, 
-		RULE_defecto = 48, RULE_nth = 49, RULE_get = 50, RULE_contains = 51, RULE_vls = 52, 
-		RULE_conj = 53, RULE_first = 54, RULE_ms = 55, RULE_keywordGet = 56, RULE_letParams = 57, 
-		RULE_let = 58, RULE_functionMap = 59, RULE_vlsm = 60, RULE_take = 61, 
-		RULE_reduce = 62, RULE_reader_macro = 63, RULE_quote = 64, RULE_backtick = 65, 
-		RULE_unquote = 66, RULE_unquote_splicing = 67, RULE_tag = 68, RULE_deref = 69, 
-		RULE_gensym = 70, RULE_lambda = 71, RULE_meta_data = 72, RULE_var_quote = 73, 
-		RULE_host_expr = 74, RULE_discard = 75, RULE_dispatch = 76, RULE_regex = 77, 
-		RULE_number = 78, RULE_character = 79, RULE_named_char = 80, RULE_any_char = 81, 
-		RULE_u_hex_quad = 82, RULE_nil = 83, RULE_keyword = 84, RULE_simple_keyword = 85, 
-		RULE_macro_keyword = 86, RULE_symbol = 87, RULE_simple_sym = 88, RULE_ns_symbol = 89;
+		RULE_inc = 43, RULE_when = 44, RULE_isNil = 45, RULE_defecto = 46, RULE_nth = 47, 
+		RULE_get = 48, RULE_contains = 49, RULE_conj = 50, RULE_first = 51, RULE_keywordGet = 52, 
+		RULE_functionMap = 53, RULE_take = 54, RULE_reduce = 55, RULE_letParams = 56, 
+		RULE_let = 57, RULE_reader_macro = 58, RULE_quote = 59, RULE_backtick = 60, 
+		RULE_unquote = 61, RULE_unquote_splicing = 62, RULE_tag = 63, RULE_deref = 64, 
+		RULE_gensym = 65, RULE_lambda = 66, RULE_meta_data = 67, RULE_var_quote = 68, 
+		RULE_host_expr = 69, RULE_discard = 70, RULE_dispatch = 71, RULE_regex = 72, 
+		RULE_number = 73, RULE_character = 74, RULE_named_char = 75, RULE_any_char = 76, 
+		RULE_u_hex_quad = 77, RULE_nil = 78, RULE_keyword = 79, RULE_simple_keyword = 80, 
+		RULE_macro_keyword = 81, RULE_symbol = 82, RULE_simple_sym = 83, RULE_ns_symbol = 84;
 	public static final String[] ruleNames = {
 		"file", "mainForm", "auxform", "priorForm", "form", "literal", "forms", 
 		"auxforms", "list", "vector", "map", "set", "def", "println", "print", 
@@ -54,13 +53,13 @@ public class ClojureParser extends Parser {
 		"symbols", "params", "optLoopParams", "loopParams", "optargs", "args", 
 		"defn", "arity", "callFunction", "loop", "recur", "siFalseForm", "si", 
 		"hacer", "mayor", "menor", "mayorIgual", "menorIgual", "igual", "inc", 
-		"when", "isNil", "vl", "vm", "defecto", "nth", "get", "contains", "vls", 
-		"conj", "first", "ms", "keywordGet", "letParams", "let", "functionMap", 
-		"vlsm", "take", "reduce", "reader_macro", "quote", "backtick", "unquote", 
-		"unquote_splicing", "tag", "deref", "gensym", "lambda", "meta_data", "var_quote", 
-		"host_expr", "discard", "dispatch", "regex", "number", "character", "named_char", 
-		"any_char", "u_hex_quad", "nil", "keyword", "simple_keyword", "macro_keyword", 
-		"symbol", "simple_sym", "ns_symbol"
+		"when", "isNil", "defecto", "nth", "get", "contains", "conj", "first", 
+		"keywordGet", "functionMap", "take", "reduce", "letParams", "let", "reader_macro", 
+		"quote", "backtick", "unquote", "unquote_splicing", "tag", "deref", "gensym", 
+		"lambda", "meta_data", "var_quote", "host_expr", "discard", "dispatch", 
+		"regex", "number", "character", "named_char", "any_char", "u_hex_quad", 
+		"nil", "keyword", "simple_keyword", "macro_keyword", "symbol", "simple_sym", 
+		"ns_symbol"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -160,7 +159,7 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(180);
+			setState(170);
 			mainForm();
 			}
 		}
@@ -232,15 +231,15 @@ public class ClojureParser extends Parser {
 		MainFormContext _localctx = new MainFormContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_mainForm);
 		try {
-			setState(186);
+			setState(176);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				_localctx = new MainFormsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(182);
+				setState(172);
 				auxform();
-				setState(183);
+				setState(173);
 				mainForm();
 				}
 				break;
@@ -248,7 +247,7 @@ public class ClojureParser extends Parser {
 				_localctx = new MainFormFormContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(185);
+				setState(175);
 				form();
 				}
 				break;
@@ -294,7 +293,7 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(188);
+			setState(178);
 			form();
 			}
 		}
@@ -366,15 +365,15 @@ public class ClojureParser extends Parser {
 		PriorFormContext _localctx = new PriorFormContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_priorForm);
 		try {
-			setState(194);
+			setState(184);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				_localctx = new PriorFormsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(190);
+				setState(180);
 				form();
-				setState(191);
+				setState(181);
 				priorForm();
 				}
 				break;
@@ -382,7 +381,7 @@ public class ClojureParser extends Parser {
 				_localctx = new PriorFormFormContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(193);
+				setState(183);
 				form();
 				}
 				break;
@@ -1080,13 +1079,13 @@ public class ClojureParser extends Parser {
 		FormContext _localctx = new FormContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_form);
 		try {
-			setState(231);
+			setState(221);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				_localctx = new FormLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(196);
+				setState(186);
 				literal();
 				}
 				break;
@@ -1094,7 +1093,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormDefContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(197);
+				setState(187);
 				def();
 				}
 				break;
@@ -1102,7 +1101,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormDefnContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(198);
+				setState(188);
 				defn();
 				}
 				break;
@@ -1110,7 +1109,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormPrintlnContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(199);
+				setState(189);
 				println();
 				}
 				break;
@@ -1118,7 +1117,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormPrintContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(200);
+				setState(190);
 				print();
 				}
 				break;
@@ -1126,7 +1125,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormSumContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(201);
+				setState(191);
 				sum();
 				}
 				break;
@@ -1134,7 +1133,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormMinusContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(202);
+				setState(192);
 				minus();
 				}
 				break;
@@ -1142,7 +1141,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormMultContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(203);
+				setState(193);
 				mult();
 				}
 				break;
@@ -1150,7 +1149,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormDivContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(204);
+				setState(194);
 				div();
 				}
 				break;
@@ -1158,7 +1157,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormOrContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(205);
+				setState(195);
 				or();
 				}
 				break;
@@ -1166,7 +1165,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormAndContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(206);
+				setState(196);
 				and();
 				}
 				break;
@@ -1174,7 +1173,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormStrContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(207);
+				setState(197);
 				str();
 				}
 				break;
@@ -1182,7 +1181,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormLoopContext(_localctx);
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(208);
+				setState(198);
 				loop();
 				}
 				break;
@@ -1190,7 +1189,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormsiContext(_localctx);
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(209);
+				setState(199);
 				si();
 				}
 				break;
@@ -1198,7 +1197,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormMayorContext(_localctx);
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(210);
+				setState(200);
 				mayor();
 				}
 				break;
@@ -1206,7 +1205,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormMenorContext(_localctx);
 				enterOuterAlt(_localctx, 16);
 				{
-				setState(211);
+				setState(201);
 				menor();
 				}
 				break;
@@ -1214,7 +1213,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormMayorIgualContext(_localctx);
 				enterOuterAlt(_localctx, 17);
 				{
-				setState(212);
+				setState(202);
 				mayorIgual();
 				}
 				break;
@@ -1222,7 +1221,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormMenorIgualContext(_localctx);
 				enterOuterAlt(_localctx, 18);
 				{
-				setState(213);
+				setState(203);
 				menorIgual();
 				}
 				break;
@@ -1230,7 +1229,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormIgualContext(_localctx);
 				enterOuterAlt(_localctx, 19);
 				{
-				setState(214);
+				setState(204);
 				igual();
 				}
 				break;
@@ -1238,7 +1237,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormIncContext(_localctx);
 				enterOuterAlt(_localctx, 20);
 				{
-				setState(215);
+				setState(205);
 				inc();
 				}
 				break;
@@ -1246,7 +1245,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormHacerContext(_localctx);
 				enterOuterAlt(_localctx, 21);
 				{
-				setState(216);
+				setState(206);
 				hacer();
 				}
 				break;
@@ -1254,7 +1253,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormWhenContext(_localctx);
 				enterOuterAlt(_localctx, 22);
 				{
-				setState(217);
+				setState(207);
 				when();
 				}
 				break;
@@ -1262,7 +1261,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormIsNilContext(_localctx);
 				enterOuterAlt(_localctx, 23);
 				{
-				setState(218);
+				setState(208);
 				isNil();
 				}
 				break;
@@ -1270,7 +1269,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormNthContext(_localctx);
 				enterOuterAlt(_localctx, 24);
 				{
-				setState(219);
+				setState(209);
 				nth();
 				}
 				break;
@@ -1278,7 +1277,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormContainsContext(_localctx);
 				enterOuterAlt(_localctx, 25);
 				{
-				setState(220);
+				setState(210);
 				contains();
 				}
 				break;
@@ -1286,7 +1285,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormConjContext(_localctx);
 				enterOuterAlt(_localctx, 26);
 				{
-				setState(221);
+				setState(211);
 				conj();
 				}
 				break;
@@ -1294,7 +1293,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormGetContext(_localctx);
 				enterOuterAlt(_localctx, 27);
 				{
-				setState(222);
+				setState(212);
 				get();
 				}
 				break;
@@ -1302,7 +1301,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormFirstContext(_localctx);
 				enterOuterAlt(_localctx, 28);
 				{
-				setState(223);
+				setState(213);
 				first();
 				}
 				break;
@@ -1310,7 +1309,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormLetContext(_localctx);
 				enterOuterAlt(_localctx, 29);
 				{
-				setState(224);
+				setState(214);
 				let();
 				}
 				break;
@@ -1318,7 +1317,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormFunctionMapContext(_localctx);
 				enterOuterAlt(_localctx, 30);
 				{
-				setState(225);
+				setState(215);
 				functionMap();
 				}
 				break;
@@ -1326,7 +1325,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormTakeContext(_localctx);
 				enterOuterAlt(_localctx, 31);
 				{
-				setState(226);
+				setState(216);
 				take();
 				}
 				break;
@@ -1334,7 +1333,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormReduceContext(_localctx);
 				enterOuterAlt(_localctx, 32);
 				{
-				setState(227);
+				setState(217);
 				reduce();
 				}
 				break;
@@ -1342,7 +1341,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormCallFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 33);
 				{
-				setState(228);
+				setState(218);
 				callFunction();
 				}
 				break;
@@ -1350,7 +1349,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormRecurContext(_localctx);
 				enterOuterAlt(_localctx, 34);
 				{
-				setState(229);
+				setState(219);
 				recur();
 				}
 				break;
@@ -1358,7 +1357,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormReader_macroContext(_localctx);
 				enterOuterAlt(_localctx, 35);
 				{
-				setState(230);
+				setState(220);
 				reader_macro();
 				}
 				break;
@@ -1613,13 +1612,13 @@ public class ClojureParser extends Parser {
 		LiteralContext _localctx = new LiteralContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_literal);
 		try {
-			setState(245);
+			setState(235);
 			switch (_input.LA(1)) {
 			case STRING:
 				_localctx = new LiteralStringContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(233);
+				setState(223);
 				match(STRING);
 				}
 				break;
@@ -1631,7 +1630,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralNumberContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(234);
+				setState(224);
 				number();
 				}
 				break;
@@ -1641,7 +1640,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralCharacterContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(235);
+				setState(225);
 				character();
 				}
 				break;
@@ -1649,7 +1648,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralNilContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(236);
+				setState(226);
 				nil();
 				}
 				break;
@@ -1657,7 +1656,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralBOOLEANContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(237);
+				setState(227);
 				match(BOOLEAN);
 				}
 				break;
@@ -1665,7 +1664,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralKeywordContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(238);
+				setState(228);
 				keyword();
 				}
 				break;
@@ -1674,7 +1673,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(239);
+				setState(229);
 				symbol();
 				}
 				break;
@@ -1682,7 +1681,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralParam_nameContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(240);
+				setState(230);
 				match(PARAM_NAME);
 				}
 				break;
@@ -1690,7 +1689,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralListContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(241);
+				setState(231);
 				list();
 				}
 				break;
@@ -1698,7 +1697,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralVectorContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(242);
+				setState(232);
 				vector();
 				}
 				break;
@@ -1706,7 +1705,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralMapContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(243);
+				setState(233);
 				map();
 				}
 				break;
@@ -1714,7 +1713,7 @@ public class ClojureParser extends Parser {
 				_localctx = new LiteralSetContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(244);
+				setState(234);
 				set();
 				}
 				break;
@@ -1784,7 +1783,7 @@ public class ClojureParser extends Parser {
 		FormsContext _localctx = new FormsContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_forms);
 		try {
-			setState(249);
+			setState(239);
 			switch (_input.LA(1)) {
 			case T__0:
 			case T__2:
@@ -1821,7 +1820,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FormsFormContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(247);
+				setState(237);
 				priorForm();
 				}
 				break;
@@ -1877,7 +1876,7 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(251);
+			setState(241);
 			forms();
 			}
 		}
@@ -1921,11 +1920,11 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(253);
+			setState(243);
 			match(T__0);
-			setState(254);
+			setState(244);
 			forms();
-			setState(255);
+			setState(245);
 			match(T__1);
 			}
 		}
@@ -1969,11 +1968,11 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(257);
+			setState(247);
 			match(T__2);
-			setState(258);
+			setState(248);
 			forms();
-			setState(259);
+			setState(249);
 			match(T__3);
 			}
 		}
@@ -2021,25 +2020,25 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(261);
+			setState(251);
 			match(T__4);
-			setState(267);
+			setState(257);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << T__4) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << STRING) | (1L << NIL) | (1L << FLOAT) | (1L << HEX) | (1L << BIN) | (1L << LONG) | (1L << BIGN) | (1L << CHAR_U) | (1L << CHAR_NAMED))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (CHAR_ANY - 64)) | (1L << (BOOLEAN - 64)) | (1L << (SYMBOL - 64)) | (1L << (NS_SYMBOL - 64)) | (1L << (PARAM_NAME - 64)))) != 0)) {
 				{
 				{
-				setState(262);
+				setState(252);
 				form();
-				setState(263);
+				setState(253);
 				form();
 				}
 				}
-				setState(269);
+				setState(259);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(270);
+			setState(260);
 			match(T__5);
 			}
 		}
@@ -2083,11 +2082,11 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(272);
+			setState(262);
 			match(T__6);
-			setState(273);
+			setState(263);
 			forms();
-			setState(274);
+			setState(264);
 			match(T__5);
 			}
 		}
@@ -2161,19 +2160,19 @@ public class ClojureParser extends Parser {
 		DefContext _localctx = new DefContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_def);
 		try {
-			setState(287);
+			setState(277);
 			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				_localctx = new DefSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(276);
+				setState(266);
 				match(T__7);
-				setState(277);
+				setState(267);
 				match(DEF);
-				setState(278);
+				setState(268);
 				symbol();
-				setState(279);
+				setState(269);
 				match(T__1);
 				}
 				break;
@@ -2181,15 +2180,15 @@ public class ClojureParser extends Parser {
 				_localctx = new DefSymbolFormContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(281);
+				setState(271);
 				match(T__7);
-				setState(282);
+				setState(272);
 				match(DEF);
-				setState(283);
+				setState(273);
 				symbol();
-				setState(284);
+				setState(274);
 				form();
-				setState(285);
+				setState(275);
 				match(T__1);
 				}
 				break;
@@ -2236,13 +2235,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(289);
+			setState(279);
 			match(T__7);
-			setState(290);
+			setState(280);
 			match(PRINTLN);
-			setState(291);
+			setState(281);
 			forms();
-			setState(292);
+			setState(282);
 			match(T__1);
 			}
 		}
@@ -2287,13 +2286,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(294);
+			setState(284);
 			match(T__7);
-			setState(295);
+			setState(285);
 			match(PRINT);
-			setState(296);
+			setState(286);
 			forms();
-			setState(297);
+			setState(287);
 			match(T__1);
 			}
 		}
@@ -2338,13 +2337,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(299);
+			setState(289);
 			match(T__7);
-			setState(300);
+			setState(290);
 			match(SUM);
-			setState(301);
+			setState(291);
 			forms();
-			setState(302);
+			setState(292);
 			match(T__1);
 			}
 		}
@@ -2389,13 +2388,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(304);
+			setState(294);
 			match(T__7);
-			setState(305);
+			setState(295);
 			match(MINUS);
-			setState(306);
+			setState(296);
 			forms();
-			setState(307);
+			setState(297);
 			match(T__1);
 			}
 		}
@@ -2440,13 +2439,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(309);
+			setState(299);
 			match(T__7);
-			setState(310);
+			setState(300);
 			match(MULT);
-			setState(311);
+			setState(301);
 			forms();
-			setState(312);
+			setState(302);
 			match(T__1);
 			}
 		}
@@ -2491,13 +2490,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(314);
+			setState(304);
 			match(T__7);
-			setState(315);
+			setState(305);
 			match(DIV);
-			setState(316);
+			setState(306);
 			forms();
-			setState(317);
+			setState(307);
 			match(T__1);
 			}
 		}
@@ -2542,13 +2541,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(319);
+			setState(309);
 			match(T__7);
-			setState(320);
+			setState(310);
 			match(OR);
-			setState(321);
+			setState(311);
 			forms();
-			setState(322);
+			setState(312);
 			match(T__1);
 			}
 		}
@@ -2593,13 +2592,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(324);
+			setState(314);
 			match(T__7);
-			setState(325);
+			setState(315);
 			match(AND);
-			setState(326);
+			setState(316);
 			forms();
-			setState(327);
+			setState(317);
 			match(T__1);
 			}
 		}
@@ -2644,13 +2643,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(329);
+			setState(319);
 			match(T__7);
-			setState(330);
+			setState(320);
 			match(STR);
-			setState(331);
+			setState(321);
 			forms();
-			setState(332);
+			setState(322);
 			match(T__1);
 			}
 		}
@@ -2714,13 +2713,13 @@ public class ClojureParser extends Parser {
 		OptDescriptionContext _localctx = new OptDescriptionContext(_ctx, getState());
 		enterRule(_localctx, 44, RULE_optDescription);
 		try {
-			setState(336);
+			setState(326);
 			switch (_input.LA(1)) {
 			case STRING:
 				_localctx = new DescriptionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(334);
+				setState(324);
 				match(STRING);
 				}
 				break;
@@ -2797,7 +2796,7 @@ public class ClojureParser extends Parser {
 		OptparamsContext _localctx = new OptparamsContext(_ctx, getState());
 		enterRule(_localctx, 46, RULE_optparams);
 		try {
-			setState(340);
+			setState(330);
 			switch (_input.LA(1)) {
 			case T__2:
 			case AMPER:
@@ -2806,7 +2805,7 @@ public class ClojureParser extends Parser {
 				_localctx = new OptparamsParamsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(338);
+				setState(328);
 				params();
 				}
 				break;
@@ -2885,16 +2884,16 @@ public class ClojureParser extends Parser {
 		SymbolsContext _localctx = new SymbolsContext(_ctx, getState());
 		enterRule(_localctx, 48, RULE_symbols);
 		try {
-			setState(346);
+			setState(336);
 			switch (_input.LA(1)) {
 			case SYMBOL:
 			case NS_SYMBOL:
 				_localctx = new SymbolsSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(342);
+				setState(332);
 				symbol();
-				setState(343);
+				setState(333);
 				symbols();
 				}
 				break;
@@ -3043,15 +3042,15 @@ public class ClojureParser extends Parser {
 		ParamsContext _localctx = new ParamsContext(_ctx, getState());
 		enterRule(_localctx, 50, RULE_params);
 		try {
-			setState(365);
+			setState(355);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				_localctx = new ParamsSymbolParamsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(348);
+				setState(338);
 				symbol();
-				setState(349);
+				setState(339);
 				params();
 				}
 				break;
@@ -3059,7 +3058,7 @@ public class ClojureParser extends Parser {
 				_localctx = new ParamsSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(351);
+				setState(341);
 				symbol();
 				}
 				break;
@@ -3067,9 +3066,9 @@ public class ClojureParser extends Parser {
 				_localctx = new ParamsRestParameterContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(352);
+				setState(342);
 				match(AMPER);
-				setState(353);
+				setState(343);
 				symbol();
 				}
 				break;
@@ -3077,15 +3076,15 @@ public class ClojureParser extends Parser {
 				_localctx = new ParamsDestructuringParamsContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(354);
+				setState(344);
 				match(T__2);
-				setState(355);
+				setState(345);
 				symbol();
-				setState(356);
+				setState(346);
 				symbols();
-				setState(357);
+				setState(347);
 				match(T__3);
-				setState(358);
+				setState(348);
 				params();
 				}
 				break;
@@ -3093,13 +3092,13 @@ public class ClojureParser extends Parser {
 				_localctx = new ParamsDestructuringContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(360);
+				setState(350);
 				match(T__2);
-				setState(361);
+				setState(351);
 				symbol();
-				setState(362);
+				setState(352);
 				symbols();
-				setState(363);
+				setState(353);
 				match(T__3);
 				}
 				break;
@@ -3167,14 +3166,14 @@ public class ClojureParser extends Parser {
 		OptLoopParamsContext _localctx = new OptLoopParamsContext(_ctx, getState());
 		enterRule(_localctx, 52, RULE_optLoopParams);
 		try {
-			setState(369);
+			setState(359);
 			switch (_input.LA(1)) {
 			case SYMBOL:
 			case NS_SYMBOL:
 				_localctx = new OptLoopParamsParamsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(367);
+				setState(357);
 				loopParams();
 				}
 				break;
@@ -3262,17 +3261,17 @@ public class ClojureParser extends Parser {
 		LoopParamsContext _localctx = new LoopParamsContext(_ctx, getState());
 		enterRule(_localctx, 54, RULE_loopParams);
 		try {
-			setState(378);
+			setState(368);
 			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				_localctx = new LoopParamsSymbolParamsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(371);
+				setState(361);
 				symbol();
-				setState(372);
+				setState(362);
 				form();
-				setState(373);
+				setState(363);
 				loopParams();
 				}
 				break;
@@ -3280,9 +3279,9 @@ public class ClojureParser extends Parser {
 				_localctx = new LoopParamsSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(375);
+				setState(365);
 				symbol();
-				setState(376);
+				setState(366);
 				form();
 				}
 				break;
@@ -3350,7 +3349,7 @@ public class ClojureParser extends Parser {
 		OptargsContext _localctx = new OptargsContext(_ctx, getState());
 		enterRule(_localctx, 56, RULE_optargs);
 		try {
-			setState(382);
+			setState(372);
 			switch (_input.LA(1)) {
 			case T__0:
 			case T__2:
@@ -3387,7 +3386,7 @@ public class ClojureParser extends Parser {
 				_localctx = new OptargsArgsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(380);
+				setState(370);
 				args();
 				}
 				break;
@@ -3469,15 +3468,15 @@ public class ClojureParser extends Parser {
 		ArgsContext _localctx = new ArgsContext(_ctx, getState());
 		enterRule(_localctx, 58, RULE_args);
 		try {
-			setState(388);
+			setState(378);
 			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
 			case 1:
 				_localctx = new ArgsSymbolArgsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(384);
+				setState(374);
 				form();
-				setState(385);
+				setState(375);
 				args();
 				}
 				break;
@@ -3485,7 +3484,7 @@ public class ClojureParser extends Parser {
 				_localctx = new ArgsSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(387);
+				setState(377);
 				form();
 				}
 				break;
@@ -3577,11 +3576,35 @@ public class ClojureParser extends Parser {
 		enterRule(_localctx, 60, RULE_defn);
 		int _la;
 		try {
-			setState(411);
+			setState(401);
 			switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 			case 1:
 				_localctx = new SingleDefnContext(_localctx);
 				enterOuterAlt(_localctx, 1);
+				{
+				setState(380);
+				match(T__7);
+				setState(381);
+				match(DEFN);
+				setState(382);
+				symbol();
+				setState(383);
+				optDescription();
+				setState(384);
+				match(T__2);
+				setState(385);
+				optparams();
+				setState(386);
+				match(T__3);
+				setState(387);
+				auxforms();
+				setState(388);
+				match(T__1);
+				}
+				break;
+			case 2:
+				_localctx = new DefnArityContext(_localctx);
+				enterOuterAlt(_localctx, 2);
 				{
 				setState(390);
 				match(T__7);
@@ -3591,45 +3614,21 @@ public class ClojureParser extends Parser {
 				symbol();
 				setState(393);
 				optDescription();
-				setState(394);
-				match(T__2);
-				setState(395);
-				optparams();
-				setState(396);
-				match(T__3);
-				setState(397);
-				auxforms();
-				setState(398);
-				match(T__1);
-				}
-				break;
-			case 2:
-				_localctx = new DefnArityContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(400);
-				match(T__7);
-				setState(401);
-				match(DEFN);
-				setState(402);
-				symbol();
-				setState(403);
-				optDescription();
-				setState(405); 
+				setState(395); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(404);
+					setState(394);
 					arity();
 					}
 					}
-					setState(407); 
+					setState(397); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==T__7 );
-				setState(409);
+				setState(399);
 				match(T__1);
 				}
 				break;
@@ -3678,17 +3677,17 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(413);
+			setState(403);
 			match(T__7);
-			setState(414);
+			setState(404);
 			match(T__2);
-			setState(415);
+			setState(405);
 			optparams();
-			setState(416);
+			setState(406);
 			match(T__3);
-			setState(417);
+			setState(407);
 			forms();
-			setState(418);
+			setState(408);
 			match(T__1);
 			}
 		}
@@ -3735,13 +3734,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(420);
+			setState(410);
 			match(T__7);
-			setState(421);
+			setState(411);
 			symbol();
-			setState(422);
+			setState(412);
 			optargs();
-			setState(423);
+			setState(413);
 			match(T__1);
 			}
 		}
@@ -3789,19 +3788,19 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(425);
+			setState(415);
 			match(T__7);
-			setState(426);
+			setState(416);
 			match(LOOP);
-			setState(427);
+			setState(417);
 			match(T__2);
-			setState(428);
+			setState(418);
 			optLoopParams();
-			setState(429);
+			setState(419);
 			match(T__3);
-			setState(430);
+			setState(420);
 			forms();
-			setState(431);
+			setState(421);
 			match(T__1);
 			}
 		}
@@ -3846,13 +3845,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(433);
+			setState(423);
 			match(T__7);
-			setState(434);
+			setState(424);
 			match(RECUR);
-			setState(435);
+			setState(425);
 			optargs();
-			setState(436);
+			setState(426);
 			match(T__1);
 			}
 		}
@@ -3918,7 +3917,7 @@ public class ClojureParser extends Parser {
 		SiFalseFormContext _localctx = new SiFalseFormContext(_ctx, getState());
 		enterRule(_localctx, 70, RULE_siFalseForm);
 		try {
-			setState(440);
+			setState(430);
 			switch (_input.LA(1)) {
 			case T__0:
 			case T__2:
@@ -3955,7 +3954,7 @@ public class ClojureParser extends Parser {
 				_localctx = new FalseFormContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(438);
+				setState(428);
 				form();
 				}
 				break;
@@ -4016,17 +4015,17 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(442);
+			setState(432);
 			match(T__7);
-			setState(443);
+			setState(433);
 			match(SI);
-			setState(444);
+			setState(434);
 			form();
-			setState(445);
+			setState(435);
 			form();
-			setState(446);
+			setState(436);
 			siFalseForm();
-			setState(447);
+			setState(437);
 			match(T__1);
 			}
 		}
@@ -4071,13 +4070,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(449);
+			setState(439);
 			match(T__7);
-			setState(450);
+			setState(440);
 			match(HACER);
-			setState(451);
+			setState(441);
 			forms();
-			setState(452);
+			setState(442);
 			match(T__1);
 			}
 		}
@@ -4122,13 +4121,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(454);
+			setState(444);
 			match(T__7);
-			setState(455);
+			setState(445);
 			match(MAYOR);
-			setState(456);
+			setState(446);
 			forms();
-			setState(457);
+			setState(447);
 			match(T__1);
 			}
 		}
@@ -4173,13 +4172,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(459);
+			setState(449);
 			match(T__7);
-			setState(460);
+			setState(450);
 			match(MENOR);
-			setState(461);
+			setState(451);
 			forms();
-			setState(462);
+			setState(452);
 			match(T__1);
 			}
 		}
@@ -4224,13 +4223,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(464);
+			setState(454);
 			match(T__7);
-			setState(465);
+			setState(455);
 			match(MAYORIGUAL);
-			setState(466);
+			setState(456);
 			forms();
-			setState(467);
+			setState(457);
 			match(T__1);
 			}
 		}
@@ -4275,13 +4274,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(469);
+			setState(459);
 			match(T__7);
-			setState(470);
+			setState(460);
 			match(MENORIGUAL);
-			setState(471);
+			setState(461);
 			forms();
-			setState(472);
+			setState(462);
 			match(T__1);
 			}
 		}
@@ -4326,13 +4325,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(474);
+			setState(464);
 			match(T__7);
-			setState(475);
+			setState(465);
 			match(IGUAL);
-			setState(476);
+			setState(466);
 			forms();
-			setState(477);
+			setState(467);
 			match(T__1);
 			}
 		}
@@ -4377,13 +4376,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(479);
+			setState(469);
 			match(T__7);
-			setState(480);
+			setState(470);
 			match(INC);
-			setState(481);
+			setState(471);
 			form();
-			setState(482);
+			setState(472);
 			match(T__1);
 			}
 		}
@@ -4428,13 +4427,13 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(484);
+			setState(474);
 			match(T__7);
-			setState(485);
+			setState(475);
 			match(WHEN);
-			setState(486);
+			setState(476);
 			forms();
-			setState(487);
+			setState(477);
 			match(T__1);
 			}
 		}
@@ -4479,188 +4478,14 @@ public class ClojureParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(489);
+			setState(479);
 			match(T__7);
-			setState(490);
+			setState(480);
 			match(ISNIL);
-			setState(491);
+			setState(481);
 			form();
-			setState(492);
+			setState(482);
 			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class VlContext extends ParserRuleContext {
-		public VlContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_vl; }
-	 
-		public VlContext() { }
-		public void copyFrom(VlContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class VlVectorContext extends VlContext {
-		public VectorContext vector() {
-			return getRuleContext(VectorContext.class,0);
-		}
-		public VlVectorContext(VlContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlVector(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlVector(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlVector(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VlListContext extends VlContext {
-		public ListContext list() {
-			return getRuleContext(ListContext.class,0);
-		}
-		public VlListContext(VlContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlList(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlList(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final VlContext vl() throws RecognitionException {
-		VlContext _localctx = new VlContext(_ctx, getState());
-		enterRule(_localctx, 92, RULE_vl);
-		try {
-			setState(496);
-			switch (_input.LA(1)) {
-			case T__2:
-				_localctx = new VlVectorContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(494);
-				vector();
-				}
-				break;
-			case T__0:
-				_localctx = new VlListContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(495);
-				list();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class VmContext extends ParserRuleContext {
-		public VmContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_vm; }
-	 
-		public VmContext() { }
-		public void copyFrom(VmContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class VmMapContext extends VmContext {
-		public MapContext map() {
-			return getRuleContext(MapContext.class,0);
-		}
-		public VmMapContext(VmContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVmMap(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVmMap(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVmMap(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VmVectorContext extends VmContext {
-		public VectorContext vector() {
-			return getRuleContext(VectorContext.class,0);
-		}
-		public VmVectorContext(VmContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVmVector(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVmVector(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVmVector(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final VmContext vm() throws RecognitionException {
-		VmContext _localctx = new VmContext(_ctx, getState());
-		enterRule(_localctx, 94, RULE_vm);
-		try {
-			setState(500);
-			switch (_input.LA(1)) {
-			case T__2:
-				_localctx = new VmVectorContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(498);
-				vector();
-				}
-				break;
-			case T__4:
-				_localctx = new VmMapContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(499);
-				map();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -4723,9 +4548,9 @@ public class ClojureParser extends Parser {
 
 	public final DefectoContext defecto() throws RecognitionException {
 		DefectoContext _localctx = new DefectoContext(_ctx, getState());
-		enterRule(_localctx, 96, RULE_defecto);
+		enterRule(_localctx, 92, RULE_defecto);
 		try {
-			setState(504);
+			setState(486);
 			switch (_input.LA(1)) {
 			case T__0:
 			case T__2:
@@ -4762,7 +4587,7 @@ public class ClojureParser extends Parser {
 				_localctx = new DefaultFormContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(502);
+				setState(484);
 				form();
 				}
 				break;
@@ -4816,19 +4641,19 @@ public class ClojureParser extends Parser {
 
 	public final NthContext nth() throws RecognitionException {
 		NthContext _localctx = new NthContext(_ctx, getState());
-		enterRule(_localctx, 98, RULE_nth);
+		enterRule(_localctx, 94, RULE_nth);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(506);
+			setState(488);
 			match(T__7);
-			setState(507);
+			setState(489);
 			match(NTH);
-			setState(508);
+			setState(490);
 			form();
-			setState(509);
+			setState(491);
 			form();
-			setState(510);
+			setState(492);
 			match(T__1);
 			}
 		}
@@ -4845,11 +4670,11 @@ public class ClojureParser extends Parser {
 
 	public static class GetContext extends ParserRuleContext {
 		public TerminalNode GET() { return getToken(ClojureParser.GET, 0); }
-		public VmContext vm() {
-			return getRuleContext(VmContext.class,0);
+		public List<FormContext> form() {
+			return getRuleContexts(FormContext.class);
 		}
-		public FormContext form() {
-			return getRuleContext(FormContext.class,0);
+		public FormContext form(int i) {
+			return getRuleContext(FormContext.class,i);
 		}
 		public DefectoContext defecto() {
 			return getRuleContext(DefectoContext.class,0);
@@ -4875,21 +4700,21 @@ public class ClojureParser extends Parser {
 
 	public final GetContext get() throws RecognitionException {
 		GetContext _localctx = new GetContext(_ctx, getState());
-		enterRule(_localctx, 100, RULE_get);
+		enterRule(_localctx, 96, RULE_get);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(512);
+			setState(494);
 			match(T__7);
-			setState(513);
+			setState(495);
 			match(GET);
-			setState(514);
-			vm();
-			setState(515);
+			setState(496);
 			form();
-			setState(516);
+			setState(497);
+			form();
+			setState(498);
 			defecto();
-			setState(517);
+			setState(499);
 			match(T__1);
 			}
 		}
@@ -4905,6 +4730,17 @@ public class ClojureParser extends Parser {
 	}
 
 	public static class ContainsContext extends ParserRuleContext {
+		public ContainsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_contains; }
+	 
+		public ContainsContext() { }
+		public void copyFrom(ContainsContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ContainssetContext extends ContainsContext {
 		public TerminalNode CONTAINS() { return getToken(ClojureParser.CONTAINS, 0); }
 		public SetContext set() {
 			return getRuleContext(SetContext.class,0);
@@ -4912,155 +4748,83 @@ public class ClojureParser extends Parser {
 		public FormContext form() {
 			return getRuleContext(FormContext.class,0);
 		}
-		public ContainsContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_contains; }
+		public ContainssetContext(ContainsContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterContains(this);
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterContainsset(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitContains(this);
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitContainsset(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitContains(this);
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitContainsset(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ContainsvectorContext extends ContainsContext {
+		public TerminalNode CONTAINS() { return getToken(ClojureParser.CONTAINS, 0); }
+		public VectorContext vector() {
+			return getRuleContext(VectorContext.class,0);
+		}
+		public FormContext form() {
+			return getRuleContext(FormContext.class,0);
+		}
+		public ContainsvectorContext(ContainsContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterContainsvector(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitContainsvector(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitContainsvector(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ContainsContext contains() throws RecognitionException {
 		ContainsContext _localctx = new ContainsContext(_ctx, getState());
-		enterRule(_localctx, 102, RULE_contains);
+		enterRule(_localctx, 98, RULE_contains);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(519);
-			match(T__7);
-			setState(520);
-			match(CONTAINS);
-			setState(521);
-			set();
-			setState(522);
-			form();
-			setState(523);
-			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class VlsContext extends ParserRuleContext {
-		public VlsContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_vls; }
-	 
-		public VlsContext() { }
-		public void copyFrom(VlsContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class VlsVectorContext extends VlsContext {
-		public VectorContext vector() {
-			return getRuleContext(VectorContext.class,0);
-		}
-		public VlsVectorContext(VlsContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsVector(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsVector(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsVector(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VlsSetContext extends VlsContext {
-		public SetContext set() {
-			return getRuleContext(SetContext.class,0);
-		}
-		public VlsSetContext(VlsContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsSet(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsSet(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsSet(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VlsListContext extends VlsContext {
-		public ListContext list() {
-			return getRuleContext(ListContext.class,0);
-		}
-		public VlsListContext(VlsContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsList(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsList(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final VlsContext vls() throws RecognitionException {
-		VlsContext _localctx = new VlsContext(_ctx, getState());
-		enterRule(_localctx, 104, RULE_vls);
-		try {
-			setState(528);
-			switch (_input.LA(1)) {
-			case T__2:
-				_localctx = new VlsVectorContext(_localctx);
+			setState(513);
+			switch ( getInterpreter().adaptivePredict(_input,19,_ctx) ) {
+			case 1:
+				_localctx = new ContainssetContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(525);
-				vector();
+				setState(501);
+				match(T__7);
+				setState(502);
+				match(CONTAINS);
+				setState(503);
+				set();
+				setState(504);
+				form();
+				setState(505);
+				match(T__1);
 				}
 				break;
-			case T__0:
-				_localctx = new VlsListContext(_localctx);
+			case 2:
+				_localctx = new ContainsvectorContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(526);
-				list();
+				setState(507);
+				match(T__7);
+				setState(508);
+				match(CONTAINS);
+				setState(509);
+				vector();
+				setState(510);
+				form();
+				setState(511);
+				match(T__1);
 				}
 				break;
-			case T__6:
-				_localctx = new VlsSetContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(527);
-				set();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -5103,19 +4867,19 @@ public class ClojureParser extends Parser {
 
 	public final ConjContext conj() throws RecognitionException {
 		ConjContext _localctx = new ConjContext(_ctx, getState());
-		enterRule(_localctx, 106, RULE_conj);
+		enterRule(_localctx, 100, RULE_conj);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(530);
+			setState(515);
 			match(T__7);
-			setState(531);
+			setState(516);
 			match(CONJ);
-			setState(532);
+			setState(517);
 			form();
-			setState(533);
+			setState(518);
 			form();
-			setState(534);
+			setState(519);
 			match(T__1);
 			}
 		}
@@ -5132,8 +4896,8 @@ public class ClojureParser extends Parser {
 
 	public static class FirstContext extends ParserRuleContext {
 		public TerminalNode FIRST() { return getToken(ClojureParser.FIRST, 0); }
-		public VlContext vl() {
-			return getRuleContext(VlContext.class,0);
+		public FormContext form() {
+			return getRuleContext(FormContext.class,0);
 		}
 		public FirstContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -5156,105 +4920,18 @@ public class ClojureParser extends Parser {
 
 	public final FirstContext first() throws RecognitionException {
 		FirstContext _localctx = new FirstContext(_ctx, getState());
-		enterRule(_localctx, 108, RULE_first);
+		enterRule(_localctx, 102, RULE_first);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(536);
+			setState(521);
 			match(T__7);
-			setState(537);
+			setState(522);
 			match(FIRST);
-			setState(538);
-			vl();
-			setState(539);
+			setState(523);
+			form();
+			setState(524);
 			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class MsContext extends ParserRuleContext {
-		public MsContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_ms; }
-	 
-		public MsContext() { }
-		public void copyFrom(MsContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class MsMapContext extends MsContext {
-		public MapContext map() {
-			return getRuleContext(MapContext.class,0);
-		}
-		public MsMapContext(MsContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterMsMap(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitMsMap(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitMsMap(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class MsSetContext extends MsContext {
-		public SetContext set() {
-			return getRuleContext(SetContext.class,0);
-		}
-		public MsSetContext(MsContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterMsSet(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitMsSet(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitMsSet(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final MsContext ms() throws RecognitionException {
-		MsContext _localctx = new MsContext(_ctx, getState());
-		enterRule(_localctx, 110, RULE_ms);
-		try {
-			setState(543);
-			switch (_input.LA(1)) {
-			case T__4:
-				_localctx = new MsMapContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(541);
-				map();
-				}
-				break;
-			case T__6:
-				_localctx = new MsSetContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(542);
-				set();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -5280,8 +4957,8 @@ public class ClojureParser extends Parser {
 		}
 	}
 	public static class LastKeywordGetContext extends KeywordGetContext {
-		public MsContext ms() {
-			return getRuleContext(MsContext.class,0);
+		public FormContext form() {
+			return getRuleContext(FormContext.class,0);
 		}
 		public KeywordContext keyword() {
 			return getRuleContext(KeywordContext.class,0);
@@ -5305,8 +4982,8 @@ public class ClojureParser extends Parser {
 		public KeywordContext keyword() {
 			return getRuleContext(KeywordContext.class,0);
 		}
-		public MsContext ms() {
-			return getRuleContext(MsContext.class,0);
+		public FormContext form() {
+			return getRuleContext(FormContext.class,0);
 		}
 		public FirstKeywordGetContext(KeywordGetContext ctx) { copyFrom(ctx); }
 		@Override
@@ -5326,21 +5003,21 @@ public class ClojureParser extends Parser {
 
 	public final KeywordGetContext keywordGet() throws RecognitionException {
 		KeywordGetContext _localctx = new KeywordGetContext(_ctx, getState());
-		enterRule(_localctx, 112, RULE_keywordGet);
+		enterRule(_localctx, 104, RULE_keywordGet);
 		try {
-			setState(555);
-			switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
+			setState(536);
+			switch ( getInterpreter().adaptivePredict(_input,20,_ctx) ) {
 			case 1:
 				_localctx = new FirstKeywordGetContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(545);
+				setState(526);
 				match(T__7);
-				setState(546);
+				setState(527);
 				keyword();
-				setState(547);
-				ms();
-				setState(548);
+				setState(528);
+				form();
+				setState(529);
 				match(T__1);
 				}
 				break;
@@ -5348,16 +5025,182 @@ public class ClojureParser extends Parser {
 				_localctx = new LastKeywordGetContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(550);
+				setState(531);
 				match(T__7);
-				setState(551);
-				ms();
-				setState(552);
+				setState(532);
+				form();
+				setState(533);
 				keyword();
-				setState(553);
+				setState(534);
 				match(T__1);
 				}
 				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FunctionMapContext extends ParserRuleContext {
+		public TerminalNode MAP() { return getToken(ClojureParser.MAP, 0); }
+		public List<FormContext> form() {
+			return getRuleContexts(FormContext.class);
+		}
+		public FormContext form(int i) {
+			return getRuleContext(FormContext.class,i);
+		}
+		public FunctionMapContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_functionMap; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterFunctionMap(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitFunctionMap(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitFunctionMap(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final FunctionMapContext functionMap() throws RecognitionException {
+		FunctionMapContext _localctx = new FunctionMapContext(_ctx, getState());
+		enterRule(_localctx, 106, RULE_functionMap);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(538);
+			match(T__7);
+			setState(539);
+			match(MAP);
+			setState(540);
+			form();
+			setState(541);
+			form();
+			setState(542);
+			match(T__1);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TakeContext extends ParserRuleContext {
+		public TerminalNode TAKE() { return getToken(ClojureParser.TAKE, 0); }
+		public TerminalNode LONG() { return getToken(ClojureParser.LONG, 0); }
+		public FormContext form() {
+			return getRuleContext(FormContext.class,0);
+		}
+		public TakeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_take; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterTake(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitTake(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitTake(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final TakeContext take() throws RecognitionException {
+		TakeContext _localctx = new TakeContext(_ctx, getState());
+		enterRule(_localctx, 108, RULE_take);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(544);
+			match(T__7);
+			setState(545);
+			match(TAKE);
+			setState(546);
+			match(LONG);
+			setState(547);
+			form();
+			setState(548);
+			match(T__1);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ReduceContext extends ParserRuleContext {
+		public TerminalNode REDUCE() { return getToken(ClojureParser.REDUCE, 0); }
+		public List<FormContext> form() {
+			return getRuleContexts(FormContext.class);
+		}
+		public FormContext form(int i) {
+			return getRuleContext(FormContext.class,i);
+		}
+		public ReduceContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_reduce; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterReduce(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitReduce(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitReduce(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final ReduceContext reduce() throws RecognitionException {
+		ReduceContext _localctx = new ReduceContext(_ctx, getState());
+		enterRule(_localctx, 110, RULE_reduce);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(550);
+			match(T__7);
+			setState(551);
+			match(REDUCE);
+			setState(552);
+			form();
+			setState(553);
+			form();
+			setState(554);
+			match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -5432,19 +5275,19 @@ public class ClojureParser extends Parser {
 
 	public final LetParamsContext letParams() throws RecognitionException {
 		LetParamsContext _localctx = new LetParamsContext(_ctx, getState());
-		enterRule(_localctx, 114, RULE_letParams);
+		enterRule(_localctx, 112, RULE_letParams);
 		try {
-			setState(564);
-			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
+			setState(563);
+			switch ( getInterpreter().adaptivePredict(_input,21,_ctx) ) {
 			case 1:
 				_localctx = new LetParamsSymbolParamsContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(557);
+				setState(556);
 				symbol();
-				setState(558);
+				setState(557);
 				form();
-				setState(559);
+				setState(558);
 				letParams();
 				}
 				break;
@@ -5452,9 +5295,9 @@ public class ClojureParser extends Parser {
 				_localctx = new LetParamsSymbolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(561);
+				setState(560);
 				symbol();
-				setState(562);
+				setState(561);
 				form();
 				}
 				break;
@@ -5500,330 +5343,23 @@ public class ClojureParser extends Parser {
 
 	public final LetContext let() throws RecognitionException {
 		LetContext _localctx = new LetContext(_ctx, getState());
-		enterRule(_localctx, 116, RULE_let);
+		enterRule(_localctx, 114, RULE_let);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
+			setState(565);
+			match(T__7);
 			setState(566);
-			match(T__7);
-			setState(567);
 			match(LET);
-			setState(568);
+			setState(567);
 			match(T__2);
-			setState(569);
+			setState(568);
 			letParams();
-			setState(570);
+			setState(569);
 			match(T__3);
-			setState(571);
+			setState(570);
 			forms();
-			setState(572);
-			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class FunctionMapContext extends ParserRuleContext {
-		public TerminalNode MAP() { return getToken(ClojureParser.MAP, 0); }
-		public FormContext form() {
-			return getRuleContext(FormContext.class,0);
-		}
-		public VlsContext vls() {
-			return getRuleContext(VlsContext.class,0);
-		}
-		public FunctionMapContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_functionMap; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterFunctionMap(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitFunctionMap(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitFunctionMap(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final FunctionMapContext functionMap() throws RecognitionException {
-		FunctionMapContext _localctx = new FunctionMapContext(_ctx, getState());
-		enterRule(_localctx, 118, RULE_functionMap);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(574);
-			match(T__7);
-			setState(575);
-			match(MAP);
-			setState(576);
-			form();
-			setState(577);
-			vls();
-			setState(578);
-			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class VlsmContext extends ParserRuleContext {
-		public VlsmContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_vlsm; }
-	 
-		public VlsmContext() { }
-		public void copyFrom(VlsmContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class VlsmSetContext extends VlsmContext {
-		public SetContext set() {
-			return getRuleContext(SetContext.class,0);
-		}
-		public VlsmSetContext(VlsmContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsmSet(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsmSet(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsmSet(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VlsmListContext extends VlsmContext {
-		public ListContext list() {
-			return getRuleContext(ListContext.class,0);
-		}
-		public VlsmListContext(VlsmContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsmList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsmList(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsmList(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VlsmVectorContext extends VlsmContext {
-		public VectorContext vector() {
-			return getRuleContext(VectorContext.class,0);
-		}
-		public VlsmVectorContext(VlsmContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsmVector(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsmVector(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsmVector(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class VlsmMapContext extends VlsmContext {
-		public MapContext map() {
-			return getRuleContext(MapContext.class,0);
-		}
-		public VlsmMapContext(VlsmContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterVlsmMap(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitVlsmMap(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitVlsmMap(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final VlsmContext vlsm() throws RecognitionException {
-		VlsmContext _localctx = new VlsmContext(_ctx, getState());
-		enterRule(_localctx, 120, RULE_vlsm);
-		try {
-			setState(584);
-			switch (_input.LA(1)) {
-			case T__2:
-				_localctx = new VlsmVectorContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(580);
-				vector();
-				}
-				break;
-			case T__0:
-				_localctx = new VlsmListContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(581);
-				list();
-				}
-				break;
-			case T__6:
-				_localctx = new VlsmSetContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(582);
-				set();
-				}
-				break;
-			case T__4:
-				_localctx = new VlsmMapContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(583);
-				map();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class TakeContext extends ParserRuleContext {
-		public TerminalNode TAKE() { return getToken(ClojureParser.TAKE, 0); }
-		public TerminalNode LONG() { return getToken(ClojureParser.LONG, 0); }
-		public VlsmContext vlsm() {
-			return getRuleContext(VlsmContext.class,0);
-		}
-		public TakeContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_take; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterTake(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitTake(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitTake(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final TakeContext take() throws RecognitionException {
-		TakeContext _localctx = new TakeContext(_ctx, getState());
-		enterRule(_localctx, 122, RULE_take);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(586);
-			match(T__7);
-			setState(587);
-			match(TAKE);
-			setState(588);
-			match(LONG);
-			setState(589);
-			vlsm();
-			setState(590);
-			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class ReduceContext extends ParserRuleContext {
-		public TerminalNode REDUCE() { return getToken(ClojureParser.REDUCE, 0); }
-		public FormContext form() {
-			return getRuleContext(FormContext.class,0);
-		}
-		public VlsContext vls() {
-			return getRuleContext(VlsContext.class,0);
-		}
-		public ReduceContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_reduce; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterReduce(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitReduce(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitReduce(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final ReduceContext reduce() throws RecognitionException {
-		ReduceContext _localctx = new ReduceContext(_ctx, getState());
-		enterRule(_localctx, 124, RULE_reduce);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(592);
-			match(T__7);
-			setState(593);
-			match(REDUCE);
-			setState(594);
-			form();
-			setState(595);
-			vls();
-			setState(596);
+			setState(571);
 			match(T__1);
 			}
 		}
@@ -6137,15 +5673,15 @@ public class ClojureParser extends Parser {
 
 	public final Reader_macroContext reader_macro() throws RecognitionException {
 		Reader_macroContext _localctx = new Reader_macroContext(_ctx, getState());
-		enterRule(_localctx, 126, RULE_reader_macro);
+		enterRule(_localctx, 116, RULE_reader_macro);
 		try {
-			setState(613);
-			switch ( getInterpreter().adaptivePredict(_input,26,_ctx) ) {
+			setState(588);
+			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
 			case 1:
 				_localctx = new RmLamdaContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(598);
+				setState(573);
 				lambda();
 				}
 				break;
@@ -6153,7 +5689,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmMeta_dataContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(599);
+				setState(574);
 				meta_data();
 				}
 				break;
@@ -6161,7 +5697,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmRegexContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(600);
+				setState(575);
 				regex();
 				}
 				break;
@@ -6169,7 +5705,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmVar_quoteContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(601);
+				setState(576);
 				var_quote();
 				}
 				break;
@@ -6177,7 +5713,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmHost_exprContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(602);
+				setState(577);
 				host_expr();
 				}
 				break;
@@ -6185,7 +5721,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmSetContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(603);
+				setState(578);
 				set();
 				}
 				break;
@@ -6193,7 +5729,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmTagContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(604);
+				setState(579);
 				tag();
 				}
 				break;
@@ -6201,7 +5737,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmDiscardContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(605);
+				setState(580);
 				discard();
 				}
 				break;
@@ -6209,7 +5745,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmDispatchContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(606);
+				setState(581);
 				dispatch();
 				}
 				break;
@@ -6217,7 +5753,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmDerefContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(607);
+				setState(582);
 				deref();
 				}
 				break;
@@ -6225,7 +5761,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmQuoteContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(608);
+				setState(583);
 				quote();
 				}
 				break;
@@ -6233,7 +5769,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmBacktickContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(609);
+				setState(584);
 				backtick();
 				}
 				break;
@@ -6241,7 +5777,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmUnquoteContext(_localctx);
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(610);
+				setState(585);
 				unquote();
 				}
 				break;
@@ -6249,7 +5785,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmUnquote_splicingContext(_localctx);
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(611);
+				setState(586);
 				unquote_splicing();
 				}
 				break;
@@ -6257,7 +5793,7 @@ public class ClojureParser extends Parser {
 				_localctx = new RmGensymContext(_localctx);
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(612);
+				setState(587);
 				gensym();
 				}
 				break;
@@ -6299,13 +5835,13 @@ public class ClojureParser extends Parser {
 
 	public final QuoteContext quote() throws RecognitionException {
 		QuoteContext _localctx = new QuoteContext(_ctx, getState());
-		enterRule(_localctx, 128, RULE_quote);
+		enterRule(_localctx, 118, RULE_quote);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(615);
+			setState(590);
 			match(T__8);
-			setState(616);
+			setState(591);
 			form();
 			}
 		}
@@ -6345,13 +5881,13 @@ public class ClojureParser extends Parser {
 
 	public final BacktickContext backtick() throws RecognitionException {
 		BacktickContext _localctx = new BacktickContext(_ctx, getState());
-		enterRule(_localctx, 130, RULE_backtick);
+		enterRule(_localctx, 120, RULE_backtick);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(618);
+			setState(593);
 			match(T__9);
-			setState(619);
+			setState(594);
 			form();
 			}
 		}
@@ -6391,13 +5927,13 @@ public class ClojureParser extends Parser {
 
 	public final UnquoteContext unquote() throws RecognitionException {
 		UnquoteContext _localctx = new UnquoteContext(_ctx, getState());
-		enterRule(_localctx, 132, RULE_unquote);
+		enterRule(_localctx, 122, RULE_unquote);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(621);
+			setState(596);
 			match(T__10);
-			setState(622);
+			setState(597);
 			form();
 			}
 		}
@@ -6437,13 +5973,13 @@ public class ClojureParser extends Parser {
 
 	public final Unquote_splicingContext unquote_splicing() throws RecognitionException {
 		Unquote_splicingContext _localctx = new Unquote_splicingContext(_ctx, getState());
-		enterRule(_localctx, 134, RULE_unquote_splicing);
+		enterRule(_localctx, 124, RULE_unquote_splicing);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(624);
+			setState(599);
 			match(T__11);
-			setState(625);
+			setState(600);
 			form();
 			}
 		}
@@ -6486,15 +6022,15 @@ public class ClojureParser extends Parser {
 
 	public final TagContext tag() throws RecognitionException {
 		TagContext _localctx = new TagContext(_ctx, getState());
-		enterRule(_localctx, 136, RULE_tag);
+		enterRule(_localctx, 126, RULE_tag);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(627);
+			setState(602);
 			match(T__12);
-			setState(628);
+			setState(603);
 			form();
-			setState(629);
+			setState(604);
 			form();
 			}
 		}
@@ -6534,13 +6070,13 @@ public class ClojureParser extends Parser {
 
 	public final DerefContext deref() throws RecognitionException {
 		DerefContext _localctx = new DerefContext(_ctx, getState());
-		enterRule(_localctx, 138, RULE_deref);
+		enterRule(_localctx, 128, RULE_deref);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(631);
+			setState(606);
 			match(T__13);
-			setState(632);
+			setState(607);
 			form();
 			}
 		}
@@ -6578,13 +6114,13 @@ public class ClojureParser extends Parser {
 
 	public final GensymContext gensym() throws RecognitionException {
 		GensymContext _localctx = new GensymContext(_ctx, getState());
-		enterRule(_localctx, 140, RULE_gensym);
+		enterRule(_localctx, 130, RULE_gensym);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(634);
+			setState(609);
 			match(SYMBOL);
-			setState(635);
+			setState(610);
 			match(T__14);
 			}
 		}
@@ -6627,28 +6163,28 @@ public class ClojureParser extends Parser {
 
 	public final LambdaContext lambda() throws RecognitionException {
 		LambdaContext _localctx = new LambdaContext(_ctx, getState());
-		enterRule(_localctx, 142, RULE_lambda);
+		enterRule(_localctx, 132, RULE_lambda);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(637);
+			setState(612);
 			match(T__15);
-			setState(641);
+			setState(616);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << T__4) | (1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << STRING) | (1L << NIL) | (1L << FLOAT) | (1L << HEX) | (1L << BIN) | (1L << LONG) | (1L << BIGN) | (1L << CHAR_U) | (1L << CHAR_NAMED))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (CHAR_ANY - 64)) | (1L << (BOOLEAN - 64)) | (1L << (SYMBOL - 64)) | (1L << (NS_SYMBOL - 64)) | (1L << (PARAM_NAME - 64)))) != 0)) {
 				{
 				{
-				setState(638);
+				setState(613);
 				form();
 				}
 				}
-				setState(643);
+				setState(618);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(644);
+			setState(619);
 			match(T__1);
 			}
 		}
@@ -6691,25 +6227,25 @@ public class ClojureParser extends Parser {
 
 	public final Meta_dataContext meta_data() throws RecognitionException {
 		Meta_dataContext _localctx = new Meta_dataContext(_ctx, getState());
-		enterRule(_localctx, 144, RULE_meta_data);
+		enterRule(_localctx, 134, RULE_meta_data);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(646);
+			setState(621);
 			match(T__16);
-			setState(651);
-			switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
+			setState(626);
+			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
 			case 1:
 				{
-				setState(647);
+				setState(622);
 				map();
-				setState(648);
+				setState(623);
 				form();
 				}
 				break;
 			case 2:
 				{
-				setState(650);
+				setState(625);
 				form();
 				}
 				break;
@@ -6752,13 +6288,13 @@ public class ClojureParser extends Parser {
 
 	public final Var_quoteContext var_quote() throws RecognitionException {
 		Var_quoteContext _localctx = new Var_quoteContext(_ctx, getState());
-		enterRule(_localctx, 146, RULE_var_quote);
+		enterRule(_localctx, 136, RULE_var_quote);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(653);
+			setState(628);
 			match(T__17);
-			setState(654);
+			setState(629);
 			symbol();
 			}
 		}
@@ -6801,15 +6337,15 @@ public class ClojureParser extends Parser {
 
 	public final Host_exprContext host_expr() throws RecognitionException {
 		Host_exprContext _localctx = new Host_exprContext(_ctx, getState());
-		enterRule(_localctx, 148, RULE_host_expr);
+		enterRule(_localctx, 138, RULE_host_expr);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(656);
+			setState(631);
 			match(T__18);
-			setState(657);
+			setState(632);
 			form();
-			setState(658);
+			setState(633);
 			form();
 			}
 		}
@@ -6849,13 +6385,13 @@ public class ClojureParser extends Parser {
 
 	public final DiscardContext discard() throws RecognitionException {
 		DiscardContext _localctx = new DiscardContext(_ctx, getState());
-		enterRule(_localctx, 150, RULE_discard);
+		enterRule(_localctx, 140, RULE_discard);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(660);
+			setState(635);
 			match(T__19);
-			setState(661);
+			setState(636);
 			form();
 			}
 		}
@@ -6898,15 +6434,15 @@ public class ClojureParser extends Parser {
 
 	public final DispatchContext dispatch() throws RecognitionException {
 		DispatchContext _localctx = new DispatchContext(_ctx, getState());
-		enterRule(_localctx, 152, RULE_dispatch);
+		enterRule(_localctx, 142, RULE_dispatch);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(663);
+			setState(638);
 			match(T__14);
-			setState(664);
+			setState(639);
 			symbol();
-			setState(665);
+			setState(640);
 			form();
 			}
 		}
@@ -6944,13 +6480,13 @@ public class ClojureParser extends Parser {
 
 	public final RegexContext regex() throws RecognitionException {
 		RegexContext _localctx = new RegexContext(_ctx, getState());
-		enterRule(_localctx, 154, RULE_regex);
+		enterRule(_localctx, 144, RULE_regex);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(667);
+			setState(642);
 			match(T__14);
-			setState(668);
+			setState(643);
 			match(STRING);
 			}
 		}
@@ -7064,15 +6600,15 @@ public class ClojureParser extends Parser {
 
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
-		enterRule(_localctx, 156, RULE_number);
+		enterRule(_localctx, 146, RULE_number);
 		try {
-			setState(675);
+			setState(650);
 			switch (_input.LA(1)) {
 			case FLOAT:
 				_localctx = new NumberFloatContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(670);
+				setState(645);
 				match(FLOAT);
 				}
 				break;
@@ -7080,7 +6616,7 @@ public class ClojureParser extends Parser {
 				_localctx = new NumberHexContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(671);
+				setState(646);
 				match(HEX);
 				}
 				break;
@@ -7088,7 +6624,7 @@ public class ClojureParser extends Parser {
 				_localctx = new NumberBinContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(672);
+				setState(647);
 				match(BIN);
 				}
 				break;
@@ -7096,7 +6632,7 @@ public class ClojureParser extends Parser {
 				_localctx = new NumberBignContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(673);
+				setState(648);
 				match(BIGN);
 				}
 				break;
@@ -7104,7 +6640,7 @@ public class ClojureParser extends Parser {
 				_localctx = new NumberLongContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(674);
+				setState(649);
 				match(LONG);
 				}
 				break;
@@ -7194,15 +6730,15 @@ public class ClojureParser extends Parser {
 
 	public final CharacterContext character() throws RecognitionException {
 		CharacterContext _localctx = new CharacterContext(_ctx, getState());
-		enterRule(_localctx, 158, RULE_character);
+		enterRule(_localctx, 148, RULE_character);
 		try {
-			setState(680);
+			setState(655);
 			switch (_input.LA(1)) {
 			case CHAR_NAMED:
 				_localctx = new CharNamed_charContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(677);
+				setState(652);
 				named_char();
 				}
 				break;
@@ -7210,7 +6746,7 @@ public class ClojureParser extends Parser {
 				_localctx = new CharU_hex_quadContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(678);
+				setState(653);
 				u_hex_quad();
 				}
 				break;
@@ -7218,7 +6754,7 @@ public class ClojureParser extends Parser {
 				_localctx = new CharAny_charContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(679);
+				setState(654);
 				any_char();
 				}
 				break;
@@ -7260,11 +6796,11 @@ public class ClojureParser extends Parser {
 
 	public final Named_charContext named_char() throws RecognitionException {
 		Named_charContext _localctx = new Named_charContext(_ctx, getState());
-		enterRule(_localctx, 160, RULE_named_char);
+		enterRule(_localctx, 150, RULE_named_char);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(682);
+			setState(657);
 			match(CHAR_NAMED);
 			}
 		}
@@ -7302,11 +6838,11 @@ public class ClojureParser extends Parser {
 
 	public final Any_charContext any_char() throws RecognitionException {
 		Any_charContext _localctx = new Any_charContext(_ctx, getState());
-		enterRule(_localctx, 162, RULE_any_char);
+		enterRule(_localctx, 152, RULE_any_char);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(684);
+			setState(659);
 			match(CHAR_ANY);
 			}
 		}
@@ -7344,11 +6880,11 @@ public class ClojureParser extends Parser {
 
 	public final U_hex_quadContext u_hex_quad() throws RecognitionException {
 		U_hex_quadContext _localctx = new U_hex_quadContext(_ctx, getState());
-		enterRule(_localctx, 164, RULE_u_hex_quad);
+		enterRule(_localctx, 154, RULE_u_hex_quad);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(686);
+			setState(661);
 			match(CHAR_U);
 			}
 		}
@@ -7386,11 +6922,11 @@ public class ClojureParser extends Parser {
 
 	public final NilContext nil() throws RecognitionException {
 		NilContext _localctx = new NilContext(_ctx, getState());
-		enterRule(_localctx, 166, RULE_nil);
+		enterRule(_localctx, 156, RULE_nil);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(688);
+			setState(663);
 			match(NIL);
 			}
 		}
@@ -7457,15 +6993,15 @@ public class ClojureParser extends Parser {
 
 	public final KeywordContext keyword() throws RecognitionException {
 		KeywordContext _localctx = new KeywordContext(_ctx, getState());
-		enterRule(_localctx, 168, RULE_keyword);
+		enterRule(_localctx, 158, RULE_keyword);
 		try {
-			setState(692);
-			switch ( getInterpreter().adaptivePredict(_input,31,_ctx) ) {
+			setState(667);
+			switch ( getInterpreter().adaptivePredict(_input,27,_ctx) ) {
 			case 1:
 				_localctx = new KeywordMacro_keywordContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(690);
+				setState(665);
 				macro_keyword();
 				}
 				break;
@@ -7473,7 +7009,7 @@ public class ClojureParser extends Parser {
 				_localctx = new KeywordSimple_keywordContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(691);
+				setState(666);
 				simple_keyword();
 				}
 				break;
@@ -7515,13 +7051,13 @@ public class ClojureParser extends Parser {
 
 	public final Simple_keywordContext simple_keyword() throws RecognitionException {
 		Simple_keywordContext _localctx = new Simple_keywordContext(_ctx, getState());
-		enterRule(_localctx, 170, RULE_simple_keyword);
+		enterRule(_localctx, 160, RULE_simple_keyword);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(694);
+			setState(669);
 			match(T__20);
-			setState(695);
+			setState(670);
 			symbol();
 			}
 		}
@@ -7561,15 +7097,15 @@ public class ClojureParser extends Parser {
 
 	public final Macro_keywordContext macro_keyword() throws RecognitionException {
 		Macro_keywordContext _localctx = new Macro_keywordContext(_ctx, getState());
-		enterRule(_localctx, 172, RULE_macro_keyword);
+		enterRule(_localctx, 162, RULE_macro_keyword);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(697);
+			setState(672);
 			match(T__20);
-			setState(698);
+			setState(673);
 			match(T__20);
-			setState(699);
+			setState(674);
 			symbol();
 			}
 		}
@@ -7612,21 +7148,21 @@ public class ClojureParser extends Parser {
 
 	public final SymbolContext symbol() throws RecognitionException {
 		SymbolContext _localctx = new SymbolContext(_ctx, getState());
-		enterRule(_localctx, 174, RULE_symbol);
+		enterRule(_localctx, 164, RULE_symbol);
 		try {
-			setState(703);
+			setState(678);
 			switch (_input.LA(1)) {
 			case NS_SYMBOL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(701);
+				setState(676);
 				ns_symbol();
 				}
 				break;
 			case SYMBOL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(702);
+				setState(677);
 				simple_sym();
 				}
 				break;
@@ -7668,11 +7204,11 @@ public class ClojureParser extends Parser {
 
 	public final Simple_symContext simple_sym() throws RecognitionException {
 		Simple_symContext _localctx = new Simple_symContext(_ctx, getState());
-		enterRule(_localctx, 176, RULE_simple_sym);
+		enterRule(_localctx, 166, RULE_simple_sym);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(705);
+			setState(680);
 			match(SYMBOL);
 			}
 		}
@@ -7710,11 +7246,11 @@ public class ClojureParser extends Parser {
 
 	public final Ns_symbolContext ns_symbol() throws RecognitionException {
 		Ns_symbolContext _localctx = new Ns_symbolContext(_ctx, getState());
-		enterRule(_localctx, 178, RULE_ns_symbol);
+		enterRule(_localctx, 168, RULE_ns_symbol);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(707);
+			setState(682);
 			match(NS_SYMBOL);
 			}
 		}
@@ -7730,7 +7266,7 @@ public class ClojureParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3G\u02c8\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3G\u02af\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -7740,243 +7276,234 @@ public class ClojureParser extends Parser {
 		"\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t="+
 		"\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\tC\4D\tD\4E\tE\4F\tF\4G\tG\4H\tH\4I"+
 		"\tI\4J\tJ\4K\tK\4L\tL\4M\tM\4N\tN\4O\tO\4P\tP\4Q\tQ\4R\tR\4S\tS\4T\tT"+
-		"\4U\tU\4V\tV\4W\tW\4X\tX\4Y\tY\4Z\tZ\4[\t[\3\2\3\2\3\3\3\3\3\3\3\3\5\3"+
-		"\u00bd\n\3\3\4\3\4\3\5\3\5\3\5\3\5\5\5\u00c5\n\5\3\6\3\6\3\6\3\6\3\6\3"+
-		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
-		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6\u00ea\n\6\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\u00f8\n\7\3\b\3\b\5\b\u00fc"+
-		"\n\b\3\t\3\t\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\7\f\u010c"+
-		"\n\f\f\f\16\f\u010f\13\f\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3"+
-		"\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u0122\n\16\3\17\3\17\3\17\3\17"+
-		"\3\17\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3\22"+
-		"\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\3\25\3\25"+
-		"\3\25\3\25\3\25\3\26\3\26\3\26\3\26\3\26\3\27\3\27\3\27\3\27\3\27\3\30"+
-		"\3\30\5\30\u0153\n\30\3\31\3\31\5\31\u0157\n\31\3\32\3\32\3\32\3\32\5"+
-		"\32\u015d\n\32\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33"+
-		"\3\33\3\33\3\33\3\33\3\33\3\33\5\33\u0170\n\33\3\34\3\34\5\34\u0174\n"+
-		"\34\3\35\3\35\3\35\3\35\3\35\3\35\3\35\5\35\u017d\n\35\3\36\3\36\5\36"+
-		"\u0181\n\36\3\37\3\37\3\37\3\37\5\37\u0187\n\37\3 \3 \3 \3 \3 \3 \3 \3"+
-		" \3 \3 \3 \3 \3 \3 \3 \6 \u0198\n \r \16 \u0199\3 \3 \5 \u019e\n \3!\3"+
-		"!\3!\3!\3!\3!\3!\3\"\3\"\3\"\3\"\3\"\3#\3#\3#\3#\3#\3#\3#\3#\3$\3$\3$"+
-		"\3$\3$\3%\3%\5%\u01bb\n%\3&\3&\3&\3&\3&\3&\3&\3\'\3\'\3\'\3\'\3\'\3(\3"+
-		"(\3(\3(\3(\3)\3)\3)\3)\3)\3*\3*\3*\3*\3*\3+\3+\3+\3+\3+\3,\3,\3,\3,\3"+
-		",\3-\3-\3-\3-\3-\3.\3.\3.\3.\3.\3/\3/\3/\3/\3/\3\60\3\60\5\60\u01f3\n"+
-		"\60\3\61\3\61\5\61\u01f7\n\61\3\62\3\62\5\62\u01fb\n\62\3\63\3\63\3\63"+
-		"\3\63\3\63\3\63\3\64\3\64\3\64\3\64\3\64\3\64\3\64\3\65\3\65\3\65\3\65"+
-		"\3\65\3\65\3\66\3\66\3\66\5\66\u0213\n\66\3\67\3\67\3\67\3\67\3\67\3\67"+
-		"\38\38\38\38\38\39\39\59\u0222\n9\3:\3:\3:\3:\3:\3:\3:\3:\3:\3:\5:\u022e"+
-		"\n:\3;\3;\3;\3;\3;\3;\3;\5;\u0237\n;\3<\3<\3<\3<\3<\3<\3<\3<\3=\3=\3="+
-		"\3=\3=\3=\3>\3>\3>\3>\5>\u024b\n>\3?\3?\3?\3?\3?\3?\3@\3@\3@\3@\3@\3@"+
-		"\3A\3A\3A\3A\3A\3A\3A\3A\3A\3A\3A\3A\3A\3A\3A\5A\u0268\nA\3B\3B\3B\3C"+
-		"\3C\3C\3D\3D\3D\3E\3E\3E\3F\3F\3F\3F\3G\3G\3G\3H\3H\3H\3I\3I\7I\u0282"+
-		"\nI\fI\16I\u0285\13I\3I\3I\3J\3J\3J\3J\3J\5J\u028e\nJ\3K\3K\3K\3L\3L\3"+
-		"L\3L\3M\3M\3M\3N\3N\3N\3N\3O\3O\3O\3P\3P\3P\3P\3P\5P\u02a6\nP\3Q\3Q\3"+
-		"Q\5Q\u02ab\nQ\3R\3R\3S\3S\3T\3T\3U\3U\3V\3V\5V\u02b7\nV\3W\3W\3W\3X\3"+
-		"X\3X\3X\3Y\3Y\5Y\u02c2\nY\3Z\3Z\3[\3[\3[\2\2\\\2\4\6\b\n\f\16\20\22\24"+
-		"\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtv"+
-		"xz|~\u0080\u0082\u0084\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094"+
-		"\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac"+
-		"\u00ae\u00b0\u00b2\u00b4\2\2\u02d0\2\u00b6\3\2\2\2\4\u00bc\3\2\2\2\6\u00be"+
-		"\3\2\2\2\b\u00c4\3\2\2\2\n\u00e9\3\2\2\2\f\u00f7\3\2\2\2\16\u00fb\3\2"+
-		"\2\2\20\u00fd\3\2\2\2\22\u00ff\3\2\2\2\24\u0103\3\2\2\2\26\u0107\3\2\2"+
-		"\2\30\u0112\3\2\2\2\32\u0121\3\2\2\2\34\u0123\3\2\2\2\36\u0128\3\2\2\2"+
-		" \u012d\3\2\2\2\"\u0132\3\2\2\2$\u0137\3\2\2\2&\u013c\3\2\2\2(\u0141\3"+
-		"\2\2\2*\u0146\3\2\2\2,\u014b\3\2\2\2.\u0152\3\2\2\2\60\u0156\3\2\2\2\62"+
-		"\u015c\3\2\2\2\64\u016f\3\2\2\2\66\u0173\3\2\2\28\u017c\3\2\2\2:\u0180"+
-		"\3\2\2\2<\u0186\3\2\2\2>\u019d\3\2\2\2@\u019f\3\2\2\2B\u01a6\3\2\2\2D"+
-		"\u01ab\3\2\2\2F\u01b3\3\2\2\2H\u01ba\3\2\2\2J\u01bc\3\2\2\2L\u01c3\3\2"+
-		"\2\2N\u01c8\3\2\2\2P\u01cd\3\2\2\2R\u01d2\3\2\2\2T\u01d7\3\2\2\2V\u01dc"+
-		"\3\2\2\2X\u01e1\3\2\2\2Z\u01e6\3\2\2\2\\\u01eb\3\2\2\2^\u01f2\3\2\2\2"+
-		"`\u01f6\3\2\2\2b\u01fa\3\2\2\2d\u01fc\3\2\2\2f\u0202\3\2\2\2h\u0209\3"+
-		"\2\2\2j\u0212\3\2\2\2l\u0214\3\2\2\2n\u021a\3\2\2\2p\u0221\3\2\2\2r\u022d"+
-		"\3\2\2\2t\u0236\3\2\2\2v\u0238\3\2\2\2x\u0240\3\2\2\2z\u024a\3\2\2\2|"+
-		"\u024c\3\2\2\2~\u0252\3\2\2\2\u0080\u0267\3\2\2\2\u0082\u0269\3\2\2\2"+
-		"\u0084\u026c\3\2\2\2\u0086\u026f\3\2\2\2\u0088\u0272\3\2\2\2\u008a\u0275"+
-		"\3\2\2\2\u008c\u0279\3\2\2\2\u008e\u027c\3\2\2\2\u0090\u027f\3\2\2\2\u0092"+
-		"\u0288\3\2\2\2\u0094\u028f\3\2\2\2\u0096\u0292\3\2\2\2\u0098\u0296\3\2"+
-		"\2\2\u009a\u0299\3\2\2\2\u009c\u029d\3\2\2\2\u009e\u02a5\3\2\2\2\u00a0"+
-		"\u02aa\3\2\2\2\u00a2\u02ac\3\2\2\2\u00a4\u02ae\3\2\2\2\u00a6\u02b0\3\2"+
-		"\2\2\u00a8\u02b2\3\2\2\2\u00aa\u02b6\3\2\2\2\u00ac\u02b8\3\2\2\2\u00ae"+
-		"\u02bb\3\2\2\2\u00b0\u02c1\3\2\2\2\u00b2\u02c3\3\2\2\2\u00b4\u02c5\3\2"+
-		"\2\2\u00b6\u00b7\5\4\3\2\u00b7\3\3\2\2\2\u00b8\u00b9\5\6\4\2\u00b9\u00ba"+
-		"\5\4\3\2\u00ba\u00bd\3\2\2\2\u00bb\u00bd\5\n\6\2\u00bc\u00b8\3\2\2\2\u00bc"+
-		"\u00bb\3\2\2\2\u00bd\5\3\2\2\2\u00be\u00bf\5\n\6\2\u00bf\7\3\2\2\2\u00c0"+
-		"\u00c1\5\n\6\2\u00c1\u00c2\5\b\5\2\u00c2\u00c5\3\2\2\2\u00c3\u00c5\5\n"+
-		"\6\2\u00c4\u00c0\3\2\2\2\u00c4\u00c3\3\2\2\2\u00c5\t\3\2\2\2\u00c6\u00ea"+
-		"\5\f\7\2\u00c7\u00ea\5\32\16\2\u00c8\u00ea\5> \2\u00c9\u00ea\5\34\17\2"+
-		"\u00ca\u00ea\5\36\20\2\u00cb\u00ea\5 \21\2\u00cc\u00ea\5\"\22\2\u00cd"+
-		"\u00ea\5$\23\2\u00ce\u00ea\5&\24\2\u00cf\u00ea\5(\25\2\u00d0\u00ea\5*"+
-		"\26\2\u00d1\u00ea\5,\27\2\u00d2\u00ea\5D#\2\u00d3\u00ea\5J&\2\u00d4\u00ea"+
-		"\5N(\2\u00d5\u00ea\5P)\2\u00d6\u00ea\5R*\2\u00d7\u00ea\5T+\2\u00d8\u00ea"+
-		"\5V,\2\u00d9\u00ea\5X-\2\u00da\u00ea\5L\'\2\u00db\u00ea\5Z.\2\u00dc\u00ea"+
-		"\5\\/\2\u00dd\u00ea\5d\63\2\u00de\u00ea\5h\65\2\u00df\u00ea\5l\67\2\u00e0"+
-		"\u00ea\5f\64\2\u00e1\u00ea\5n8\2\u00e2\u00ea\5v<\2\u00e3\u00ea\5x=\2\u00e4"+
-		"\u00ea\5|?\2\u00e5\u00ea\5~@\2\u00e6\u00ea\5B\"\2\u00e7\u00ea\5F$\2\u00e8"+
-		"\u00ea\5\u0080A\2\u00e9\u00c6\3\2\2\2\u00e9\u00c7\3\2\2\2\u00e9\u00c8"+
-		"\3\2\2\2\u00e9\u00c9\3\2\2\2\u00e9\u00ca\3\2\2\2\u00e9\u00cb\3\2\2\2\u00e9"+
-		"\u00cc\3\2\2\2\u00e9\u00cd\3\2\2\2\u00e9\u00ce\3\2\2\2\u00e9\u00cf\3\2"+
-		"\2\2\u00e9\u00d0\3\2\2\2\u00e9\u00d1\3\2\2\2\u00e9\u00d2\3\2\2\2\u00e9"+
-		"\u00d3\3\2\2\2\u00e9\u00d4\3\2\2\2\u00e9\u00d5\3\2\2\2\u00e9\u00d6\3\2"+
-		"\2\2\u00e9\u00d7\3\2\2\2\u00e9\u00d8\3\2\2\2\u00e9\u00d9\3\2\2\2\u00e9"+
-		"\u00da\3\2\2\2\u00e9\u00db\3\2\2\2\u00e9\u00dc\3\2\2\2\u00e9\u00dd\3\2"+
-		"\2\2\u00e9\u00de\3\2\2\2\u00e9\u00df\3\2\2\2\u00e9\u00e0\3\2\2\2\u00e9"+
-		"\u00e1\3\2\2\2\u00e9\u00e2\3\2\2\2\u00e9\u00e3\3\2\2\2\u00e9\u00e4\3\2"+
-		"\2\2\u00e9\u00e5\3\2\2\2\u00e9\u00e6\3\2\2\2\u00e9\u00e7\3\2\2\2\u00e9"+
-		"\u00e8\3\2\2\2\u00ea\13\3\2\2\2\u00eb\u00f8\7\65\2\2\u00ec\u00f8\5\u009e"+
-		"P\2\u00ed\u00f8\5\u00a0Q\2\u00ee\u00f8\5\u00a8U\2\u00ef\u00f8\7C\2\2\u00f0"+
-		"\u00f8\5\u00aaV\2\u00f1\u00f8\5\u00b0Y\2\u00f2\u00f8\7F\2\2\u00f3\u00f8"+
-		"\5\22\n\2\u00f4\u00f8\5\24\13\2\u00f5\u00f8\5\26\f\2\u00f6\u00f8\5\30"+
-		"\r\2\u00f7\u00eb\3\2\2\2\u00f7\u00ec\3\2\2\2\u00f7\u00ed\3\2\2\2\u00f7"+
-		"\u00ee\3\2\2\2\u00f7\u00ef\3\2\2\2\u00f7\u00f0\3\2\2\2\u00f7\u00f1\3\2"+
-		"\2\2\u00f7\u00f2\3\2\2\2\u00f7\u00f3\3\2\2\2\u00f7\u00f4\3\2\2\2\u00f7"+
-		"\u00f5\3\2\2\2\u00f7\u00f6\3\2\2\2\u00f8\r\3\2\2\2\u00f9\u00fc\5\b\5\2"+
-		"\u00fa\u00fc\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fb\u00fa\3\2\2\2\u00fc\17"+
-		"\3\2\2\2\u00fd\u00fe\5\16\b\2\u00fe\21\3\2\2\2\u00ff\u0100\7\3\2\2\u0100"+
-		"\u0101\5\16\b\2\u0101\u0102\7\4\2\2\u0102\23\3\2\2\2\u0103\u0104\7\5\2"+
-		"\2\u0104\u0105\5\16\b\2\u0105\u0106\7\6\2\2\u0106\25\3\2\2\2\u0107\u010d"+
-		"\7\7\2\2\u0108\u0109\5\n\6\2\u0109\u010a\5\n\6\2\u010a\u010c\3\2\2\2\u010b"+
-		"\u0108\3\2\2\2\u010c\u010f\3\2\2\2\u010d\u010b\3\2\2\2\u010d\u010e\3\2"+
-		"\2\2\u010e\u0110\3\2\2\2\u010f\u010d\3\2\2\2\u0110\u0111\7\b\2\2\u0111"+
-		"\27\3\2\2\2\u0112\u0113\7\t\2\2\u0113\u0114\5\16\b\2\u0114\u0115\7\b\2"+
-		"\2\u0115\31\3\2\2\2\u0116\u0117\7\n\2\2\u0117\u0118\7\30\2\2\u0118\u0119"+
-		"\5\u00b0Y\2\u0119\u011a\7\4\2\2\u011a\u0122\3\2\2\2\u011b\u011c\7\n\2"+
-		"\2\u011c\u011d\7\30\2\2\u011d\u011e\5\u00b0Y\2\u011e\u011f\5\n\6\2\u011f"+
-		"\u0120\7\4\2\2\u0120\u0122\3\2\2\2\u0121\u0116\3\2\2\2\u0121\u011b\3\2"+
-		"\2\2\u0122\33\3\2\2\2\u0123\u0124\7\n\2\2\u0124\u0125\7\32\2\2\u0125\u0126"+
-		"\5\16\b\2\u0126\u0127\7\4\2\2\u0127\35\3\2\2\2\u0128\u0129\7\n\2\2\u0129"+
-		"\u012a\7\33\2\2\u012a\u012b\5\16\b\2\u012b\u012c\7\4\2\2\u012c\37\3\2"+
-		"\2\2\u012d\u012e\7\n\2\2\u012e\u012f\7\34\2\2\u012f\u0130\5\16\b\2\u0130"+
-		"\u0131\7\4\2\2\u0131!\3\2\2\2\u0132\u0133\7\n\2\2\u0133\u0134\7\35\2\2"+
-		"\u0134\u0135\5\16\b\2\u0135\u0136\7\4\2\2\u0136#\3\2\2\2\u0137\u0138\7"+
-		"\n\2\2\u0138\u0139\7\36\2\2\u0139\u013a\5\16\b\2\u013a\u013b\7\4\2\2\u013b"+
-		"%\3\2\2\2\u013c\u013d\7\n\2\2\u013d\u013e\7\37\2\2\u013e\u013f\5\16\b"+
-		"\2\u013f\u0140\7\4\2\2\u0140\'\3\2\2\2\u0141\u0142\7\n\2\2\u0142\u0143"+
-		"\7 \2\2\u0143\u0144\5\16\b\2\u0144\u0145\7\4\2\2\u0145)\3\2\2\2\u0146"+
-		"\u0147\7\n\2\2\u0147\u0148\7!\2\2\u0148\u0149\5\16\b\2\u0149\u014a\7\4"+
-		"\2\2\u014a+\3\2\2\2\u014b\u014c\7\n\2\2\u014c\u014d\7\"\2\2\u014d\u014e"+
-		"\5\16\b\2\u014e\u014f\7\4\2\2\u014f-\3\2\2\2\u0150\u0153\7\65\2\2\u0151"+
-		"\u0153\3\2\2\2\u0152\u0150\3\2\2\2\u0152\u0151\3\2\2\2\u0153/\3\2\2\2"+
-		"\u0154\u0157\5\64\33\2\u0155\u0157\3\2\2\2\u0156\u0154\3\2\2\2\u0156\u0155"+
-		"\3\2\2\2\u0157\61\3\2\2\2\u0158\u0159\5\u00b0Y\2\u0159\u015a\5\62\32\2"+
-		"\u015a\u015d\3\2\2\2\u015b\u015d\3\2\2\2\u015c\u0158\3\2\2\2\u015c\u015b"+
-		"\3\2\2\2\u015d\63\3\2\2\2\u015e\u015f\5\u00b0Y\2\u015f\u0160\5\64\33\2"+
-		"\u0160\u0170\3\2\2\2\u0161\u0170\5\u00b0Y\2\u0162\u0163\7\66\2\2\u0163"+
-		"\u0170\5\u00b0Y\2\u0164\u0165\7\5\2\2\u0165\u0166\5\u00b0Y\2\u0166\u0167"+
-		"\5\62\32\2\u0167\u0168\7\6\2\2\u0168\u0169\5\64\33\2\u0169\u0170\3\2\2"+
-		"\2\u016a\u016b\7\5\2\2\u016b\u016c\5\u00b0Y\2\u016c\u016d\5\62\32\2\u016d"+
-		"\u016e\7\6\2\2\u016e\u0170\3\2\2\2\u016f\u015e\3\2\2\2\u016f\u0161\3\2"+
-		"\2\2\u016f\u0162\3\2\2\2\u016f\u0164\3\2\2\2\u016f\u016a\3\2\2\2\u0170"+
-		"\65\3\2\2\2\u0171\u0174\58\35\2\u0172\u0174\3\2\2\2\u0173\u0171\3\2\2"+
-		"\2\u0173\u0172\3\2\2\2\u0174\67\3\2\2\2\u0175\u0176\5\u00b0Y\2\u0176\u0177"+
-		"\5\n\6\2\u0177\u0178\58\35\2\u0178\u017d\3\2\2\2\u0179\u017a\5\u00b0Y"+
-		"\2\u017a\u017b\5\n\6\2\u017b\u017d\3\2\2\2\u017c\u0175\3\2\2\2\u017c\u0179"+
-		"\3\2\2\2\u017d9\3\2\2\2\u017e\u0181\5<\37\2\u017f\u0181\3\2\2\2\u0180"+
-		"\u017e\3\2\2\2\u0180\u017f\3\2\2\2\u0181;\3\2\2\2\u0182\u0183\5\n\6\2"+
-		"\u0183\u0184\5<\37\2\u0184\u0187\3\2\2\2\u0185\u0187\5\n\6\2\u0186\u0182"+
-		"\3\2\2\2\u0186\u0185\3\2\2\2\u0187=\3\2\2\2\u0188\u0189\7\n\2\2\u0189"+
-		"\u018a\7\31\2\2\u018a\u018b\5\u00b0Y\2\u018b\u018c\5.\30\2\u018c\u018d"+
-		"\7\5\2\2\u018d\u018e\5\60\31\2\u018e\u018f\7\6\2\2\u018f\u0190\5\20\t"+
-		"\2\u0190\u0191\7\4\2\2\u0191\u019e\3\2\2\2\u0192\u0193\7\n\2\2\u0193\u0194"+
-		"\7\31\2\2\u0194\u0195\5\u00b0Y\2\u0195\u0197\5.\30\2\u0196\u0198\5@!\2"+
-		"\u0197\u0196\3\2\2\2\u0198\u0199\3\2\2\2\u0199\u0197\3\2\2\2\u0199\u019a"+
-		"\3\2\2\2\u019a\u019b\3\2\2\2\u019b\u019c\7\4\2\2\u019c\u019e\3\2\2\2\u019d"+
-		"\u0188\3\2\2\2\u019d\u0192\3\2\2\2\u019e?\3\2\2\2\u019f\u01a0\7\n\2\2"+
-		"\u01a0\u01a1\7\5\2\2\u01a1\u01a2\5\60\31\2\u01a2\u01a3\7\6\2\2\u01a3\u01a4"+
-		"\5\16\b\2\u01a4\u01a5\7\4\2\2\u01a5A\3\2\2\2\u01a6\u01a7\7\n\2\2\u01a7"+
-		"\u01a8\5\u00b0Y\2\u01a8\u01a9\5:\36\2\u01a9\u01aa\7\4\2\2\u01aaC\3\2\2"+
-		"\2\u01ab\u01ac\7\n\2\2\u01ac\u01ad\7#\2\2\u01ad\u01ae\7\5\2\2\u01ae\u01af"+
-		"\5\66\34\2\u01af\u01b0\7\6\2\2\u01b0\u01b1\5\16\b\2\u01b1\u01b2\7\4\2"+
-		"\2\u01b2E\3\2\2\2\u01b3\u01b4\7\n\2\2\u01b4\u01b5\7$\2\2\u01b5\u01b6\5"+
-		":\36\2\u01b6\u01b7\7\4\2\2\u01b7G\3\2\2\2\u01b8\u01bb\5\n\6\2\u01b9\u01bb"+
-		"\3\2\2\2\u01ba\u01b8\3\2\2\2\u01ba\u01b9\3\2\2\2\u01bbI\3\2\2\2\u01bc"+
-		"\u01bd\7\n\2\2\u01bd\u01be\7%\2\2\u01be\u01bf\5\n\6\2\u01bf\u01c0\5\n"+
-		"\6\2\u01c0\u01c1\5H%\2\u01c1\u01c2\7\4\2\2\u01c2K\3\2\2\2\u01c3\u01c4"+
-		"\7\n\2\2\u01c4\u01c5\7,\2\2\u01c5\u01c6\5\16\b\2\u01c6\u01c7\7\4\2\2\u01c7"+
-		"M\3\2\2\2\u01c8\u01c9\7\n\2\2\u01c9\u01ca\7\'\2\2\u01ca\u01cb\5\16\b\2"+
-		"\u01cb\u01cc\7\4\2\2\u01ccO\3\2\2\2\u01cd\u01ce\7\n\2\2\u01ce\u01cf\7"+
-		"(\2\2\u01cf\u01d0\5\16\b\2\u01d0\u01d1\7\4\2\2\u01d1Q\3\2\2\2\u01d2\u01d3"+
-		"\7\n\2\2\u01d3\u01d4\7)\2\2\u01d4\u01d5\5\16\b\2\u01d5\u01d6\7\4\2\2\u01d6"+
-		"S\3\2\2\2\u01d7\u01d8\7\n\2\2\u01d8\u01d9\7*\2\2\u01d9\u01da\5\16\b\2"+
-		"\u01da\u01db\7\4\2\2\u01dbU\3\2\2\2\u01dc\u01dd\7\n\2\2\u01dd\u01de\7"+
-		"+\2\2\u01de\u01df\5\16\b\2\u01df\u01e0\7\4\2\2\u01e0W\3\2\2\2\u01e1\u01e2"+
-		"\7\n\2\2\u01e2\u01e3\7&\2\2\u01e3\u01e4\5\n\6\2\u01e4\u01e5\7\4\2\2\u01e5"+
-		"Y\3\2\2\2\u01e6\u01e7\7\n\2\2\u01e7\u01e8\7-\2\2\u01e8\u01e9\5\16\b\2"+
-		"\u01e9\u01ea\7\4\2\2\u01ea[\3\2\2\2\u01eb\u01ec\7\n\2\2\u01ec\u01ed\7"+
-		".\2\2\u01ed\u01ee\5\n\6\2\u01ee\u01ef\7\4\2\2\u01ef]\3\2\2\2\u01f0\u01f3"+
-		"\5\24\13\2\u01f1\u01f3\5\22\n\2\u01f2\u01f0\3\2\2\2\u01f2\u01f1\3\2\2"+
-		"\2\u01f3_\3\2\2\2\u01f4\u01f7\5\24\13\2\u01f5\u01f7\5\26\f\2\u01f6\u01f4"+
-		"\3\2\2\2\u01f6\u01f5\3\2\2\2\u01f7a\3\2\2\2\u01f8\u01fb\5\n\6\2\u01f9"+
-		"\u01fb\3\2\2\2\u01fa\u01f8\3\2\2\2\u01fa\u01f9\3\2\2\2\u01fbc\3\2\2\2"+
-		"\u01fc\u01fd\7\n\2\2\u01fd\u01fe\7/\2\2\u01fe\u01ff\5\n\6\2\u01ff\u0200"+
-		"\5\n\6\2\u0200\u0201\7\4\2\2\u0201e\3\2\2\2\u0202\u0203\7\n\2\2\u0203"+
-		"\u0204\7\60\2\2\u0204\u0205\5`\61\2\u0205\u0206\5\n\6\2\u0206\u0207\5"+
-		"b\62\2\u0207\u0208\7\4\2\2\u0208g\3\2\2\2\u0209\u020a\7\n\2\2\u020a\u020b"+
-		"\7\61\2\2\u020b\u020c\5\30\r\2\u020c\u020d\5\n\6\2\u020d\u020e\7\4\2\2"+
-		"\u020ei\3\2\2\2\u020f\u0213\5\24\13\2\u0210\u0213\5\22\n\2\u0211\u0213"+
-		"\5\30\r\2\u0212\u020f\3\2\2\2\u0212\u0210\3\2\2\2\u0212\u0211\3\2\2\2"+
-		"\u0213k\3\2\2\2\u0214\u0215\7\n\2\2\u0215\u0216\7\62\2\2\u0216\u0217\5"+
-		"\n\6\2\u0217\u0218\5\n\6\2\u0218\u0219\7\4\2\2\u0219m\3\2\2\2\u021a\u021b"+
-		"\7\n\2\2\u021b\u021c\7\63\2\2\u021c\u021d\5^\60\2\u021d\u021e\7\4\2\2"+
-		"\u021eo\3\2\2\2\u021f\u0222\5\26\f\2\u0220\u0222\5\30\r\2\u0221\u021f"+
-		"\3\2\2\2\u0221\u0220\3\2\2\2\u0222q\3\2\2\2\u0223\u0224\7\n\2\2\u0224"+
-		"\u0225\5\u00aaV\2\u0225\u0226\5p9\2\u0226\u0227\7\4\2\2\u0227\u022e\3"+
-		"\2\2\2\u0228\u0229\7\n\2\2\u0229\u022a\5p9\2\u022a\u022b\5\u00aaV\2\u022b"+
-		"\u022c\7\4\2\2\u022c\u022e\3\2\2\2\u022d\u0223\3\2\2\2\u022d\u0228\3\2"+
-		"\2\2\u022es\3\2\2\2\u022f\u0230\5\u00b0Y\2\u0230\u0231\5\n\6\2\u0231\u0232"+
-		"\5t;\2\u0232\u0237\3\2\2\2\u0233\u0234\5\u00b0Y\2\u0234\u0235\5\n\6\2"+
-		"\u0235\u0237\3\2\2\2\u0236\u022f\3\2\2\2\u0236\u0233\3\2\2\2\u0237u\3"+
-		"\2\2\2\u0238\u0239\7\n\2\2\u0239\u023a\78\2\2\u023a\u023b\7\5\2\2\u023b"+
-		"\u023c\5t;\2\u023c\u023d\7\6\2\2\u023d\u023e\5\16\b\2\u023e\u023f\7\4"+
-		"\2\2\u023fw\3\2\2\2\u0240\u0241\7\n\2\2\u0241\u0242\7\64\2\2\u0242\u0243"+
-		"\5\n\6\2\u0243\u0244\5j\66\2\u0244\u0245\7\4\2\2\u0245y\3\2\2\2\u0246"+
-		"\u024b\5\24\13\2\u0247\u024b\5\22\n\2\u0248\u024b\5\30\r\2\u0249\u024b"+
-		"\5\26\f\2\u024a\u0246\3\2\2\2\u024a\u0247\3\2\2\2\u024a\u0248\3\2\2\2"+
-		"\u024a\u0249\3\2\2\2\u024b{\3\2\2\2\u024c\u024d\7\n\2\2\u024d\u024e\7"+
-		"9\2\2\u024e\u024f\7>\2\2\u024f\u0250\5z>\2\u0250\u0251\7\4\2\2\u0251}"+
-		"\3\2\2\2\u0252\u0253\7\n\2\2\u0253\u0254\7:\2\2\u0254\u0255\5\n\6\2\u0255"+
-		"\u0256\5j\66\2\u0256\u0257\7\4\2\2\u0257\177\3\2\2\2\u0258\u0268\5\u0090"+
-		"I\2\u0259\u0268\5\u0092J\2\u025a\u0268\5\u009cO\2\u025b\u0268\5\u0094"+
-		"K\2\u025c\u0268\5\u0096L\2\u025d\u0268\5\30\r\2\u025e\u0268\5\u008aF\2"+
-		"\u025f\u0268\5\u0098M\2\u0260\u0268\5\u009aN\2\u0261\u0268\5\u008cG\2"+
-		"\u0262\u0268\5\u0082B\2\u0263\u0268\5\u0084C\2\u0264\u0268\5\u0086D\2"+
-		"\u0265\u0268\5\u0088E\2\u0266\u0268\5\u008eH\2\u0267\u0258\3\2\2\2\u0267"+
-		"\u0259\3\2\2\2\u0267\u025a\3\2\2\2\u0267\u025b\3\2\2\2\u0267\u025c\3\2"+
-		"\2\2\u0267\u025d\3\2\2\2\u0267\u025e\3\2\2\2\u0267\u025f\3\2\2\2\u0267"+
-		"\u0260\3\2\2\2\u0267\u0261\3\2\2\2\u0267\u0262\3\2\2\2\u0267\u0263\3\2"+
-		"\2\2\u0267\u0264\3\2\2\2\u0267\u0265\3\2\2\2\u0267\u0266\3\2\2\2\u0268"+
-		"\u0081\3\2\2\2\u0269\u026a\7\13\2\2\u026a\u026b\5\n\6\2\u026b\u0083\3"+
-		"\2\2\2\u026c\u026d\7\f\2\2\u026d\u026e\5\n\6\2\u026e\u0085\3\2\2\2\u026f"+
-		"\u0270\7\r\2\2\u0270\u0271\5\n\6\2\u0271\u0087\3\2\2\2\u0272\u0273\7\16"+
-		"\2\2\u0273\u0274\5\n\6\2\u0274\u0089\3\2\2\2\u0275\u0276\7\17\2\2\u0276"+
-		"\u0277\5\n\6\2\u0277\u0278\5\n\6\2\u0278\u008b\3\2\2\2\u0279\u027a\7\20"+
-		"\2\2\u027a\u027b\5\n\6\2\u027b\u008d\3\2\2\2\u027c\u027d\7D\2\2\u027d"+
-		"\u027e\7\21\2\2\u027e\u008f\3\2\2\2\u027f\u0283\7\22\2\2\u0280\u0282\5"+
-		"\n\6\2\u0281\u0280\3\2\2\2\u0282\u0285\3\2\2\2\u0283\u0281\3\2\2\2\u0283"+
-		"\u0284\3\2\2\2\u0284\u0286\3\2\2\2\u0285\u0283\3\2\2\2\u0286\u0287\7\4"+
-		"\2\2\u0287\u0091\3\2\2\2\u0288\u028d\7\23\2\2\u0289\u028a\5\26\f\2\u028a"+
-		"\u028b\5\n\6\2\u028b\u028e\3\2\2\2\u028c\u028e\5\n\6\2\u028d\u0289\3\2"+
-		"\2\2\u028d\u028c\3\2\2\2\u028e\u0093\3\2\2\2\u028f\u0290\7\24\2\2\u0290"+
-		"\u0291\5\u00b0Y\2\u0291\u0095\3\2\2\2\u0292\u0293\7\25\2\2\u0293\u0294"+
-		"\5\n\6\2\u0294\u0295\5\n\6\2\u0295\u0097\3\2\2\2\u0296\u0297\7\26\2\2"+
-		"\u0297\u0298\5\n\6\2\u0298\u0099\3\2\2\2\u0299\u029a\7\21\2\2\u029a\u029b"+
-		"\5\u00b0Y\2\u029b\u029c\5\n\6\2\u029c\u009b\3\2\2\2\u029d\u029e\7\21\2"+
-		"\2\u029e\u029f\7\65\2\2\u029f\u009d\3\2\2\2\u02a0\u02a6\7;\2\2\u02a1\u02a6"+
-		"\7<\2\2\u02a2\u02a6\7=\2\2\u02a3\u02a6\7?\2\2\u02a4\u02a6\7>\2\2\u02a5"+
-		"\u02a0\3\2\2\2\u02a5\u02a1\3\2\2\2\u02a5\u02a2\3\2\2\2\u02a5\u02a3\3\2"+
-		"\2\2\u02a5\u02a4\3\2\2\2\u02a6\u009f\3\2\2\2\u02a7\u02ab\5\u00a2R\2\u02a8"+
-		"\u02ab\5\u00a6T\2\u02a9\u02ab\5\u00a4S\2\u02aa\u02a7\3\2\2\2\u02aa\u02a8"+
-		"\3\2\2\2\u02aa\u02a9\3\2\2\2\u02ab\u00a1\3\2\2\2\u02ac\u02ad\7A\2\2\u02ad"+
-		"\u00a3\3\2\2\2\u02ae\u02af\7B\2\2\u02af\u00a5\3\2\2\2\u02b0\u02b1\7@\2"+
-		"\2\u02b1\u00a7\3\2\2\2\u02b2\u02b3\7\67\2\2\u02b3\u00a9\3\2\2\2\u02b4"+
-		"\u02b7\5\u00aeX\2\u02b5\u02b7\5\u00acW\2\u02b6\u02b4\3\2\2\2\u02b6\u02b5"+
-		"\3\2\2\2\u02b7\u00ab\3\2\2\2\u02b8\u02b9\7\27\2\2\u02b9\u02ba\5\u00b0"+
-		"Y\2\u02ba\u00ad\3\2\2\2\u02bb\u02bc\7\27\2\2\u02bc\u02bd\7\27\2\2\u02bd"+
-		"\u02be\5\u00b0Y\2\u02be\u00af\3\2\2\2\u02bf\u02c2\5\u00b4[\2\u02c0\u02c2"+
-		"\5\u00b2Z\2\u02c1\u02bf\3\2\2\2\u02c1\u02c0\3\2\2\2\u02c2\u00b1\3\2\2"+
-		"\2\u02c3\u02c4\7D\2\2\u02c4\u00b3\3\2\2\2\u02c5\u02c6\7E\2\2\u02c6\u00b5"+
-		"\3\2\2\2#\u00bc\u00c4\u00e9\u00f7\u00fb\u010d\u0121\u0152\u0156\u015c"+
-		"\u016f\u0173\u017c\u0180\u0186\u0199\u019d\u01ba\u01f2\u01f6\u01fa\u0212"+
-		"\u0221\u022d\u0236\u024a\u0267\u0283\u028d\u02a5\u02aa\u02b6\u02c1";
+		"\4U\tU\4V\tV\3\2\3\2\3\3\3\3\3\3\3\3\5\3\u00b3\n\3\3\4\3\4\3\5\3\5\3\5"+
+		"\3\5\5\5\u00bb\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
+		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\5\6\u00e0\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\3\7\5\7\u00ee\n\7\3\b\3\b\5\b\u00f2\n\b\3\t\3\t\3\n\3\n\3\n\3\n"+
+		"\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\7\f\u0102\n\f\f\f\16\f\u0105\13\f"+
+		"\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16"+
+		"\3\16\3\16\5\16\u0118\n\16\3\17\3\17\3\17\3\17\3\17\3\20\3\20\3\20\3\20"+
+		"\3\20\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23"+
+		"\3\23\3\23\3\24\3\24\3\24\3\24\3\24\3\25\3\25\3\25\3\25\3\25\3\26\3\26"+
+		"\3\26\3\26\3\26\3\27\3\27\3\27\3\27\3\27\3\30\3\30\5\30\u0149\n\30\3\31"+
+		"\3\31\5\31\u014d\n\31\3\32\3\32\3\32\3\32\5\32\u0153\n\32\3\33\3\33\3"+
+		"\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3"+
+		"\33\5\33\u0166\n\33\3\34\3\34\5\34\u016a\n\34\3\35\3\35\3\35\3\35\3\35"+
+		"\3\35\3\35\5\35\u0173\n\35\3\36\3\36\5\36\u0177\n\36\3\37\3\37\3\37\3"+
+		"\37\5\37\u017d\n\37\3 \3 \3 \3 \3 \3 \3 \3 \3 \3 \3 \3 \3 \3 \3 \6 \u018e"+
+		"\n \r \16 \u018f\3 \3 \5 \u0194\n \3!\3!\3!\3!\3!\3!\3!\3\"\3\"\3\"\3"+
+		"\"\3\"\3#\3#\3#\3#\3#\3#\3#\3#\3$\3$\3$\3$\3$\3%\3%\5%\u01b1\n%\3&\3&"+
+		"\3&\3&\3&\3&\3&\3\'\3\'\3\'\3\'\3\'\3(\3(\3(\3(\3(\3)\3)\3)\3)\3)\3*\3"+
+		"*\3*\3*\3*\3+\3+\3+\3+\3+\3,\3,\3,\3,\3,\3-\3-\3-\3-\3-\3.\3.\3.\3.\3"+
+		".\3/\3/\3/\3/\3/\3\60\3\60\5\60\u01e9\n\60\3\61\3\61\3\61\3\61\3\61\3"+
+		"\61\3\62\3\62\3\62\3\62\3\62\3\62\3\62\3\63\3\63\3\63\3\63\3\63\3\63\3"+
+		"\63\3\63\3\63\3\63\3\63\3\63\5\63\u0204\n\63\3\64\3\64\3\64\3\64\3\64"+
+		"\3\64\3\65\3\65\3\65\3\65\3\65\3\66\3\66\3\66\3\66\3\66\3\66\3\66\3\66"+
+		"\3\66\3\66\5\66\u021b\n\66\3\67\3\67\3\67\3\67\3\67\3\67\38\38\38\38\3"+
+		"8\38\39\39\39\39\39\39\3:\3:\3:\3:\3:\3:\3:\5:\u0236\n:\3;\3;\3;\3;\3"+
+		";\3;\3;\3;\3<\3<\3<\3<\3<\3<\3<\3<\3<\3<\3<\3<\3<\3<\3<\5<\u024f\n<\3"+
+		"=\3=\3=\3>\3>\3>\3?\3?\3?\3@\3@\3@\3A\3A\3A\3A\3B\3B\3B\3C\3C\3C\3D\3"+
+		"D\7D\u0269\nD\fD\16D\u026c\13D\3D\3D\3E\3E\3E\3E\3E\5E\u0275\nE\3F\3F"+
+		"\3F\3G\3G\3G\3G\3H\3H\3H\3I\3I\3I\3I\3J\3J\3J\3K\3K\3K\3K\3K\5K\u028d"+
+		"\nK\3L\3L\3L\5L\u0292\nL\3M\3M\3N\3N\3O\3O\3P\3P\3Q\3Q\5Q\u029e\nQ\3R"+
+		"\3R\3R\3S\3S\3S\3S\3T\3T\5T\u02a9\nT\3U\3U\3V\3V\3V\2\2W\2\4\6\b\n\f\16"+
+		"\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bd"+
+		"fhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a\u008c\u008e\u0090\u0092"+
+		"\u0094\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa"+
+		"\2\2\u02b5\2\u00ac\3\2\2\2\4\u00b2\3\2\2\2\6\u00b4\3\2\2\2\b\u00ba\3\2"+
+		"\2\2\n\u00df\3\2\2\2\f\u00ed\3\2\2\2\16\u00f1\3\2\2\2\20\u00f3\3\2\2\2"+
+		"\22\u00f5\3\2\2\2\24\u00f9\3\2\2\2\26\u00fd\3\2\2\2\30\u0108\3\2\2\2\32"+
+		"\u0117\3\2\2\2\34\u0119\3\2\2\2\36\u011e\3\2\2\2 \u0123\3\2\2\2\"\u0128"+
+		"\3\2\2\2$\u012d\3\2\2\2&\u0132\3\2\2\2(\u0137\3\2\2\2*\u013c\3\2\2\2,"+
+		"\u0141\3\2\2\2.\u0148\3\2\2\2\60\u014c\3\2\2\2\62\u0152\3\2\2\2\64\u0165"+
+		"\3\2\2\2\66\u0169\3\2\2\28\u0172\3\2\2\2:\u0176\3\2\2\2<\u017c\3\2\2\2"+
+		">\u0193\3\2\2\2@\u0195\3\2\2\2B\u019c\3\2\2\2D\u01a1\3\2\2\2F\u01a9\3"+
+		"\2\2\2H\u01b0\3\2\2\2J\u01b2\3\2\2\2L\u01b9\3\2\2\2N\u01be\3\2\2\2P\u01c3"+
+		"\3\2\2\2R\u01c8\3\2\2\2T\u01cd\3\2\2\2V\u01d2\3\2\2\2X\u01d7\3\2\2\2Z"+
+		"\u01dc\3\2\2\2\\\u01e1\3\2\2\2^\u01e8\3\2\2\2`\u01ea\3\2\2\2b\u01f0\3"+
+		"\2\2\2d\u0203\3\2\2\2f\u0205\3\2\2\2h\u020b\3\2\2\2j\u021a\3\2\2\2l\u021c"+
+		"\3\2\2\2n\u0222\3\2\2\2p\u0228\3\2\2\2r\u0235\3\2\2\2t\u0237\3\2\2\2v"+
+		"\u024e\3\2\2\2x\u0250\3\2\2\2z\u0253\3\2\2\2|\u0256\3\2\2\2~\u0259\3\2"+
+		"\2\2\u0080\u025c\3\2\2\2\u0082\u0260\3\2\2\2\u0084\u0263\3\2\2\2\u0086"+
+		"\u0266\3\2\2\2\u0088\u026f\3\2\2\2\u008a\u0276\3\2\2\2\u008c\u0279\3\2"+
+		"\2\2\u008e\u027d\3\2\2\2\u0090\u0280\3\2\2\2\u0092\u0284\3\2\2\2\u0094"+
+		"\u028c\3\2\2\2\u0096\u0291\3\2\2\2\u0098\u0293\3\2\2\2\u009a\u0295\3\2"+
+		"\2\2\u009c\u0297\3\2\2\2\u009e\u0299\3\2\2\2\u00a0\u029d\3\2\2\2\u00a2"+
+		"\u029f\3\2\2\2\u00a4\u02a2\3\2\2\2\u00a6\u02a8\3\2\2\2\u00a8\u02aa\3\2"+
+		"\2\2\u00aa\u02ac\3\2\2\2\u00ac\u00ad\5\4\3\2\u00ad\3\3\2\2\2\u00ae\u00af"+
+		"\5\6\4\2\u00af\u00b0\5\4\3\2\u00b0\u00b3\3\2\2\2\u00b1\u00b3\5\n\6\2\u00b2"+
+		"\u00ae\3\2\2\2\u00b2\u00b1\3\2\2\2\u00b3\5\3\2\2\2\u00b4\u00b5\5\n\6\2"+
+		"\u00b5\7\3\2\2\2\u00b6\u00b7\5\n\6\2\u00b7\u00b8\5\b\5\2\u00b8\u00bb\3"+
+		"\2\2\2\u00b9\u00bb\5\n\6\2\u00ba\u00b6\3\2\2\2\u00ba\u00b9\3\2\2\2\u00bb"+
+		"\t\3\2\2\2\u00bc\u00e0\5\f\7\2\u00bd\u00e0\5\32\16\2\u00be\u00e0\5> \2"+
+		"\u00bf\u00e0\5\34\17\2\u00c0\u00e0\5\36\20\2\u00c1\u00e0\5 \21\2\u00c2"+
+		"\u00e0\5\"\22\2\u00c3\u00e0\5$\23\2\u00c4\u00e0\5&\24\2\u00c5\u00e0\5"+
+		"(\25\2\u00c6\u00e0\5*\26\2\u00c7\u00e0\5,\27\2\u00c8\u00e0\5D#\2\u00c9"+
+		"\u00e0\5J&\2\u00ca\u00e0\5N(\2\u00cb\u00e0\5P)\2\u00cc\u00e0\5R*\2\u00cd"+
+		"\u00e0\5T+\2\u00ce\u00e0\5V,\2\u00cf\u00e0\5X-\2\u00d0\u00e0\5L\'\2\u00d1"+
+		"\u00e0\5Z.\2\u00d2\u00e0\5\\/\2\u00d3\u00e0\5`\61\2\u00d4\u00e0\5d\63"+
+		"\2\u00d5\u00e0\5f\64\2\u00d6\u00e0\5b\62\2\u00d7\u00e0\5h\65\2\u00d8\u00e0"+
+		"\5t;\2\u00d9\u00e0\5l\67\2\u00da\u00e0\5n8\2\u00db\u00e0\5p9\2\u00dc\u00e0"+
+		"\5B\"\2\u00dd\u00e0\5F$\2\u00de\u00e0\5v<\2\u00df\u00bc\3\2\2\2\u00df"+
+		"\u00bd\3\2\2\2\u00df\u00be\3\2\2\2\u00df\u00bf\3\2\2\2\u00df\u00c0\3\2"+
+		"\2\2\u00df\u00c1\3\2\2\2\u00df\u00c2\3\2\2\2\u00df\u00c3\3\2\2\2\u00df"+
+		"\u00c4\3\2\2\2\u00df\u00c5\3\2\2\2\u00df\u00c6\3\2\2\2\u00df\u00c7\3\2"+
+		"\2\2\u00df\u00c8\3\2\2\2\u00df\u00c9\3\2\2\2\u00df\u00ca\3\2\2\2\u00df"+
+		"\u00cb\3\2\2\2\u00df\u00cc\3\2\2\2\u00df\u00cd\3\2\2\2\u00df\u00ce\3\2"+
+		"\2\2\u00df\u00cf\3\2\2\2\u00df\u00d0\3\2\2\2\u00df\u00d1\3\2\2\2\u00df"+
+		"\u00d2\3\2\2\2\u00df\u00d3\3\2\2\2\u00df\u00d4\3\2\2\2\u00df\u00d5\3\2"+
+		"\2\2\u00df\u00d6\3\2\2\2\u00df\u00d7\3\2\2\2\u00df\u00d8\3\2\2\2\u00df"+
+		"\u00d9\3\2\2\2\u00df\u00da\3\2\2\2\u00df\u00db\3\2\2\2\u00df\u00dc\3\2"+
+		"\2\2\u00df\u00dd\3\2\2\2\u00df\u00de\3\2\2\2\u00e0\13\3\2\2\2\u00e1\u00ee"+
+		"\7\65\2\2\u00e2\u00ee\5\u0094K\2\u00e3\u00ee\5\u0096L\2\u00e4\u00ee\5"+
+		"\u009eP\2\u00e5\u00ee\7C\2\2\u00e6\u00ee\5\u00a0Q\2\u00e7\u00ee\5\u00a6"+
+		"T\2\u00e8\u00ee\7F\2\2\u00e9\u00ee\5\22\n\2\u00ea\u00ee\5\24\13\2\u00eb"+
+		"\u00ee\5\26\f\2\u00ec\u00ee\5\30\r\2\u00ed\u00e1\3\2\2\2\u00ed\u00e2\3"+
+		"\2\2\2\u00ed\u00e3\3\2\2\2\u00ed\u00e4\3\2\2\2\u00ed\u00e5\3\2\2\2\u00ed"+
+		"\u00e6\3\2\2\2\u00ed\u00e7\3\2\2\2\u00ed\u00e8\3\2\2\2\u00ed\u00e9\3\2"+
+		"\2\2\u00ed\u00ea\3\2\2\2\u00ed\u00eb\3\2\2\2\u00ed\u00ec\3\2\2\2\u00ee"+
+		"\r\3\2\2\2\u00ef\u00f2\5\b\5\2\u00f0\u00f2\3\2\2\2\u00f1\u00ef\3\2\2\2"+
+		"\u00f1\u00f0\3\2\2\2\u00f2\17\3\2\2\2\u00f3\u00f4\5\16\b\2\u00f4\21\3"+
+		"\2\2\2\u00f5\u00f6\7\3\2\2\u00f6\u00f7\5\16\b\2\u00f7\u00f8\7\4\2\2\u00f8"+
+		"\23\3\2\2\2\u00f9\u00fa\7\5\2\2\u00fa\u00fb\5\16\b\2\u00fb\u00fc\7\6\2"+
+		"\2\u00fc\25\3\2\2\2\u00fd\u0103\7\7\2\2\u00fe\u00ff\5\n\6\2\u00ff\u0100"+
+		"\5\n\6\2\u0100\u0102\3\2\2\2\u0101\u00fe\3\2\2\2\u0102\u0105\3\2\2\2\u0103"+
+		"\u0101\3\2\2\2\u0103\u0104\3\2\2\2\u0104\u0106\3\2\2\2\u0105\u0103\3\2"+
+		"\2\2\u0106\u0107\7\b\2\2\u0107\27\3\2\2\2\u0108\u0109\7\t\2\2\u0109\u010a"+
+		"\5\16\b\2\u010a\u010b\7\b\2\2\u010b\31\3\2\2\2\u010c\u010d\7\n\2\2\u010d"+
+		"\u010e\7\30\2\2\u010e\u010f\5\u00a6T\2\u010f\u0110\7\4\2\2\u0110\u0118"+
+		"\3\2\2\2\u0111\u0112\7\n\2\2\u0112\u0113\7\30\2\2\u0113\u0114\5\u00a6"+
+		"T\2\u0114\u0115\5\n\6\2\u0115\u0116\7\4\2\2\u0116\u0118\3\2\2\2\u0117"+
+		"\u010c\3\2\2\2\u0117\u0111\3\2\2\2\u0118\33\3\2\2\2\u0119\u011a\7\n\2"+
+		"\2\u011a\u011b\7\32\2\2\u011b\u011c\5\16\b\2\u011c\u011d\7\4\2\2\u011d"+
+		"\35\3\2\2\2\u011e\u011f\7\n\2\2\u011f\u0120\7\33\2\2\u0120\u0121\5\16"+
+		"\b\2\u0121\u0122\7\4\2\2\u0122\37\3\2\2\2\u0123\u0124\7\n\2\2\u0124\u0125"+
+		"\7\34\2\2\u0125\u0126\5\16\b\2\u0126\u0127\7\4\2\2\u0127!\3\2\2\2\u0128"+
+		"\u0129\7\n\2\2\u0129\u012a\7\35\2\2\u012a\u012b\5\16\b\2\u012b\u012c\7"+
+		"\4\2\2\u012c#\3\2\2\2\u012d\u012e\7\n\2\2\u012e\u012f\7\36\2\2\u012f\u0130"+
+		"\5\16\b\2\u0130\u0131\7\4\2\2\u0131%\3\2\2\2\u0132\u0133\7\n\2\2\u0133"+
+		"\u0134\7\37\2\2\u0134\u0135\5\16\b\2\u0135\u0136\7\4\2\2\u0136\'\3\2\2"+
+		"\2\u0137\u0138\7\n\2\2\u0138\u0139\7 \2\2\u0139\u013a\5\16\b\2\u013a\u013b"+
+		"\7\4\2\2\u013b)\3\2\2\2\u013c\u013d\7\n\2\2\u013d\u013e\7!\2\2\u013e\u013f"+
+		"\5\16\b\2\u013f\u0140\7\4\2\2\u0140+\3\2\2\2\u0141\u0142\7\n\2\2\u0142"+
+		"\u0143\7\"\2\2\u0143\u0144\5\16\b\2\u0144\u0145\7\4\2\2\u0145-\3\2\2\2"+
+		"\u0146\u0149\7\65\2\2\u0147\u0149\3\2\2\2\u0148\u0146\3\2\2\2\u0148\u0147"+
+		"\3\2\2\2\u0149/\3\2\2\2\u014a\u014d\5\64\33\2\u014b\u014d\3\2\2\2\u014c"+
+		"\u014a\3\2\2\2\u014c\u014b\3\2\2\2\u014d\61\3\2\2\2\u014e\u014f\5\u00a6"+
+		"T\2\u014f\u0150\5\62\32\2\u0150\u0153\3\2\2\2\u0151\u0153\3\2\2\2\u0152"+
+		"\u014e\3\2\2\2\u0152\u0151\3\2\2\2\u0153\63\3\2\2\2\u0154\u0155\5\u00a6"+
+		"T\2\u0155\u0156\5\64\33\2\u0156\u0166\3\2\2\2\u0157\u0166\5\u00a6T\2\u0158"+
+		"\u0159\7\66\2\2\u0159\u0166\5\u00a6T\2\u015a\u015b\7\5\2\2\u015b\u015c"+
+		"\5\u00a6T\2\u015c\u015d\5\62\32\2\u015d\u015e\7\6\2\2\u015e\u015f\5\64"+
+		"\33\2\u015f\u0166\3\2\2\2\u0160\u0161\7\5\2\2\u0161\u0162\5\u00a6T\2\u0162"+
+		"\u0163\5\62\32\2\u0163\u0164\7\6\2\2\u0164\u0166\3\2\2\2\u0165\u0154\3"+
+		"\2\2\2\u0165\u0157\3\2\2\2\u0165\u0158\3\2\2\2\u0165\u015a\3\2\2\2\u0165"+
+		"\u0160\3\2\2\2\u0166\65\3\2\2\2\u0167\u016a\58\35\2\u0168\u016a\3\2\2"+
+		"\2\u0169\u0167\3\2\2\2\u0169\u0168\3\2\2\2\u016a\67\3\2\2\2\u016b\u016c"+
+		"\5\u00a6T\2\u016c\u016d\5\n\6\2\u016d\u016e\58\35\2\u016e\u0173\3\2\2"+
+		"\2\u016f\u0170\5\u00a6T\2\u0170\u0171\5\n\6\2\u0171\u0173\3\2\2\2\u0172"+
+		"\u016b\3\2\2\2\u0172\u016f\3\2\2\2\u01739\3\2\2\2\u0174\u0177\5<\37\2"+
+		"\u0175\u0177\3\2\2\2\u0176\u0174\3\2\2\2\u0176\u0175\3\2\2\2\u0177;\3"+
+		"\2\2\2\u0178\u0179\5\n\6\2\u0179\u017a\5<\37\2\u017a\u017d\3\2\2\2\u017b"+
+		"\u017d\5\n\6\2\u017c\u0178\3\2\2\2\u017c\u017b\3\2\2\2\u017d=\3\2\2\2"+
+		"\u017e\u017f\7\n\2\2\u017f\u0180\7\31\2\2\u0180\u0181\5\u00a6T\2\u0181"+
+		"\u0182\5.\30\2\u0182\u0183\7\5\2\2\u0183\u0184\5\60\31\2\u0184\u0185\7"+
+		"\6\2\2\u0185\u0186\5\20\t\2\u0186\u0187\7\4\2\2\u0187\u0194\3\2\2\2\u0188"+
+		"\u0189\7\n\2\2\u0189\u018a\7\31\2\2\u018a\u018b\5\u00a6T\2\u018b\u018d"+
+		"\5.\30\2\u018c\u018e\5@!\2\u018d\u018c\3\2\2\2\u018e\u018f\3\2\2\2\u018f"+
+		"\u018d\3\2\2\2\u018f\u0190\3\2\2\2\u0190\u0191\3\2\2\2\u0191\u0192\7\4"+
+		"\2\2\u0192\u0194\3\2\2\2\u0193\u017e\3\2\2\2\u0193\u0188\3\2\2\2\u0194"+
+		"?\3\2\2\2\u0195\u0196\7\n\2\2\u0196\u0197\7\5\2\2\u0197\u0198\5\60\31"+
+		"\2\u0198\u0199\7\6\2\2\u0199\u019a\5\16\b\2\u019a\u019b\7\4\2\2\u019b"+
+		"A\3\2\2\2\u019c\u019d\7\n\2\2\u019d\u019e\5\u00a6T\2\u019e\u019f\5:\36"+
+		"\2\u019f\u01a0\7\4\2\2\u01a0C\3\2\2\2\u01a1\u01a2\7\n\2\2\u01a2\u01a3"+
+		"\7#\2\2\u01a3\u01a4\7\5\2\2\u01a4\u01a5\5\66\34\2\u01a5\u01a6\7\6\2\2"+
+		"\u01a6\u01a7\5\16\b\2\u01a7\u01a8\7\4\2\2\u01a8E\3\2\2\2\u01a9\u01aa\7"+
+		"\n\2\2\u01aa\u01ab\7$\2\2\u01ab\u01ac\5:\36\2\u01ac\u01ad\7\4\2\2\u01ad"+
+		"G\3\2\2\2\u01ae\u01b1\5\n\6\2\u01af\u01b1\3\2\2\2\u01b0\u01ae\3\2\2\2"+
+		"\u01b0\u01af\3\2\2\2\u01b1I\3\2\2\2\u01b2\u01b3\7\n\2\2\u01b3\u01b4\7"+
+		"%\2\2\u01b4\u01b5\5\n\6\2\u01b5\u01b6\5\n\6\2\u01b6\u01b7\5H%\2\u01b7"+
+		"\u01b8\7\4\2\2\u01b8K\3\2\2\2\u01b9\u01ba\7\n\2\2\u01ba\u01bb\7,\2\2\u01bb"+
+		"\u01bc\5\16\b\2\u01bc\u01bd\7\4\2\2\u01bdM\3\2\2\2\u01be\u01bf\7\n\2\2"+
+		"\u01bf\u01c0\7\'\2\2\u01c0\u01c1\5\16\b\2\u01c1\u01c2\7\4\2\2\u01c2O\3"+
+		"\2\2\2\u01c3\u01c4\7\n\2\2\u01c4\u01c5\7(\2\2\u01c5\u01c6\5\16\b\2\u01c6"+
+		"\u01c7\7\4\2\2\u01c7Q\3\2\2\2\u01c8\u01c9\7\n\2\2\u01c9\u01ca\7)\2\2\u01ca"+
+		"\u01cb\5\16\b\2\u01cb\u01cc\7\4\2\2\u01ccS\3\2\2\2\u01cd\u01ce\7\n\2\2"+
+		"\u01ce\u01cf\7*\2\2\u01cf\u01d0\5\16\b\2\u01d0\u01d1\7\4\2\2\u01d1U\3"+
+		"\2\2\2\u01d2\u01d3\7\n\2\2\u01d3\u01d4\7+\2\2\u01d4\u01d5\5\16\b\2\u01d5"+
+		"\u01d6\7\4\2\2\u01d6W\3\2\2\2\u01d7\u01d8\7\n\2\2\u01d8\u01d9\7&\2\2\u01d9"+
+		"\u01da\5\n\6\2\u01da\u01db\7\4\2\2\u01dbY\3\2\2\2\u01dc\u01dd\7\n\2\2"+
+		"\u01dd\u01de\7-\2\2\u01de\u01df\5\16\b\2\u01df\u01e0\7\4\2\2\u01e0[\3"+
+		"\2\2\2\u01e1\u01e2\7\n\2\2\u01e2\u01e3\7.\2\2\u01e3\u01e4\5\n\6\2\u01e4"+
+		"\u01e5\7\4\2\2\u01e5]\3\2\2\2\u01e6\u01e9\5\n\6\2\u01e7\u01e9\3\2\2\2"+
+		"\u01e8\u01e6\3\2\2\2\u01e8\u01e7\3\2\2\2\u01e9_\3\2\2\2\u01ea\u01eb\7"+
+		"\n\2\2\u01eb\u01ec\7/\2\2\u01ec\u01ed\5\n\6\2\u01ed\u01ee\5\n\6\2\u01ee"+
+		"\u01ef\7\4\2\2\u01efa\3\2\2\2\u01f0\u01f1\7\n\2\2\u01f1\u01f2\7\60\2\2"+
+		"\u01f2\u01f3\5\n\6\2\u01f3\u01f4\5\n\6\2\u01f4\u01f5\5^\60\2\u01f5\u01f6"+
+		"\7\4\2\2\u01f6c\3\2\2\2\u01f7\u01f8\7\n\2\2\u01f8\u01f9\7\61\2\2\u01f9"+
+		"\u01fa\5\30\r\2\u01fa\u01fb\5\n\6\2\u01fb\u01fc\7\4\2\2\u01fc\u0204\3"+
+		"\2\2\2\u01fd\u01fe\7\n\2\2\u01fe\u01ff\7\61\2\2\u01ff\u0200\5\24\13\2"+
+		"\u0200\u0201\5\n\6\2\u0201\u0202\7\4\2\2\u0202\u0204\3\2\2\2\u0203\u01f7"+
+		"\3\2\2\2\u0203\u01fd\3\2\2\2\u0204e\3\2\2\2\u0205\u0206\7\n\2\2\u0206"+
+		"\u0207\7\62\2\2\u0207\u0208\5\n\6\2\u0208\u0209\5\n\6\2\u0209\u020a\7"+
+		"\4\2\2\u020ag\3\2\2\2\u020b\u020c\7\n\2\2\u020c\u020d\7\63\2\2\u020d\u020e"+
+		"\5\n\6\2\u020e\u020f\7\4\2\2\u020fi\3\2\2\2\u0210\u0211\7\n\2\2\u0211"+
+		"\u0212\5\u00a0Q\2\u0212\u0213\5\n\6\2\u0213\u0214\7\4\2\2\u0214\u021b"+
+		"\3\2\2\2\u0215\u0216\7\n\2\2\u0216\u0217\5\n\6\2\u0217\u0218\5\u00a0Q"+
+		"\2\u0218\u0219\7\4\2\2\u0219\u021b\3\2\2\2\u021a\u0210\3\2\2\2\u021a\u0215"+
+		"\3\2\2\2\u021bk\3\2\2\2\u021c\u021d\7\n\2\2\u021d\u021e\7\64\2\2\u021e"+
+		"\u021f\5\n\6\2\u021f\u0220\5\n\6\2\u0220\u0221\7\4\2\2\u0221m\3\2\2\2"+
+		"\u0222\u0223\7\n\2\2\u0223\u0224\79\2\2\u0224\u0225\7>\2\2\u0225\u0226"+
+		"\5\n\6\2\u0226\u0227\7\4\2\2\u0227o\3\2\2\2\u0228\u0229\7\n\2\2\u0229"+
+		"\u022a\7:\2\2\u022a\u022b\5\n\6\2\u022b\u022c\5\n\6\2\u022c\u022d\7\4"+
+		"\2\2\u022dq\3\2\2\2\u022e\u022f\5\u00a6T\2\u022f\u0230\5\n\6\2\u0230\u0231"+
+		"\5r:\2\u0231\u0236\3\2\2\2\u0232\u0233\5\u00a6T\2\u0233\u0234\5\n\6\2"+
+		"\u0234\u0236\3\2\2\2\u0235\u022e\3\2\2\2\u0235\u0232\3\2\2\2\u0236s\3"+
+		"\2\2\2\u0237\u0238\7\n\2\2\u0238\u0239\78\2\2\u0239\u023a\7\5\2\2\u023a"+
+		"\u023b\5r:\2\u023b\u023c\7\6\2\2\u023c\u023d\5\16\b\2\u023d\u023e\7\4"+
+		"\2\2\u023eu\3\2\2\2\u023f\u024f\5\u0086D\2\u0240\u024f\5\u0088E\2\u0241"+
+		"\u024f\5\u0092J\2\u0242\u024f\5\u008aF\2\u0243\u024f\5\u008cG\2\u0244"+
+		"\u024f\5\30\r\2\u0245\u024f\5\u0080A\2\u0246\u024f\5\u008eH\2\u0247\u024f"+
+		"\5\u0090I\2\u0248\u024f\5\u0082B\2\u0249\u024f\5x=\2\u024a\u024f\5z>\2"+
+		"\u024b\u024f\5|?\2\u024c\u024f\5~@\2\u024d\u024f\5\u0084C\2\u024e\u023f"+
+		"\3\2\2\2\u024e\u0240\3\2\2\2\u024e\u0241\3\2\2\2\u024e\u0242\3\2\2\2\u024e"+
+		"\u0243\3\2\2\2\u024e\u0244\3\2\2\2\u024e\u0245\3\2\2\2\u024e\u0246\3\2"+
+		"\2\2\u024e\u0247\3\2\2\2\u024e\u0248\3\2\2\2\u024e\u0249\3\2\2\2\u024e"+
+		"\u024a\3\2\2\2\u024e\u024b\3\2\2\2\u024e\u024c\3\2\2\2\u024e\u024d\3\2"+
+		"\2\2\u024fw\3\2\2\2\u0250\u0251\7\13\2\2\u0251\u0252\5\n\6\2\u0252y\3"+
+		"\2\2\2\u0253\u0254\7\f\2\2\u0254\u0255\5\n\6\2\u0255{\3\2\2\2\u0256\u0257"+
+		"\7\r\2\2\u0257\u0258\5\n\6\2\u0258}\3\2\2\2\u0259\u025a\7\16\2\2\u025a"+
+		"\u025b\5\n\6\2\u025b\177\3\2\2\2\u025c\u025d\7\17\2\2\u025d\u025e\5\n"+
+		"\6\2\u025e\u025f\5\n\6\2\u025f\u0081\3\2\2\2\u0260\u0261\7\20\2\2\u0261"+
+		"\u0262\5\n\6\2\u0262\u0083\3\2\2\2\u0263\u0264\7D\2\2\u0264\u0265\7\21"+
+		"\2\2\u0265\u0085\3\2\2\2\u0266\u026a\7\22\2\2\u0267\u0269\5\n\6\2\u0268"+
+		"\u0267\3\2\2\2\u0269\u026c\3\2\2\2\u026a\u0268\3\2\2\2\u026a\u026b\3\2"+
+		"\2\2\u026b\u026d\3\2\2\2\u026c\u026a\3\2\2\2\u026d\u026e\7\4\2\2\u026e"+
+		"\u0087\3\2\2\2\u026f\u0274\7\23\2\2\u0270\u0271\5\26\f\2\u0271\u0272\5"+
+		"\n\6\2\u0272\u0275\3\2\2\2\u0273\u0275\5\n\6\2\u0274\u0270\3\2\2\2\u0274"+
+		"\u0273\3\2\2\2\u0275\u0089\3\2\2\2\u0276\u0277\7\24\2\2\u0277\u0278\5"+
+		"\u00a6T\2\u0278\u008b\3\2\2\2\u0279\u027a\7\25\2\2\u027a\u027b\5\n\6\2"+
+		"\u027b\u027c\5\n\6\2\u027c\u008d\3\2\2\2\u027d\u027e\7\26\2\2\u027e\u027f"+
+		"\5\n\6\2\u027f\u008f\3\2\2\2\u0280\u0281\7\21\2\2\u0281\u0282\5\u00a6"+
+		"T\2\u0282\u0283\5\n\6\2\u0283\u0091\3\2\2\2\u0284\u0285\7\21\2\2\u0285"+
+		"\u0286\7\65\2\2\u0286\u0093\3\2\2\2\u0287\u028d\7;\2\2\u0288\u028d\7<"+
+		"\2\2\u0289\u028d\7=\2\2\u028a\u028d\7?\2\2\u028b\u028d\7>\2\2\u028c\u0287"+
+		"\3\2\2\2\u028c\u0288\3\2\2\2\u028c\u0289\3\2\2\2\u028c\u028a\3\2\2\2\u028c"+
+		"\u028b\3\2\2\2\u028d\u0095\3\2\2\2\u028e\u0292\5\u0098M\2\u028f\u0292"+
+		"\5\u009cO\2\u0290\u0292\5\u009aN\2\u0291\u028e\3\2\2\2\u0291\u028f\3\2"+
+		"\2\2\u0291\u0290\3\2\2\2\u0292\u0097\3\2\2\2\u0293\u0294\7A\2\2\u0294"+
+		"\u0099\3\2\2\2\u0295\u0296\7B\2\2\u0296\u009b\3\2\2\2\u0297\u0298\7@\2"+
+		"\2\u0298\u009d\3\2\2\2\u0299\u029a\7\67\2\2\u029a\u009f\3\2\2\2\u029b"+
+		"\u029e\5\u00a4S\2\u029c\u029e\5\u00a2R\2\u029d\u029b\3\2\2\2\u029d\u029c"+
+		"\3\2\2\2\u029e\u00a1\3\2\2\2\u029f\u02a0\7\27\2\2\u02a0\u02a1\5\u00a6"+
+		"T\2\u02a1\u00a3\3\2\2\2\u02a2\u02a3\7\27\2\2\u02a3\u02a4\7\27\2\2\u02a4"+
+		"\u02a5\5\u00a6T\2\u02a5\u00a5\3\2\2\2\u02a6\u02a9\5\u00aaV\2\u02a7\u02a9"+
+		"\5\u00a8U\2\u02a8\u02a6\3\2\2\2\u02a8\u02a7\3\2\2\2\u02a9\u00a7\3\2\2"+
+		"\2\u02aa\u02ab\7D\2\2\u02ab\u00a9\3\2\2\2\u02ac\u02ad\7E\2\2\u02ad\u00ab"+
+		"\3\2\2\2\37\u00b2\u00ba\u00df\u00ed\u00f1\u0103\u0117\u0148\u014c\u0152"+
+		"\u0165\u0169\u0172\u0176\u017c\u018f\u0193\u01b0\u01e8\u0203\u021a\u0235"+
+		"\u024e\u026a\u0274\u028c\u0291\u029d\u02a8";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

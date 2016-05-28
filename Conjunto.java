@@ -28,6 +28,15 @@ public class Conjunto implements Data, VLS{
         return set.toString();
     }
 
+    public Boolean contains( Data element){
+
+        for (Data x:set){
+            if(x.equals(element))
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if(!(o instanceof Conjunto))

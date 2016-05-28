@@ -1,4 +1,4 @@
-// Generated from C:/Users/jccaleroe/Documents/Proyecto\Clojure.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Orlando S/Desktop/proyecto clojure/v1\Clojure.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -736,34 +736,6 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIsNil(ClojureParser.IsNilContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vlVector}
-	 * labeled alternative in {@link ClojureParser#vl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlVector(ClojureParser.VlVectorContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlList}
-	 * labeled alternative in {@link ClojureParser#vl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlList(ClojureParser.VlListContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vmVector}
-	 * labeled alternative in {@link ClojureParser#vm}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVmVector(ClojureParser.VmVectorContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vmMap}
-	 * labeled alternative in {@link ClojureParser#vm}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVmMap(ClojureParser.VmMapContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code defaultForm}
 	 * labeled alternative in {@link ClojureParser#defecto}.
 	 * @param ctx the parse tree
@@ -790,32 +762,19 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitGet(ClojureParser.GetContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#contains}.
+	 * Visit a parse tree produced by the {@code containsset}
+	 * labeled alternative in {@link ClojureParser#contains}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitContains(ClojureParser.ContainsContext ctx);
+	T visitContainsset(ClojureParser.ContainssetContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vlsVector}
-	 * labeled alternative in {@link ClojureParser#vls}.
+	 * Visit a parse tree produced by the {@code containsvector}
+	 * labeled alternative in {@link ClojureParser#contains}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVlsVector(ClojureParser.VlsVectorContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlsList}
-	 * labeled alternative in {@link ClojureParser#vls}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlsList(ClojureParser.VlsListContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlsSet}
-	 * labeled alternative in {@link ClojureParser#vls}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlsSet(ClojureParser.VlsSetContext ctx);
+	T visitContainsvector(ClojureParser.ContainsvectorContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ClojureParser#conj}.
 	 * @param ctx the parse tree
@@ -828,20 +787,6 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFirst(ClojureParser.FirstContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code msMap}
-	 * labeled alternative in {@link ClojureParser#ms}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMsMap(ClojureParser.MsMapContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code msSet}
-	 * labeled alternative in {@link ClojureParser#ms}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMsSet(ClojureParser.MsSetContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code firstKeywordGet}
 	 * labeled alternative in {@link ClojureParser#keywordGet}.
@@ -856,6 +801,24 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLastKeywordGet(ClojureParser.LastKeywordGetContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#functionMap}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionMap(ClojureParser.FunctionMapContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#take}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTake(ClojureParser.TakeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#reduce}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReduce(ClojureParser.ReduceContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code letParamsSymbolParams}
 	 * labeled alternative in {@link ClojureParser#letParams}.
@@ -876,52 +839,6 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLet(ClojureParser.LetContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ClojureParser#functionMap}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionMap(ClojureParser.FunctionMapContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlsmVector}
-	 * labeled alternative in {@link ClojureParser#vlsm}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlsmVector(ClojureParser.VlsmVectorContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlsmList}
-	 * labeled alternative in {@link ClojureParser#vlsm}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlsmList(ClojureParser.VlsmListContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlsmSet}
-	 * labeled alternative in {@link ClojureParser#vlsm}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlsmSet(ClojureParser.VlsmSetContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code vlsmMap}
-	 * labeled alternative in {@link ClojureParser#vlsm}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVlsmMap(ClojureParser.VlsmMapContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ClojureParser#take}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTake(ClojureParser.TakeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ClojureParser#reduce}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitReduce(ClojureParser.ReduceContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code rmLamda}
 	 * labeled alternative in {@link ClojureParser#reader_macro}.

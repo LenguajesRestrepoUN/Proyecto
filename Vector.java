@@ -23,6 +23,16 @@ public class Vector implements Data, VLS, VL {
         vector = ((LinkedList<Data>) (l));
     }
 
+
+    public Boolean contains( Data element){
+
+        for (Data x:vector){
+            if(x.equals(element))
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return vector.toString();

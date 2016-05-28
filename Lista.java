@@ -15,6 +15,11 @@ public class Lista implements Data, VLS, VL{
         lista.addFirst(data);
     }
 
+    @Override
+    public Boolean contains(Data element) {
+        return null;
+    }
+
     public Object getData(){      return lista;    }
 
     public void setData(Object l) {

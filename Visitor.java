@@ -324,6 +324,60 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return r;
     }
 
+    //contains:'(' CONTAINS vector form ')' #containsvector
+    @Override public Data visitContainsvector(ClojureParser.ContainsvectorContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion Contains");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        Data r = visit(ctx.form());
+        VLS c =  (VLS)(visit(ctx.vector()));
+
+        Booleano result = new Booleano(c.contains(r));
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(c);
+        return result;
+    }
+
+    //contains:'(' CONTAINS set form ')' #containsvector
+    @Override public Data visitContainsset(ClojureParser.ContainssetContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion Contains");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        Data r = visit(ctx.form());
+        VLS c =  (VLS)(visit(ctx.set()));
+
+        Booleano result = new Booleano(c.contains(r));
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(c);
+        return result;
+    }
+
     //conj: '(' CONJ form form ')'
     @Override public Data visitConj(ClojureParser.ConjContext ctx) {
         updateFrames();
@@ -333,9 +387,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         currentReclaimer = reclaimer;
         Data r = visit(ctx.form(1));
         VLS c =  (VLS)(visit(ctx.form(0)));
-        System.out.println(c.getClass().getName());
         if (( c.getClass().getName()).equals("Lista"))
-
             c.addDataLista(r);
         else
             c.addData(r);

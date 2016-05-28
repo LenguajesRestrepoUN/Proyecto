@@ -180,7 +180,10 @@ defecto: form   #defaultForm
 
 nth: '(' NTH form form')'; // ya, just vl
 get: '(' GET form form defecto')'; //just vm
-contains: '(' CONTAINS set form ')';
+contains: '(' CONTAINS set form ')'  #containsset //ya
+        | '(' CONTAINS vector form ')' #containsvector //ya
+        ;
+
 
 conj: '(' CONJ form form ')'; //ya, Just vls
 first: '(' FIRST form ')'; // just vl
