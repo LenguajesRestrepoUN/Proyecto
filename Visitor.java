@@ -1121,27 +1121,56 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     }
 
     //simple_sym: SYMBOL;
-    @Override public Data visitSimple_sym(ClojureParser.Simple_symContext ctx) { return visit(ctx.SYMBOL()); }
+    @Override public Data visitSimple_sym(ClojureParser.Simple_symContext ctx) {
+        String s = ctx.SYMBOL().getText();
+
+        Keyword keyword = new Keyword(s);
+        //if (currentReclaimer != null)
+        //   currentReclaimer.addArgument(keyword);
+        updateFrames();
+        block();
+        return keyword;
+    }
 
     //literal:keyword
     @Override public Data visitLiteralKeyword(ClojureParser.LiteralKeywordContext ctx) { return visit(ctx.keyword()); }
 
     //simple_keyword: ':' symbol;
     @Override public Data visitSimple_keyword(ClojureParser.Simple_keywordContext ctx) {
-        //System.out.println(visit(ctx.symbol())+"4");
-        return visit(ctx.symbol()); }
+        String s = ":" + ctx.symbol().getText();
+
+        Keyword keyword = new Keyword(s);
+        if (currentReclaimer != null)
+            currentReclaimer.addArgument(keyword);
+        updateFrames();
+        block();
+        return keyword;
+    }
 
     @Override public Data visitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) {
-        //System.out.println(visit(ctx.ns_symbol())+"3");
+
         return visit(ctx.ns_symbol()); }
 
     @Override public Data visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) {
-        //System.out.println(visit(ctx.simple_sym())+"2");
-        return visit(ctx.simple_sym()); }
+        String s = ctx.simple_sym().getText();
 
+        Keyword keyword = new Keyword(s);
+        //if (currentReclaimer != null)
+         //   currentReclaimer.addArgument(keyword);
+        updateFrames();
+        block();
+        return keyword;
+    }
     //keyword :simple_keyword
     @Override public Data visitKeywordSimple_keyword(ClojureParser.KeywordSimple_keywordContext ctx) {
-        //System.out.println(visit(ctx.simple_keyword())+"1");
-        return visit(ctx.simple_keyword()); }
+        String s = ctx.simple_keyword().getText();
+
+        Keyword keyword = new Keyword(s);
+        if (currentReclaimer != null)
+            currentReclaimer.addArgument(keyword);
+        updateFrames();
+        block();
+        return keyword;
+    }
 }
 
