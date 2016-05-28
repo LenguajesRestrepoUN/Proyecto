@@ -381,6 +381,37 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(data);
         return data;
     }
+    //vector: '[' forms ']'
+    @Override public Data visitVector(ClojureParser.VectorContext ctx) {
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("estructura vector");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visitChildren(ctx);
+
+        Vector vector = new Vector();
+
+        for(Data a: currentReclaimer.getArguments())
+            vector.addData(a);
+
+        updateFrames();
+        block();
+
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(vector);
+
+        return vector;
+    }
 
     //list: '\'(' forms ')'
     @Override public Data visitList(ClojureParser.ListContext ctx) {

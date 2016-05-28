@@ -70,7 +70,7 @@ forms: priorForm    #formsForm
 auxforms: forms;
 
 list: '\'(' forms ')' ; //ya
-vector: '[' forms ']' ;
+vector: '[' forms ']' ; //ya
 map: '{' (form form)* '}' ;
 set: '#{' forms '}' ; //ya
 
