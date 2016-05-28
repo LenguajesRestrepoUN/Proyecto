@@ -11,6 +11,7 @@ public class Lista implements Data, VLS, VL{
     public void addData(Data data){
         lista.addLast(data);
     }
+
     public void addDataLista(Data data){
         lista.addFirst(data);
     }

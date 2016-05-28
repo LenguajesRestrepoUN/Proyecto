@@ -1919,15 +1919,29 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitMacro_keyword(ClojureParser.Macro_keywordContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ClojureParser#symbol}.
+	 * Enter a parse tree produced by the {@code symbol_ns_symbol}
+	 * labeled alternative in {@link ClojureParser#symbol}.
 	 * @param ctx the parse tree
 	 */
-	void enterSymbol(ClojureParser.SymbolContext ctx);
+	void enterSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ClojureParser#symbol}.
+	 * Exit a parse tree produced by the {@code symbol_ns_symbol}
+	 * labeled alternative in {@link ClojureParser#symbol}.
 	 * @param ctx the parse tree
 	 */
-	void exitSymbol(ClojureParser.SymbolContext ctx);
+	void exitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_simple_sym}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_simple_sym}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ClojureParser#simple_sym}.
 	 * @param ctx the parse tree

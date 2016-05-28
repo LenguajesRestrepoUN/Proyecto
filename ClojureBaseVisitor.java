@@ -1199,7 +1199,14 @@ public class ClojureBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSymbol(ClojureParser.SymbolContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

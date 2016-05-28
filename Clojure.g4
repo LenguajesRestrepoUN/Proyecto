@@ -55,7 +55,7 @@ literal
     | character         #literalCharacter
     | nil               #literalNil
     | BOOLEAN           #literalBOOLEAN //ya
-    | keyword           #literalKeyword
+    | keyword           #literalKeyword //ya
     | symbol            #literalSymbol
     | PARAM_NAME        #literalParam_name
     | list              #literalList
@@ -283,11 +283,11 @@ keyword
 simple_keyword: ':' symbol;
 macro_keyword: ':' ':' symbol;
 
-symbol: ns_symbol //ya
-        | simple_sym
+symbol: ns_symbol #symbol_ns_symbol//ya
+        | simple_sym  #symbol_simple_sym//ya
         ;
 
-simple_sym: SYMBOL;
+simple_sym: SYMBOL;//ya
 ns_symbol: NS_SYMBOL;
 
 // Lexers

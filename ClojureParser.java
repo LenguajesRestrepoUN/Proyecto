@@ -7121,27 +7121,51 @@ public class ClojureParser extends Parser {
 	}
 
 	public static class SymbolContext extends ParserRuleContext {
-		public Ns_symbolContext ns_symbol() {
-			return getRuleContext(Ns_symbolContext.class,0);
-		}
-		public Simple_symContext simple_sym() {
-			return getRuleContext(Simple_symContext.class,0);
-		}
 		public SymbolContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_symbol; }
+	 
+		public SymbolContext() { }
+		public void copyFrom(SymbolContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Symbol_ns_symbolContext extends SymbolContext {
+		public Ns_symbolContext ns_symbol() {
+			return getRuleContext(Ns_symbolContext.class,0);
+		}
+		public Symbol_ns_symbolContext(SymbolContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterSymbol(this);
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterSymbol_ns_symbol(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitSymbol(this);
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitSymbol_ns_symbol(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitSymbol(this);
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitSymbol_ns_symbol(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class Symbol_simple_symContext extends SymbolContext {
+		public Simple_symContext simple_sym() {
+			return getRuleContext(Simple_symContext.class,0);
+		}
+		public Symbol_simple_symContext(SymbolContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).enterSymbol_simple_sym(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ClojureListener ) ((ClojureListener)listener).exitSymbol_simple_sym(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ClojureVisitor ) return ((ClojureVisitor<? extends T>)visitor).visitSymbol_simple_sym(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -7153,6 +7177,7 @@ public class ClojureParser extends Parser {
 			setState(678);
 			switch (_input.LA(1)) {
 			case NS_SYMBOL:
+				_localctx = new Symbol_ns_symbolContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(676);
@@ -7160,6 +7185,7 @@ public class ClojureParser extends Parser {
 				}
 				break;
 			case SYMBOL:
+				_localctx = new Symbol_simple_symContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(677);

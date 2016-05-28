@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Visitor extends ClojureBaseVisitor<Data>{
@@ -438,6 +439,40 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(data);
         return data;
     }
+
+    @Override public Data visitMap(ClojureParser.MapContext ctx) {
+
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("estructura Map");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visitChildren(ctx);
+
+        Mapa mapa = new Mapa();
+        ArrayList<Data> arguments =currentReclaimer.getArguments();
+
+        for(int i=0;i<arguments.size();i=i+2)
+            mapa.addDataMap(arguments.get(i),arguments.get(i+1));
+
+        updateFrames();
+        block();
+
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(mapa);
+
+        return mapa;
+    }
+
     //vector: '[' forms ']'
     @Override public Data visitVector(ClojureParser.VectorContext ctx) {
         updateFrames();
@@ -1084,5 +1119,29 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         //currentScope = currentScope.getEnclosingScope();
         return r;
     }
+
+    //simple_sym: SYMBOL;
+    @Override public Data visitSimple_sym(ClojureParser.Simple_symContext ctx) { return visit(ctx.SYMBOL()); }
+
+    //literal:keyword
+    @Override public Data visitLiteralKeyword(ClojureParser.LiteralKeywordContext ctx) { return visit(ctx.keyword()); }
+
+    //simple_keyword: ':' symbol;
+    @Override public Data visitSimple_keyword(ClojureParser.Simple_keywordContext ctx) {
+        //System.out.println(visit(ctx.symbol())+"4");
+        return visit(ctx.symbol()); }
+
+    @Override public Data visitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) {
+        //System.out.println(visit(ctx.ns_symbol())+"3");
+        return visit(ctx.ns_symbol()); }
+
+    @Override public Data visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) {
+        //System.out.println(visit(ctx.simple_sym())+"2");
+        return visit(ctx.simple_sym()); }
+
+    //keyword :simple_keyword
+    @Override public Data visitKeywordSimple_keyword(ClojureParser.KeywordSimple_keywordContext ctx) {
+        //System.out.println(visit(ctx.simple_keyword())+"1");
+        return visit(ctx.simple_keyword()); }
 }
 

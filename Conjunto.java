@@ -11,6 +11,7 @@ public class Conjunto implements Data, VLS{
     public void addData(Data data){
         set.add(data);
     }
+
     public void addDataLista(Data data){
         set.add(data);
     }

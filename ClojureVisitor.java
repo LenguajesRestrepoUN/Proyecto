@@ -1135,11 +1135,19 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMacro_keyword(ClojureParser.Macro_keywordContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ClojureParser#symbol}.
+	 * Visit a parse tree produced by the {@code symbol_ns_symbol}
+	 * labeled alternative in {@link ClojureParser#symbol}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSymbol(ClojureParser.SymbolContext ctx);
+	T visitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_simple_sym}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ClojureParser#simple_sym}.
 	 * @param ctx the parse tree

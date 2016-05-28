@@ -2043,13 +2043,25 @@ public class ClojureBaseListener implements ClojureListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSymbol(ClojureParser.SymbolContext ctx) { }
+	@Override public void enterSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSymbol(ClojureParser.SymbolContext ctx) { }
+	@Override public void exitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
