@@ -11,6 +11,9 @@ public class Vector implements Data, VLS, VL {
     public void addData(Data data){
         vector.addLast(data);
     }
+    public void addDataLista(Data data){
+        vector.addFirst(data);
+    }
 
     public Object getData(){
         return vector;

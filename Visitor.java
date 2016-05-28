@@ -333,7 +333,12 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         currentReclaimer = reclaimer;
         Data r = visit(ctx.form(1));
         VLS c =  (VLS)(visit(ctx.form(0)));
-        c.addData(r);
+        System.out.println(c.getClass().getName());
+        if (( c.getClass().getName()).equals("Lista"))
+
+            c.addDataLista(r);
+        else
+            c.addData(r);
 
         updateFrames();
         block();

@@ -11,10 +11,11 @@ public class Lista implements Data, VLS, VL{
     public void addData(Data data){
         lista.addLast(data);
     }
-
-    public Object getData(){
-        return lista;
+    public void addDataLista(Data data){
+        lista.addFirst(data);
     }
+
+    public Object getData(){      return lista;    }
 
     public void setData(Object l) {
         lista = ((LinkedList<Data>) (l));
