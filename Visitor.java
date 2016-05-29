@@ -866,8 +866,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             Interpreter.error(ctx.getStart(), "Se necesitan al un argumentos para igualar");
 
         Boolean flag = true;
-
+        System.out.println(currentReclaimer.getArguments());
         for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+
             if( !(currentReclaimer.getArgument(i).equals(currentReclaimer.getArgument(i-1)))){
                 flag = false;
                 break;

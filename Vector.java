@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Vector implements Data, VLS, VL {
 
     public LinkedList<Data> vector;
-
+    public int size(){return vector.size();}
     public Vector() {
         vector = new LinkedList<>();
     }
@@ -23,7 +24,6 @@ public class Vector implements Data, VLS, VL {
     public void setData(Object l) {
         vector = ((LinkedList<Data>) (l));
     }
-
 
     public Boolean contains( Data element){
 
@@ -48,16 +48,29 @@ public class Vector implements Data, VLS, VL {
 
     @Override
     public boolean equals(Object o) {
-        if(!(o instanceof Vector))
-            return false;
-        boolean flag = true;
-        Vector aux = ((Vector) o);
-        for(Data i : aux.vector){
-            if(!aux.vector.contains(i)){
+        if(o instanceof Vector)  {
+            Vector aux = (Vector) o;
+            if(aux.size()!=vector.size())
                 return false;
-            }
+            if (!aux.toString().equals(vector.toString()))
+                return false;
+            /*for (Data x:vector)
+            if (!aux.contains(x))
+                return false;*/
+            return true;
         }
-        return true;
+        if(o instanceof Lista)  {
+            Lista aux = (Lista) o;
+            if(aux.size()!=vector.size())
+                return false;
+            if (!aux.toString().equals(vector.toString()))
+                return false;
+            /*for (Data x:vector)
+                if (!aux.contains(x))
+                    return false;*/
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -3,7 +3,7 @@ import java.util.LinkedList;
 public class Lista implements Data, VLS, VL{
 
     public LinkedList<Data> lista;
-
+    public int size(){return lista.size();}
     public Lista() {
         lista = new LinkedList<>();
     }
@@ -18,7 +18,11 @@ public class Lista implements Data, VLS, VL{
 
     @Override
     public Boolean contains(Data element) {
-        return null;
+        for (Data x:lista){
+            if(x.equals(element))
+                return true;
+        }
+        return false;
     }
 
     public Object getData(){      return lista;    }
@@ -41,16 +45,31 @@ public class Lista implements Data, VLS, VL{
 
     @Override
     public boolean equals(Object o) {
-        if(!(o instanceof Lista))
-            return false;
-        boolean flag = true;
-        Lista aux = ((Lista) o);
-        for(Data i : aux.lista){
-            if(!aux.lista.contains(i)){
+
+        if(o instanceof Lista)  {
+            Lista aux = (Lista) o;
+            if(aux.size()!=lista.size())
                 return false;
-            }
+            if (!aux.toString().equals(lista.toString()))
+                return false;
+            /*for (Data x:lista)
+                if (!aux.contains(x))
+                    return false;*/
+            return true;
         }
-        return true;
+        if(o instanceof Vector)  {
+            Vector aux = (Vector) o;
+            if(aux.size()!=lista.size())
+                return false;
+            if (!aux.toString().equals(lista.toString()))
+                return false;
+            /*for (Data x:lista)
+                if (!aux.contains(x))
+                    return false;*/
+            return true;
+        }
+        return false;
+
     }
 
     @Override

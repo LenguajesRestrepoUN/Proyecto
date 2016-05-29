@@ -6,7 +6,7 @@ public class Mapa implements Data, VLS, VL{
     public Mapa() {
         map = new HashMap<Data,Data>();
     }
-
+    public int size(){return map.size();}
     public void addDataMap(Data key,Data data){ map.put(key,data); }
 
     @Override
@@ -35,25 +35,30 @@ public class Mapa implements Data, VLS, VL{
         return map.toString();
     }
 
-    public Data getDataWithget(Data n) {
+    public Data getDataWithget(Data element) {
         for (Data x:map.keySet()){
-            if(x.equals(n))
-                return null;
+            if(x.equals(element))
+                return map.get(element);
         }
-        return map.get(n);
+        return null;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == this)
-            return true;
-
-        if (!(o instanceof Map))
+        if (!(o instanceof Mapa))
             return false;
-        Map<Data,Data> m = (Map<Data,Data>) o;
-        if(m.equals(map))
-            return true;
-        return false;
+
+        Mapa aux = (Mapa) o;
+
+        if(aux.size()!=map.size())
+            return false;
+        for (Data x:map.keySet()) {
+            if (!aux.contains(x))
+                return false;
+            if (!aux.getDataWithget(x).equals(map.get(x)))
+                return false;
+        }
+        return true;
     }
 
     @Override
