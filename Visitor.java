@@ -270,6 +270,86 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return r;
     }
 
+    //and: '(' AND forms ')'
+    @Override public Data visitAnd(ClojureParser.AndContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion and");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(ctx.forms());
+        Data r = new Nil();
+
+        for(Data a: currentReclaimer.getArguments()) {
+            r = a;
+            if(!(a instanceof Nil)){
+                if(a instanceof Booleano) {
+                    Booleano flag = (Booleano) (a);
+                    if (!flag.flag)
+                        break;
+                }
+            }
+            else
+                break;
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+
+        return r;
+    }
+
+    //or: '(' OR forms ')'
+    @Override public Data visitOr(ClojureParser.OrContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion or");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(ctx.forms());
+        Data r = new Nil();
+
+        for(Data a: currentReclaimer.getArguments()) {
+            r = a;
+            if(!(a instanceof Nil)){
+                if(a instanceof Booleano) {
+                    Booleano flag = (Booleano) (a);
+                    if (flag.flag)
+                        break;
+                }
+                else
+                    break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+
+        return r;
+    }
+
     //hacer: '(' HACER forms ')'
     @Override public Data visitHacer(ClojureParser.HacerContext ctx) {
         updateFrames();

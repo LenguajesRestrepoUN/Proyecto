@@ -1,8 +1,4 @@
-(if (<= 1 -1)
-    (do
-        (+ 1 2)
-        (- 1 2)
-        (* 4 4)
-    )
-    (- 1 2)
-)
+(or false nil 1 2 3)
+(or nil nil false false)
+(and 1 2 false nil 1 2 3)
+(and 1 2 3 '(1 2 3))
