@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -1120,6 +1121,34 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         //currentScope = currentScope.getEnclosingScope();
         return r;
     }
+
+    //isNil: '(' ISNIL form ')';
+    @Override public Data visitIsNil(ClojureParser.IsNilContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion isNIL");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        String r = ctx.form().getText();
+
+        Booleano flag =new Booleano(false) ;
+        if (r.compareTo("nil")==0)
+             flag=new Booleano(true);
+
+        updateFrames();
+        block();
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(visit(ctx.form()));
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(flag);
+
+        return flag;
+    }
+
 
     //simple_sym: SYMBOL;
     @Override public Data visitSimple_sym(ClojureParser.Simple_symContext ctx) {
