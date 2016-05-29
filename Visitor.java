@@ -1229,7 +1229,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return flag;
     }
 
-
     //simple_sym: SYMBOL;
     @Override public Data visitSimple_sym(ClojureParser.Simple_symContext ctx) {
         String s = ctx.SYMBOL().getText();
@@ -1257,9 +1256,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return keyword;
     }
 
-    @Override public Data visitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) {
-
-        return visit(ctx.ns_symbol()); }
+    @Override public Data visitSymbol_ns_symbol(ClojureParser.Symbol_ns_symbolContext ctx) { return visit(ctx.ns_symbol()); }
 
     @Override public Data visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) {
         String s = ctx.simple_sym().getText();
@@ -1281,6 +1278,34 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         updateFrames();
         block();
         return keyword;
+    }
+
+    //print: '(' PRINT forms ')';
+    @Override public Data visitPrint(ClojureParser.PrintContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("print");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(ctx.forms());
+        for(Data a: currentReclaimer.getArguments()){
+            System.out.print(a + " ");
+            intel.append("--> " + a + " ");
+        }
+
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Nil nil = new Nil();
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(nil);
+
+        return nil;
     }
 }
 

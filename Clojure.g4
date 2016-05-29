@@ -79,15 +79,15 @@ def: '(' DEF symbol ')'        #defSymbol //ya
    ;
 
 println: '(' PRINTLN forms ')'; //ya
-print: '(' PRINT forms ')';
+print: '(' PRINT forms ')'; //ya
 
 sum: '(' SUM forms ')'; //ya
 minus: '(' MINUS forms ')'; //ya
 mult: '(' MULT forms ')'; //ya
 div: '(' DIV forms ')'; //ya
 
-or: '(' OR forms ')';
-and: '(' AND forms ')';
+or: '(' OR forms ')'; //ya
+and: '(' AND forms ')'; //ya
 str: '(' STR forms ')'; //ya
 
 optDescription: STRING      #description
