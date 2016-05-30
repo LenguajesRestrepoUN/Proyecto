@@ -7,15 +7,6 @@ import org.antlr.v4.runtime.Token;
 import java.util.Scanner;
 
 public class Interpreter {
-    public static Symbol.Type getType(int tokenType) {
-        switch ( tokenType ) {
-            case ClojureParser.LONG :  return Symbol.Type.tENTERO;
-            case ClojureParser.STRING: return Symbol.Type.tCADENA;
-            case ClojureParser.FLOAT: return Symbol.Type.tREAL;
-            case ClojureParser.BOOLEAN: return Symbol.Type.tBOOLEANO;
-        }
-        return Symbol.Type.tINVALID;
-    }
 
     public static String entrada;
 
@@ -24,6 +15,8 @@ public class Interpreter {
         System.err.printf("<%d:%d> Error semantico: %s\n", t.getLine(), t.getCharPositionInLine(), msg);
         Interpreter.exit();
     }
+
+    //No se como bloquear el input cuando hay un error, entonces machete con una excepcion
     static String auxs = null;
     static void exit(){
         String  a = auxs;
@@ -46,6 +39,7 @@ public class Interpreter {
             entrada = lexer.getInputStream().toString();
 
             ParseTree tree = parser.file();
+            //System.out.println(tree.toStringTree(parser));
 
             ParseTreeWalker walker = new ParseTreeWalker();
             DefPhase def = new DefPhase();

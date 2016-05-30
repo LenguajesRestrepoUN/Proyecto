@@ -1,4 +1,4 @@
-// Generated from C:/Users/Orlando S/Desktop/proyecto clojure/v1\Clojure.g4 by ANTLR 4.5.1
+// Generated from C:/Users/jccaleroe/Documents/Proyecto\Clojure.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -297,6 +297,13 @@ public class ClojureBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitFormReader_macro(ClojureParser.FormReader_macroContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitFormCallFunction2(ClojureParser.FormCallFunction2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -884,6 +891,13 @@ public class ClojureBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitCallFunction2(ClojureParser.CallFunction2Context ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitRmLamda(ClojureParser.RmLamdaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -1207,6 +1221,13 @@ public class ClojureBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitSymbol_Sum(ClojureParser.Symbol_SumContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -64,6 +64,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         frame.setVisible(true);
         frame.setSize(1400, 750);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         next = false;
     }
 
@@ -148,9 +149,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return null;
     }
 
-    //callFunction: '(' SYMBOL optargs ')'
-    @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
-        String name = ctx.symbol().getText();
+    public Data callFunction(String name, ClojureParser.OptargsContext optargs) {
         Symbol symbol = currentScope.resolve(name);
         currentFunction = ((FunctionSymbol) symbol);
         currentCall.addLast(currentFunction);
@@ -163,7 +162,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         updateFrames();
         block();
 
-        visit(ctx.optargs());
+        visit(optargs);
 
         Data r = null;
         if(currentFunction.getCtx() != null) {
@@ -212,6 +211,33 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         currentScope = currentScope.getEnclosingScope();
         return r;
+    }
+
+    //callFunction: '(' SYMBOL optargs ')'
+    @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
+        String name = ctx.symbol().getText();
+        return callFunction(name, ctx.optargs());
+    }
+
+    //callFunction2: '(' form optargs ')'
+    @Override public Data visitCallFunction2(ClojureParser.CallFunction2Context ctx) {
+        Cadena cadena = (Cadena)(visit(ctx.form()));
+        Data r;
+        if(cadena.cadena.equals("+")) {
+            Symbol symbol = currentScope.resolve("+");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = sum(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        return callFunction(cadena.cadena, ctx.optargs());
     }
 
     //arity: '(' '[' optparams ']' forms ')';
@@ -522,7 +548,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     }
 
     @Override public Data visitMap(ClojureParser.MapContext ctx) {
-
         updateFrames();
         block();
 
@@ -705,6 +730,35 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return cadena;
     }
 
+    public Data sum(ClojureParser.OptargsContext optargs){
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion sumar");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+        double sum = 0;
+        for(Data a: currentReclaimer.getArguments())
+            sum += ((Double) a.getData());
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(sum);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
+    }
+
     //sum: '(' SUM forms ')'
     @Override public Data visitSum(ClojureParser.SumContext ctx) {
         updateFrames();
@@ -712,6 +766,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         FormReclaimer reclaimer = new FormReclaimer("la funcion sumar");
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
+
         visit(ctx.forms());
         double sum = 0;
         for(Data a: currentReclaimer.getArguments())

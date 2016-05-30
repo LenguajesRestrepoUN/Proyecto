@@ -47,6 +47,7 @@ form: literal       #formLiteral
     | callFunction  #formCallFunction
     | recur         #formRecur
     | reader_macro  #formReader_macro
+    | callFunction2 #formCallFunction2
     ;
 
 literal
@@ -62,6 +63,7 @@ literal
     | vector            #literalVector
     | map               #literalMap
     | set               #literalSet
+    //| SUM               #literalSum
     ;
 
 forms: priorForm    #formsForm
@@ -128,7 +130,7 @@ defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')'    #singleDe
     | '(' DEFN symbol optDescription  arity+ ')'                    #defnArity
     ;
 
-arity: '(' '[' optparams ']' forms ')';
+arity: '(' '[' optparams ']' forms ')'; //ya
 
 callFunction: '(' symbol optargs ')' ; //ya
 
@@ -208,6 +210,8 @@ letParams : symbol form letParams      #letParamsSymbolParams
 
 let: '(' LET '[' letParams ']' forms ')';
 
+callFunction2: '(' form optargs ')' ; //ya
+
 reader_macro
     : lambda            #rmLamda
     | meta_data         #rmMeta_data
@@ -283,9 +287,10 @@ keyword
 simple_keyword: ':' symbol;
 macro_keyword: ':' ':' symbol;
 
-symbol: ns_symbol #symbol_ns_symbol//ya
-        | simple_sym  #symbol_simple_sym//ya
-        ;
+symbol: ns_symbol     #symbol_ns_symbol//ya
+      | simple_sym    #symbol_simple_sym//ya
+      | SUM           #symbol_Sum
+      ;
 
 simple_sym: SYMBOL;//ya
 ns_symbol: NS_SYMBOL;

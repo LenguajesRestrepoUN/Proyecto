@@ -1,4 +1,4 @@
-(or false nil 1 2 3)
-(or nil nil false false)
-(and 1 2 false nil 1 2 3)
-(and 1 2 3 '(1 2 3))
+(+ 1 2)
+((or nil + 2 3) 1 2)
+(defn hola [a b] ((or nil + 2 3) 1 2 3 4) )
+((and 1 4 "hola" hola ) 1 2)
