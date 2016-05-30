@@ -179,7 +179,7 @@ defecto: form   #defaultForm
        ;
 
 nth: '(' NTH form form')'; // ya, just vl
-get: '(' GET form form defecto')'; //just vm
+get: '(' GET form form defecto')'; //ya
 contains: '(' CONTAINS set form ')'  #containsset //ya
         | '(' CONTAINS vector form ')' #containsvector //ya
         ;
