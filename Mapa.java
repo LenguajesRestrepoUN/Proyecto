@@ -13,6 +13,15 @@ public class Mapa implements Data, VLS, VL{
     public void addData(Data a) {
     }
 
+    @Override
+    public Data functionget(Data element, Data defecto) {
+        if (defecto!=null )
+            return defecto;
+        if(map.containsKey(element))
+            return map.get(element);
+        return new Nil();
+    }
+
     public void addDataLista(Data data){    }
 
     @Override

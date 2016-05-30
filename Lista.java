@@ -8,6 +8,14 @@ public class Lista implements Data, VLS, VL{
         lista = new LinkedList<>();
     }
 
+    @Override
+    public Data functionget(Data element, Data defecto) {
+
+        if (defecto!=null)
+            return defecto;
+        return new Nil();
+    }
+
     public void addData(Data data){
         lista.addLast(data);
     }

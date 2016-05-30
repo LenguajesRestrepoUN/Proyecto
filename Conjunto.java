@@ -25,6 +25,22 @@ public class Conjunto implements Data, VLS{
     }
 
     @Override
+    public Data functionget(Data element, Data defecto) {
+        int n=0;
+        if (defecto!=null)
+            return defecto;
+        if (set.size()>Double.parseDouble(element.toString()))
+
+            for(Data x:set) {
+                n++;
+                if (n == (int)Double.parseDouble(element.toString())) {
+                    return x;
+                }
+            }
+        return new Nil();
+    }
+
+    @Override
     public String toString() {
         return set.toString();
     }

@@ -586,6 +586,35 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return vector;
     }
 
+    //get: '(' GET form form defecto')';
+    @Override
+    public Data visitGet(ClojureParser.GetContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion Get");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        VLS c =  (VLS)(visit(ctx.form(0)));
+
+        Data element=  visit(ctx.form(1));
+        Data defecto =  (visit(ctx.defecto()));
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        //if(currentReclaimer != null)
+         //   currentReclaimer.addArgument(r);
+
+        return c.functionget(element,defecto);
+    }
+
     //list: '\'(' forms ')'
     @Override public Data visitList(ClojureParser.ListContext ctx) {
         updateFrames();

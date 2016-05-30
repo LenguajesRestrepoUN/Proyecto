@@ -13,6 +13,15 @@ public class Vector implements Data, VLS, VL {
         vector.addLast(data);
     }
 
+    @Override
+    public Data functionget(Data element, Data defecto) {
+        if (defecto!=null)
+            return defecto;
+        if (vector.size()>Double.parseDouble(element.toString()))
+            return vector.get((int)Double.parseDouble(element.toString()));
+        return new Nil();
+    }
+
     public void addDataLista(Data data){
         vector.addFirst(data);
     }
