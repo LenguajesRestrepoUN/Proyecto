@@ -1,3 +1,5 @@
-(defn hola [a b] ((or nil + 2 3) 1 2 3 4) )
-((and 1 4 "hola" hola ) 1 2)
-((and * str inc) 1)
+(loop [iteration 0]
+  (println (str "Iteration " iteration))
+  (if (> iteration 3)
+    (println "Goodbye!")
+    (recur (inc iteration)) ))

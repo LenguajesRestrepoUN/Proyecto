@@ -3854,8 +3854,8 @@ public class ClojureParser extends Parser {
 		public OptLoopParamsContext optLoopParams() {
 			return getRuleContext(OptLoopParamsContext.class,0);
 		}
-		public FormsContext forms() {
-			return getRuleContext(FormsContext.class,0);
+		public AuxformsContext auxforms() {
+			return getRuleContext(AuxformsContext.class,0);
 		}
 		public LoopContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -3893,7 +3893,7 @@ public class ClojureParser extends Parser {
 			setState(422);
 			match(T__3);
 			setState(423);
-			forms();
+			auxforms();
 			setState(424);
 			match(T__1);
 			}
@@ -7890,7 +7890,7 @@ public class ClojureParser extends Parser {
 		"\7\6\2\2\u019c\u019d\5\16\b\2\u019d\u019e\7\4\2\2\u019eA\3\2\2\2\u019f"+
 		"\u01a0\7\n\2\2\u01a0\u01a1\5\u00a8U\2\u01a1\u01a2\5:\36\2\u01a2\u01a3"+
 		"\7\4\2\2\u01a3C\3\2\2\2\u01a4\u01a5\7\n\2\2\u01a5\u01a6\7#\2\2\u01a6\u01a7"+
-		"\7\5\2\2\u01a7\u01a8\5\66\34\2\u01a8\u01a9\7\6\2\2\u01a9\u01aa\5\16\b"+
+		"\7\5\2\2\u01a7\u01a8\5\66\34\2\u01a8\u01a9\7\6\2\2\u01a9\u01aa\5\20\t"+
 		"\2\u01aa\u01ab\7\4\2\2\u01abE\3\2\2\2\u01ac\u01ad\7\n\2\2\u01ad\u01ae"+
 		"\7$\2\2\u01ae\u01af\5:\36\2\u01af\u01b0\7\4\2\2\u01b0G\3\2\2\2\u01b1\u01b4"+
 		"\5\n\6\2\u01b2\u01b4\3\2\2\2\u01b3\u01b1\3\2\2\2\u01b3\u01b2\3\2\2\2\u01b4"+

@@ -215,6 +215,7 @@ public class DefPhase extends ClojureBaseListener {
     @Override public void enterLoop(ClojureParser.LoopContext ctx) {
         FunctionSymbol var = new FunctionSymbol("loop", currentScope);
         currentScope.define(var);
+        var.setCtx(ctx.auxforms());
         currentFunction = var;
         currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
         currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());

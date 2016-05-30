@@ -134,7 +134,7 @@ arity: '(' '[' optparams ']' forms ')'; //ya
 
 callFunction: '(' symbol optargs ')' ; //ya
 
-loop: '(' LOOP '[' optLoopParams ']' forms ')';
+loop: '(' LOOP '[' optLoopParams ']' auxforms ')';
 
 recur: '(' RECUR optargs ')'; //ya
 

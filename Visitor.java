@@ -135,8 +135,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     //args : form args
     @Override public Data visitArgsSymbolArgs(ClojureParser.ArgsSymbolArgsContext ctx) {
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
-        visitChildren(ctx.form());
-        visitChildren(ctx.args());
+        visit(ctx.form());
+        visit(ctx.args());
         return null;
     }
 
@@ -218,167 +218,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     @Override public Data visitCallFunction(ClojureParser.CallFunctionContext ctx) {
         String name = ctx.symbol().getText();
         return callFunction(name, ctx.optargs());
-    }
-
-    //callFunction2: '(' form optargs ')'
-    @Override public Data visitCallFunction2(ClojureParser.CallFunction2Context ctx) {
-        Cadena cadena = (Cadena)(visit(ctx.form()));
-        Data r;
-        if(cadena.cadena.equals("+")) {
-            Symbol symbol = currentScope.resolve("+");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = sum(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("-")) {
-            Symbol symbol = currentScope.resolve("-");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = minus(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("*")) {
-            Symbol symbol = currentScope.resolve("*");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = mult(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("/")) {
-            Symbol symbol = currentScope.resolve("/");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = div(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals(">")) {
-            Symbol symbol = currentScope.resolve(">");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = mayor(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals(">=")) {
-            Symbol symbol = currentScope.resolve(">=");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = mayorIgual(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("<")) {
-            Symbol symbol = currentScope.resolve("<");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = menor(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("<=")) {
-            Symbol symbol = currentScope.resolve("<=");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = menorIgual(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("=")) {
-            Symbol symbol = currentScope.resolve("=");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = igual(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("inc")) {
-            Symbol symbol = currentScope.resolve("inc");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = inc(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        if(cadena.cadena.equals("str")) {
-            Symbol symbol = currentScope.resolve("str");
-            currentFunction = ((FunctionSymbol) symbol);
-            currentCall.addLast(currentFunction);
-            r = str(ctx.optargs());
-
-            currentFunction.setCurrentArgument(0);
-            currentCall.removeLast();
-            if(currentCall.size() > 0)
-                currentFunction = currentCall.getLast();
-            else
-                currentFunction = null;
-            return r;
-        }
-        return callFunction(cadena.cadena, ctx.optargs());
     }
 
     //arity: '(' '[' optparams ']' forms ')';
@@ -881,7 +720,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         StringBuilder bulBuilder =  new StringBuilder();
         for(Data a: currentReclaimer.getArguments())
-            bulBuilder.append(((String) a.getData()));
+            bulBuilder.append(a.toString());
 
         updateFrames();
         block();
@@ -1062,6 +901,73 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         updateFrames();
         block();
         return currentScope.resolve(name).value;
+    }
+
+    //loopParams :  symbol form
+    @Override public Data visitLoopParamsSymbol(ClojureParser.LoopParamsSymbolContext ctx) {
+        String name = ctx.symbol().getText();
+        Symbol symbol = currentScope.resolve(name);
+        symbol.value = visit(ctx.form());
+        return  symbol.value;
+    }
+
+    //loopParams : symbol form loopParams
+    @Override public Data visitLoopParamsSymbolParams(ClojureParser.LoopParamsSymbolParamsContext ctx) {
+        String name = ctx.symbol().getText();
+        Symbol symbol = currentScope.resolve(name);
+        symbol.value = visit(ctx.form());
+        visit(ctx.loopParams());
+        return  symbol.value;
+    }
+
+    //loop: '(' LOOP '[' optLoopParams ']' forms ')'
+    @Override public Data visitLoop(ClojureParser.LoopContext ctx) {
+        Symbol symbol = currentScope.resolve("loop");
+        currentFunction = ((FunctionSymbol) symbol);
+        currentCall.addLast(currentFunction);
+        currentScope = ((FunctionSymbol) symbol);
+        currentFunction.addFrame();
+
+        FormReclaimer reclaimer = new FormReclaimer("loop");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        currentFunction.setCurrentArgument(0);
+        updateFrames();
+        block();
+
+        visit(ctx.optLoopParams());
+        visit(ctx.auxforms());
+
+        Data r;
+        if(currentReclaimer.arguments.size() > 0)
+            r = currentReclaimer.getArgument(currentReclaimer.arguments.size());
+        else
+            r = new Nil();
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+
+        currentFunction.setCurrentArgument(0);
+        currentFunction.deleteFrame();
+
+        currentCall.removeLast();
+        if(currentCall.size() > 0)
+            currentFunction = currentCall.getLast();
+        else
+            currentFunction = null;
+
+        currentScope = currentScope.getEnclosingScope();
+        return r;
     }
 
     //nil: NIL;
@@ -1335,12 +1241,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         String name = currentScope.getScopeName();
         ClojureParser.OptargsContext optargs = ctx.optargs();
 
-        Symbol symbol = currentScope.getEnclosingScope().resolve(name);
-        currentFunction = ((FunctionSymbol) symbol);
-        currentCall.addLast(currentFunction);
-        currentScope = ((FunctionSymbol) symbol);
-
-        FormReclaimer reclaimer = new FormReclaimer(name);
+        FormReclaimer reclaimer = new FormReclaimer("recur " + name);
         reclaimers.addLast(reclaimer);
         currentReclaimer = reclaimer;
 
@@ -1388,13 +1289,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         else
             currentReclaimer = null;
 
-        currentCall.removeLast();
-        if(currentCall.size() > 0)
-            currentFunction = currentCall.getLast();
-        else
-            currentFunction = null;
-
-        //currentScope = currentScope.getEnclosingScope();
         return r;
     }
 
@@ -1863,7 +1757,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         StringBuilder bulBuilder =  new StringBuilder();
         for(Data a: currentReclaimer.getArguments())
-            bulBuilder.append(((String) a.getData()));
+            bulBuilder.append(a.toString());
 
         updateFrames();
         block();
@@ -1880,5 +1774,166 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(cadena);
 
         return cadena;
+    }
+
+    //callFunction2: '(' form optargs ')'
+    @Override public Data visitCallFunction2(ClojureParser.CallFunction2Context ctx) {
+        Cadena cadena = (Cadena)(visit(ctx.form()));
+        Data r;
+        if(cadena.cadena.equals("+")) {
+            Symbol symbol = currentScope.resolve("+");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = sum(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("-")) {
+            Symbol symbol = currentScope.resolve("-");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = minus(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("*")) {
+            Symbol symbol = currentScope.resolve("*");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = mult(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("/")) {
+            Symbol symbol = currentScope.resolve("/");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = div(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals(">")) {
+            Symbol symbol = currentScope.resolve(">");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = mayor(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals(">=")) {
+            Symbol symbol = currentScope.resolve(">=");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = mayorIgual(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("<")) {
+            Symbol symbol = currentScope.resolve("<");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = menor(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("<=")) {
+            Symbol symbol = currentScope.resolve("<=");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = menorIgual(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("=")) {
+            Symbol symbol = currentScope.resolve("=");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = igual(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("inc")) {
+            Symbol symbol = currentScope.resolve("inc");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = inc(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("str")) {
+            Symbol symbol = currentScope.resolve("str");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = str(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        return callFunction(cadena.cadena, ctx.optargs());
     }
 }
