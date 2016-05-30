@@ -1,4 +1,4 @@
-// Generated from C:/Users/Orlando S/Desktop/proyecto clojure/v1\Clojure.g4 by ANTLR 4.5.1
+// Generated from C:/Users/jccaleroe/Documents/Proyecto\Clojure.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -294,6 +294,13 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFormReader_macro(ClojureParser.FormReader_macroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code formCallFunction2}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormCallFunction2(ClojureParser.FormCallFunction2Context ctx);
 	/**
 	 * Visit a parse tree produced by the {@code literalString}
 	 * labeled alternative in {@link ClojureParser#literal}.
@@ -840,6 +847,12 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLet(ClojureParser.LetContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ClojureParser#callFunction2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCallFunction2(ClojureParser.CallFunction2Context ctx);
+	/**
 	 * Visit a parse tree produced by the {@code rmLamda}
 	 * labeled alternative in {@link ClojureParser#reader_macro}.
 	 * @param ctx the parse tree
@@ -1148,6 +1161,13 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_Sum}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_Sum(ClojureParser.Symbol_SumContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ClojureParser#simple_sym}.
 	 * @param ctx the parse tree

@@ -1,4 +1,4 @@
-// Generated from C:/Users/Orlando S/Desktop/proyecto clojure/v1\Clojure.g4 by ANTLR 4.5.1
+// Generated from C:/Users/jccaleroe/Documents/Proyecto\Clojure.g4 by ANTLR 4.5.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -494,6 +494,18 @@ public interface ClojureListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFormReader_macro(ClojureParser.FormReader_macroContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code formCallFunction2}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormCallFunction2(ClojureParser.FormCallFunction2Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formCallFunction2}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormCallFunction2(ClojureParser.FormCallFunction2Context ctx);
 	/**
 	 * Enter a parse tree produced by the {@code literalString}
 	 * labeled alternative in {@link ClojureParser#literal}.
@@ -1419,6 +1431,16 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitLet(ClojureParser.LetContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ClojureParser#callFunction2}.
+	 * @param ctx the parse tree
+	 */
+	void enterCallFunction2(ClojureParser.CallFunction2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#callFunction2}.
+	 * @param ctx the parse tree
+	 */
+	void exitCallFunction2(ClojureParser.CallFunction2Context ctx);
+	/**
 	 * Enter a parse tree produced by the {@code rmLamda}
 	 * labeled alternative in {@link ClojureParser#reader_macro}.
 	 * @param ctx the parse tree
@@ -1942,6 +1964,18 @@ public interface ClojureListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSymbol_simple_sym(ClojureParser.Symbol_simple_symContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_Sum}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_Sum(ClojureParser.Symbol_SumContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_Sum}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_Sum(ClojureParser.Symbol_SumContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ClojureParser#simple_sym}.
 	 * @param ctx the parse tree

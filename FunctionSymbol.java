@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FunctionSymbol extends Symbol implements Scope {
+public class FunctionSymbol extends Symbol implements Scope, Data {
 
     public HashMap<Integer, Arity> arity = new HashMap<>();
     Integer currentArityNumber = 0;
@@ -13,21 +13,30 @@ public class FunctionSymbol extends Symbol implements Scope {
     Integer currentArgument = 0;
     JPanel panel;
     JTextArea intel;
+    public Boolean isDefault;
 
     public FunctionSymbol(String name, Scope enclosingScope) {
+        this(name, enclosingScope, true);
+    }
+
+    public FunctionSymbol(String name, Scope enclosingScope, Boolean flag) {
         super(name);
+        isDefault = flag;
         this.enclosingScope = enclosingScope;
-        intel = new JTextArea(15, 40);
-        intel.setLineWrap(true);
-        intel.setWrapStyleWord(true);
-        intel.setEditable(false);
-        JScrollPane scroller = new JScrollPane(intel);
-        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        JPanel panel = new JPanel();
-        panel.add(scroller);
-        Visitor.scopesTabs.add("Function " + name, panel);
-        intel.append(toString());
+        if(isDefault) {
+            intel = new JTextArea(15, 40);
+            intel.setLineWrap(true);
+            intel.setWrapStyleWord(true);
+            intel.setEditable(false);
+            JScrollPane scroller = new JScrollPane(intel);
+            scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+            JPanel panel = new JPanel();
+            panel.add(scroller);
+            Visitor.scopesTabs.add("Function " + name, panel);
+            intel.append(toString());
+        }
+        value = new Cadena(name);
     }
 
     public Integer getParametersNumber(){ return currentArity.getParametersNumber(); }
@@ -160,5 +169,15 @@ public class FunctionSymbol extends Symbol implements Scope {
         intel.setText(toString());
         if(enclosingScope != null)
             enclosingScope.updateFrame();
+    }
+
+    @Override
+    public Object getData() {
+        return value;
+    }
+
+    @Override
+    public void setData(Object data) {
+        value = (Cadena)(data);
     }
 }

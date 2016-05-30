@@ -7,6 +7,7 @@ public class DefPhase extends ClojureBaseListener {
     public static LinkedList<FunctionSymbol> currentCall;
     FunctionSymbol currentFunction;
     Visitor visitor = new Visitor();
+    private Boolean flag = true;
 
     @Override public void enterFile(ClojureParser.FileContext ctx) {
         globals = new GlobalScope(null);
@@ -14,6 +15,13 @@ public class DefPhase extends ClojureBaseListener {
         currentCall = new LinkedList<>();
         visitor.globals = globals;
         visitor.currentScope = currentScope;
+
+        FunctionSymbol var;
+        var = new FunctionSymbol("+", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
     }
     @Override public void exitFile(ClojureParser.FileContext ctx) {
         visitor.endSimulation();
@@ -205,6 +213,8 @@ public class DefPhase extends ClojureBaseListener {
 
     //args : form args
     @Override public void enterArgsSymbolArgs(ClojureParser.ArgsSymbolArgsContext ctx) {
+        if(currentFunction == null || !flag)
+            return;
         Boolean flag = false;
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         for(Arity a : currentFunction.arity.values()){
@@ -221,8 +231,10 @@ public class DefPhase extends ClojureBaseListener {
 
     //args : form
     @Override public void enterArgsSymbol(ClojureParser.ArgsSymbolContext ctx) {
-        currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
+        if(currentFunction == null || !flag)
+            return;
 
+        currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
         Boolean flag = false;
         for(Arity a : currentFunction.arity.values()){
             if(a.getHasRest()){
@@ -248,6 +260,9 @@ public class DefPhase extends ClojureBaseListener {
 
     //args:
     @Override public void enterOptargsEpsilon(ClojureParser.OptargsEpsilonContext ctx) {
+        if(currentFunction == null)
+            return;
+
         Boolean flag = false;
         for(Arity a : currentFunction.arity.values()){
             if(a.getHasRest()){
@@ -265,6 +280,14 @@ public class DefPhase extends ClojureBaseListener {
             Interpreter.error(ctx.start, "el numero de argumentos en el llamado a la funcion \"" +
                     currentFunction.name + "\" no coincide con la declaracion.");
         }
+    }
+
+    @Override public void enterCallFunction2(ClojureParser.CallFunction2Context ctx) {
+        flag = false;
+    }
+
+    @Override public void exitCallFunction2(ClojureParser.CallFunction2Context ctx) {
+        flag = true;
     }
 
     //callFunction: '(' SYMBOL optargs ')'
