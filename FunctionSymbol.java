@@ -11,9 +11,10 @@ public class FunctionSymbol extends Symbol implements Scope, Data {
     Scope enclosingScope;
     ClojureParser.AuxformsContext ctx;
     Integer currentArgument = 0;
-    JPanel panel;
-    JTextArea intel;
+    JPanel fPanel;
+    JTextArea fIntel;
     public Boolean isDefault;
+    public static Integer scopesNumber = 0;
 
     public FunctionSymbol(String name, Scope enclosingScope) {
         this(name, enclosingScope, true);
@@ -24,17 +25,16 @@ public class FunctionSymbol extends Symbol implements Scope, Data {
         isDefault = flag;
         this.enclosingScope = enclosingScope;
         if(isDefault) {
-            intel = new JTextArea(15, 40);
-            intel.setLineWrap(true);
-            intel.setWrapStyleWord(true);
-            intel.setEditable(false);
-            JScrollPane scroller = new JScrollPane(intel);
+            fIntel = new JTextArea(15, 40);
+            fIntel.setLineWrap(true);
+            fIntel.setWrapStyleWord(true);
+            fIntel.setEditable(false);
+            JScrollPane scroller = new JScrollPane(fIntel);
             scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-            JPanel panel = new JPanel();
-            panel.add(scroller);
-            Visitor.scopesTabs.add("Function " + name, panel);
-            intel.append(toString());
+            fPanel = new JPanel();
+            fPanel.add(scroller);
+            fIntel.append(toString());
         }
         value = new Cadena(name);
     }
@@ -166,9 +166,20 @@ public class FunctionSymbol extends Symbol implements Scope, Data {
     }
 
     public void updateFrame(){
-        intel.setText(toString());
+        fIntel.setText(toString());
         if(enclosingScope != null)
             enclosingScope.updateFrame();
+    }
+
+    public void addFrame(){
+        scopesNumber++;
+        Visitor.scopesTabs.add("Function " + name, fPanel);
+        Visitor.scopesTabs.setSelectedIndex(scopesNumber);
+    }
+
+    public void deleteFrame(){
+        scopesNumber--;
+        Visitor.scopesTabs.remove(fPanel);
     }
 
     @Override

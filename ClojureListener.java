@@ -1977,6 +1977,126 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitSymbol_Sum(ClojureParser.Symbol_SumContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code symbol_MINUS}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_MINUS(ClojureParser.Symbol_MINUSContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_MINUS}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_MINUS(ClojureParser.Symbol_MINUSContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_MULT}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_MULT(ClojureParser.Symbol_MULTContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_MULT}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_MULT(ClojureParser.Symbol_MULTContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_DIV}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_DIV(ClojureParser.Symbol_DIVContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_DIV}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_DIV(ClojureParser.Symbol_DIVContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_INC}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_INC(ClojureParser.Symbol_INCContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_INC}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_INC(ClojureParser.Symbol_INCContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_MAYOR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_MAYOR(ClojureParser.Symbol_MAYORContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_MAYOR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_MAYOR(ClojureParser.Symbol_MAYORContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_MAYORIGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_MAYORIGUAL(ClojureParser.Symbol_MAYORIGUALContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_MAYORIGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_MAYORIGUAL(ClojureParser.Symbol_MAYORIGUALContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_MENOR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_MENOR(ClojureParser.Symbol_MENORContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_MENOR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_MENOR(ClojureParser.Symbol_MENORContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_MENORIGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_MENORIGUAL(ClojureParser.Symbol_MENORIGUALContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_MENORIGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_MENORIGUAL(ClojureParser.Symbol_MENORIGUALContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_IGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_IGUAL(ClojureParser.Symbol_IGUALContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_IGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_IGUAL(ClojureParser.Symbol_IGUALContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code symbol_STR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_STR(ClojureParser.Symbol_STRContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code symbol_STR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_STR(ClojureParser.Symbol_STRContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ClojureParser#simple_sym}.
 	 * @param ctx the parse tree
 	 */

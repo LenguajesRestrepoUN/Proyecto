@@ -22,7 +22,68 @@ public class DefPhase extends ClojureBaseListener {
         var.setCurrentArityNumber(1);
         var.arity.put(1, new Arity());
         var.establishCurrentArity();
+
+        var = new FunctionSymbol("-", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("/", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("*", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol(">", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol(">=", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("<", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("<=", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("=", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("inc", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
+
+        var = new FunctionSymbol("str", currentScope, false);
+        currentScope.define(var);
+        var.setCurrentArityNumber(1);
+        var.arity.put(1, new Arity());
+        var.establishCurrentArity();
     }
+
     @Override public void exitFile(ClojureParser.FileContext ctx) {
         visitor.endSimulation();
     }

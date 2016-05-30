@@ -290,6 +290,16 @@ macro_keyword: ':' ':' symbol;
 symbol: ns_symbol     #symbol_ns_symbol//ya
       | simple_sym    #symbol_simple_sym//ya
       | SUM           #symbol_Sum
+      | MINUS           #symbol_MINUS
+      | MULT            #symbol_MULT
+      | DIV         #symbol_DIV
+      | INC         #symbol_INC
+      | MAYOR           #symbol_MAYOR
+      | MAYORIGUAL          #symbol_MAYORIGUAL
+      | MENOR           #symbol_MENOR
+      | MENORIGUAL          #symbol_MENORIGUAL
+      | IGUAL           #symbol_IGUAL
+      | STR         #symbol_STR
       ;
 
 simple_sym: SYMBOL;//ya

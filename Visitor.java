@@ -145,8 +145,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
         currentScope.updateFrame();
         currentFunction.setCurrentArgument(currentFunction.getCurrentArgument() + 1);
-        visit(ctx.form());
-        return null;
+        return visit(ctx.form());
     }
 
     public Data callFunction(String name, ClojureParser.OptargsContext optargs) {
@@ -154,6 +153,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         currentFunction = ((FunctionSymbol) symbol);
         currentCall.addLast(currentFunction);
         currentScope = ((FunctionSymbol) symbol);
+        currentFunction.addFrame();
 
         FormReclaimer reclaimer = new FormReclaimer(name);
         reclaimers.addLast(reclaimer);
@@ -195,6 +195,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
 
         currentFunction.setCurrentArgument(0);
+        currentFunction.deleteFrame();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
         updateFrames();
@@ -228,6 +229,146 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentFunction = ((FunctionSymbol) symbol);
             currentCall.addLast(currentFunction);
             r = sum(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("-")) {
+            Symbol symbol = currentScope.resolve("-");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = minus(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("*")) {
+            Symbol symbol = currentScope.resolve("*");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = mult(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("/")) {
+            Symbol symbol = currentScope.resolve("/");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = div(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals(">")) {
+            Symbol symbol = currentScope.resolve(">");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = mayor(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals(">=")) {
+            Symbol symbol = currentScope.resolve(">=");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = mayorIgual(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("<")) {
+            Symbol symbol = currentScope.resolve("<");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = menor(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("<=")) {
+            Symbol symbol = currentScope.resolve("<=");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = menorIgual(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("=")) {
+            Symbol symbol = currentScope.resolve("=");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = igual(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("inc")) {
+            Symbol symbol = currentScope.resolve("inc");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = inc(ctx.optargs());
+
+            currentFunction.setCurrentArgument(0);
+            currentCall.removeLast();
+            if(currentCall.size() > 0)
+                currentFunction = currentCall.getLast();
+            else
+                currentFunction = null;
+            return r;
+        }
+        if(cadena.cadena.equals("str")) {
+            Symbol symbol = currentScope.resolve("str");
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
+            r = str(ctx.optargs());
 
             currentFunction.setCurrentArgument(0);
             currentCall.removeLast();
@@ -757,35 +898,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(cadena);
 
         return cadena;
-    }
-
-    public Data sum(ClojureParser.OptargsContext optargs){
-        updateFrames();
-        block();
-        FormReclaimer reclaimer = new FormReclaimer("la funcion sumar");
-        reclaimers.addLast(reclaimer);
-        currentReclaimer = reclaimer;
-
-        visit(optargs);
-        double sum = 0;
-        for(Data a: currentReclaimer.getArguments())
-            sum += ((Double) a.getData());
-
-        updateFrames();
-        block();
-        reclaimers.removeLast();
-        currentReclaimer.destroyReclaimer();
-        updateFrames();
-        if(reclaimers.size() > 0)
-            currentReclaimer = reclaimers.getLast();
-        else
-            currentReclaimer = null;
-
-        Numero numero = new Numero(sum);
-        if(currentReclaimer != null)
-            currentReclaimer.addArgument(numero);
-
-        return numero;
     }
 
     //sum: '(' SUM forms ')'
@@ -1391,5 +1503,382 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         return nil;
     }
-}
 
+    //----------------------operadores aritmeticos 2 ----------------------------------------
+
+    public Data sum(ClojureParser.OptargsContext optargs){
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion sumar");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+        double sum = 0;
+        for(Data a: currentReclaimer.getArguments())
+            sum += ((Double) a.getData());
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(sum);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
+    }
+
+    //minus: '(' MINUS forms ')';
+    public Data minus(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion resta");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(optargs);
+        if(currentReclaimer.getArguments().size() < 2)
+            Interpreter.error(optargs.getStart(), "Se necesitan al menos dos argumentos para restar");
+
+        double sum = ((Double) (currentReclaimer.getArgument(1).getData()));
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++)
+            sum = sum - ((Double) (currentReclaimer.getArgument(i).getData()));
+
+        updateFrames();
+        block();
+
+        currentReclaimer.destroyReclaimer();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(sum);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
+    }
+
+    //mult: '(' MULT forms ')'
+    public Data mult(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion multiplicar");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(optargs);
+        double mult = 1;
+        for(Data a: currentReclaimer.getArguments())
+            mult *= ((Double) a.getData());
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(mult);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
+    }
+
+    //div: '(' DIV forms ')';
+    public Data div(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion dividir");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(optargs);
+        if(currentReclaimer.getArguments().size() < 2)
+            Interpreter.error(optargs.getStart(), "Se necesitan al menos dos argumentos para dividir");
+
+        double div = ((Double) (currentReclaimer.getArgument(1).getData()));
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++)
+            div = div / ((Double) (currentReclaimer.getArgument(i).getData()));
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(div);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
+    }
+
+    //------------------ Comparadores --------------------------------------
+
+    //igual: '(' IGUAL forms ')';
+    public Data igual(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion igual");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(optargs.getStart(), "Se necesitan al un argumentos para igualar");
+
+        Boolean flag = true;
+        System.out.println(currentReclaimer.getArguments());
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+
+            if( !(currentReclaimer.getArgument(i).equals(currentReclaimer.getArgument(i-1)))){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
+    }
+
+    //mayor: '(' MAYOR forms ')';
+    public Data mayor(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion mayor");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(optargs.getStart(), "Se necesita al un argumentos para comparar");
+
+        Boolean flag = true;
+
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+            if( ((Numero)(currentReclaimer.getArgument(i))).compareTo((Numero)(currentReclaimer.getArgument(i-1))) <= 0){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
+    }
+
+    //menor: '(' MENOR forms ')';
+    public Data menor(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion menor");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(optargs.getStart(), "Se necesita al un argumentos para comparar");
+
+        Boolean flag = true;
+
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+            if( ((Numero)(currentReclaimer.getArgument(i))).compareTo((Numero)(currentReclaimer.getArgument(i-1))) >= 0){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
+    }
+
+    //mayorIgual: '(' MAYORIGUAL forms ')';
+    public Data mayorIgual(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion mayor igual");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(optargs.getStart(), "Se necesita al un argumentos para comparar");
+
+        Boolean flag = true;
+
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+            if( ((Numero)(currentReclaimer.getArgument(i))).compareTo((Numero)(currentReclaimer.getArgument(i-1))) < 0){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
+    }
+
+    //menorIgual: '(' MENORIGUAL forms ')';
+    public Data menorIgual(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion menor");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(optargs);
+
+        if(currentReclaimer.getArguments().size() < 1)
+            Interpreter.error(optargs.getStart(), "Se necesita al un argumentos para comparar");
+
+        Boolean flag = true;
+
+        for(int i = 2; i <= currentReclaimer.getArguments().size(); i++){
+            if( ((Numero)(currentReclaimer.getArgument(i))).compareTo((Numero)(currentReclaimer.getArgument(i-1))) > 0){
+                flag = false;
+                break;
+            }
+        }
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Booleano b = new Booleano(flag);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(b);
+
+        return b;
+    }
+
+    //inc: '(' INC form ')';
+    public Data inc(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion inc");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        Numero r = (Numero)(visit(optargs));
+
+        r.numero = r.numero + 1;
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+
+        return r;
+    }
+
+    //str: '(' STR forms ')'
+    public Data str(ClojureParser.OptargsContext optargs) {
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("STR");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visit(optargs);
+
+        StringBuilder bulBuilder =  new StringBuilder();
+        for(Data a: currentReclaimer.getArguments())
+            bulBuilder.append(((String) a.getData()));
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Cadena cadena = new Cadena(bulBuilder.toString());
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(cadena);
+
+        return cadena;
+    }
+}

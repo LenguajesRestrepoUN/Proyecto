@@ -1169,6 +1169,76 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSymbol_Sum(ClojureParser.Symbol_SumContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code symbol_MINUS}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_MINUS(ClojureParser.Symbol_MINUSContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_MULT}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_MULT(ClojureParser.Symbol_MULTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_DIV}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_DIV(ClojureParser.Symbol_DIVContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_INC}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_INC(ClojureParser.Symbol_INCContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_MAYOR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_MAYOR(ClojureParser.Symbol_MAYORContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_MAYORIGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_MAYORIGUAL(ClojureParser.Symbol_MAYORIGUALContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_MENOR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_MENOR(ClojureParser.Symbol_MENORContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_MENORIGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_MENORIGUAL(ClojureParser.Symbol_MENORIGUALContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_IGUAL}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_IGUAL(ClojureParser.Symbol_IGUALContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code symbol_STR}
+	 * labeled alternative in {@link ClojureParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_STR(ClojureParser.Symbol_STRContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link ClojureParser#simple_sym}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

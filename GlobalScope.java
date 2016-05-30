@@ -56,7 +56,8 @@ public class GlobalScope implements Scope{
             if(!(s instanceof FunctionSymbol))
                 builder.append(s.toString() + "\n");
             else
-                builder.append("funcion " +  s.name + " con Arity igual a " + ((FunctionSymbol) s).arity.size() + "\n");
+                if(((FunctionSymbol) s).isDefault)
+                    builder.append("funcion " + s.name + " con Arity igual a " + ((FunctionSymbol) s).arity.size() + "\n");
         }
         return builder.toString();
     }
