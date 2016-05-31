@@ -356,16 +356,18 @@ public class DefPhase extends ClojureBaseListener {
     @Override public void enterCallFunction(ClojureParser.CallFunctionContext ctx) {
         String name = ctx.symbol().getText();
         Symbol symbol = currentScope.resolve(name);
-        if(symbol == null){
-            Interpreter.error(ctx.symbol().getStart(), "la funcion con nombre \"" + name + "\" no ha sido declarada");
-            return;
+        if (!name.equals("re-find")) {
+            if (symbol == null) {
+                Interpreter.error(ctx.symbol().getStart(), "la funcion con nombre \"" + name + "\" no ha sido declarada");
+                return;
+            }
+            if (!(symbol instanceof FunctionSymbol)) {
+                Interpreter.error(ctx.symbol().getStart(), "la variable con nombre \"" + name + "\" no es una funcion");
+                return;
+            }
+            currentFunction = ((FunctionSymbol) symbol);
+            currentCall.addLast(currentFunction);
         }
-        if(!(symbol instanceof FunctionSymbol)){
-            Interpreter.error(ctx.symbol().getStart(), "la variable con nombre \"" + name + "\" no es una funcion");
-            return;
-        }
-        currentFunction = ((FunctionSymbol) symbol);
-        currentCall.addLast(currentFunction);
     }
 
     @Override public void exitCallFunction(ClojureParser.CallFunctionContext ctx) {

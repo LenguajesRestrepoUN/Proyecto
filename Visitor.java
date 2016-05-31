@@ -1936,4 +1936,32 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         }
         return callFunction(cadena.cadena, ctx.optargs());
     }
+
+    @Override public Data visitRmRegex(ClojureParser.RmRegexContext ctx) {
+        updateFrames();
+        block();
+
+        FormReclaimer reclaimer = new FormReclaimer("Expresion regular");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        visitChildren(ctx);
+        Data r;
+        r = new Cadena(ctx.regex().getText());
+        updateFrames();
+        block();
+
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+
+
+        return r;
+    }
 }
