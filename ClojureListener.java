@@ -363,6 +363,18 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitFormNth(ClojureParser.FormNthContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code formInto}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormInto(ClojureParser.FormIntoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formInto}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormInto(ClojureParser.FormIntoContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code formContains}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -1300,6 +1312,16 @@ public interface ClojureListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDefaultEpsilon(ClojureParser.DefaultEpsilonContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#into}.
+	 * @param ctx the parse tree
+	 */
+	void enterInto(ClojureParser.IntoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#into}.
+	 * @param ctx the parse tree
+	 */
+	void exitInto(ClojureParser.IntoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ClojureParser#nth}.
 	 * @param ctx the parse tree

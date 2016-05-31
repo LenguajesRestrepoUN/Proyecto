@@ -1,6 +1,7 @@
 import java.util.LinkedList;
+import java.util.List;
 
-public class Lista implements Data, VLS, VL{
+public class Lista implements Data, VLS, VL, VLSM{
     @Override
     public Data functionfirst() {
         if (lista.size()!=0)
@@ -123,5 +124,10 @@ public class Lista implements Data, VLS, VL{
     @Override
     public int hashCode() {
         return lista.hashCode();
+    }
+
+    @Override
+    public List<Data> copyData() {
+        return lista;
     }
 }

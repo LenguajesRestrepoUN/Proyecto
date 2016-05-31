@@ -1,37 +1,6 @@
 import java.util.*;
 
-public class Mapa implements Data, VLS, VL{
-    @Override
-    public double suma() {
-        return 0;
-    }
-
-    @Override
-    public double restar() {
-        return 0;
-    }
-
-    @Override
-    public double multiplicar() {
-        return 0;
-    }
-
-    @Override
-    public double dividir() {
-        return 0;
-    }
-
-    @Override
-    public Data functionfirst() {
-        Mapa mapa = new Mapa();
-        if (map.size()!=0)
-
-            for (Data x:map.keySet()){
-                mapa.addDataMap(x,map.get(x));
-                return mapa;
-            }
-        return null;
-    }
+public class Mapa implements Data, VLS, VL, VLSM{
 
     public Map<Data,Data> map;
 
@@ -110,5 +79,50 @@ public class Mapa implements Data, VLS, VL{
     @Override
     public Data getDataWithNTH(Integer n) {
         return null;
+    }
+
+    @Override
+    public double suma() {
+        return 0;
+    }
+
+    @Override
+    public double restar() {
+        return 0;
+    }
+
+    @Override
+    public double multiplicar() {
+        return 0;
+    }
+
+    @Override
+    public double dividir() {
+        return 0;
+    }
+
+    @Override
+    public Data functionfirst() {
+        Mapa mapa = new Mapa();
+        if (map.size()!=0)
+
+            for (Data x:map.keySet()){
+                mapa.addDataMap(x,map.get(x));
+                return mapa;
+            }
+        return null;
+    }
+
+    @Override
+    public List<Data> copyData() {
+        ArrayList<Data> a = new ArrayList<>();
+        Vector vector;
+        for(Data data : map.keySet()){
+            vector = new Vector();
+            vector.addData(data);
+            vector.addData(map.get(data));
+            a.add(vector);
+        }
+        return a;
     }
 }

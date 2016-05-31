@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-public class Vector implements Data, VLS, VL {
+public class Vector implements Data, VLS, VL, VLSM {
 
     public LinkedList<Data> vector;
     public int size(){return vector.size();}
@@ -127,4 +128,14 @@ public class Vector implements Data, VLS, VL {
         return vector.hashCode();
     }
 
+    public void into(VLSM vlsm) {
+        List<Data> l = vlsm.copyData();
+        for(Data data: l)
+            addData(data);
+    }
+
+    @Override
+    public List<Data> copyData() {
+        return vector;
+    }
 }

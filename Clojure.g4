@@ -36,6 +36,7 @@ form: literal       #formLiteral
     | when          #formWhen
     | isNil         #formIsNil
     | nth           #formNth
+    | into          #formInto
     | contains      #formContains
     | conj          #formConj
     | get           #formGet
@@ -183,6 +184,7 @@ defecto: form   #defaultForm
        |        #defaultEpsilon
        ;
 
+into: '(' INTO form form')';
 nth: '(' NTH form form')'; // ya, just vl
 get: '(' GET form form defecto')'; //ya
 contains: '(' CONTAINS set form ')'  #containsset //ya
@@ -211,7 +213,7 @@ letParams : symbol form letParams      #letParamsSymbolParams
           | symbol form                #letParamsSymbol
           ;
 
-let: '(' LET '[' letParams ']' forms ')';
+let: '(' LET '[' letParams ']' forms ')'; //ya
 
 callFunction2: '(' form optargs ')' ; //ya
 
@@ -347,6 +349,7 @@ LET: 'let';
 TAKE: 'take';
 REDUCE: 'reduce';
 FN: 'fn';
+INTO: 'into';
 
 FLOAT
     : '-'? [0-9]+ FLOAT_TAIL

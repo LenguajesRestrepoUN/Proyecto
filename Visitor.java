@@ -476,6 +476,34 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return result;
     }
 
+    //into: '(' INTO form form')'
+    @Override public Data visitInto(ClojureParser.IntoContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion into");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        Vector r = (Vector) visit(ctx.form(0));
+        VLSM c =  (VLSM)(visit(ctx.form(1)));
+
+        r.into(c);
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+        return r;
+    }
+
     //conj: '(' CONJ form form ')'
     @Override public Data visitConj(ClojureParser.ConjContext ctx) {
         updateFrames();

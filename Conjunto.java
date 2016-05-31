@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 
-public class Conjunto implements Data, VLS{
+public class Conjunto implements Data, VLS, VLSM{
 
     public LinkedHashSet<Data> set;
 
@@ -111,4 +113,11 @@ public class Conjunto implements Data, VLS{
         return set.hashCode();
     }
 
+    @Override
+    public List<Data> copyData() {
+        ArrayList<Data> a = new ArrayList<>();
+        for(Data data: set)
+        a.add(data);
+        return a;
+    }
 }
