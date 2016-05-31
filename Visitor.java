@@ -1993,7 +1993,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         currentReclaimer = reclaimer;
         VLS c =  (VLS)(visit(ctx.form()));
 
-        Data result = c.functionfirst(c);
+        Data result = c.functionfirst();
 
         updateFrames();
         block();
@@ -2009,5 +2009,50 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         //   currentReclaimer.addArgument(r);
 
         return result;
+    }
+
+    @Override public Data visitReduce(ClojureParser.ReduceContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer =new FormReclaimer("");
+        if(ctx.form(0).getText().equals("+"))
+             reclaimer= new FormReclaimer("la funcion sumar");
+        if(ctx.form(0).getText().equals("-"))
+            reclaimer= new FormReclaimer("la funcion restar");
+        if(ctx.form(0).getText().equals("*"))
+            reclaimer= new FormReclaimer("la funcion multiplicar");
+        if(ctx.form(0).getText().equals("/"))
+            reclaimer= new FormReclaimer("la funcion dividir");
+
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        visit(ctx.form(1));
+        VLS c=(VLS)(visit(ctx.form(1)));
+        double result=0;
+        if(ctx.form(0).getText().equals("+"))
+            result=c.suma();
+        if(ctx.form(0).getText().equals("-"))
+            result=c.restar();
+        if(ctx.form(0).getText().equals("*"))
+            result=c.multiplicar();
+        if(ctx.form(0).getText().equals("/"))
+            result=c.dividir();
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(result);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
     }
 }

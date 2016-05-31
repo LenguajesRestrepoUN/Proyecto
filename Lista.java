@@ -2,9 +2,9 @@ import java.util.LinkedList;
 
 public class Lista implements Data, VLS, VL{
     @Override
-    public Data functionfirst(Data element) {
+    public Data functionfirst() {
         if (lista.size()!=0)
-            return lista.get(0);
+            return lista.getFirst();
         return new Nil();
     }
 
@@ -12,6 +12,40 @@ public class Lista implements Data, VLS, VL{
     public int size(){return lista.size();}
     public Lista() {
         lista = new LinkedList<>();
+    }
+
+    @Override
+    public double suma() {
+        double n=0;
+        for(Data x:lista)
+            n+=Double.parseDouble(x.toString());
+        return n;
+    }
+
+    @Override
+    public double restar() {
+        double n=Double.parseDouble(functionfirst().toString());
+        double aux=n;
+        for(Data x:lista)
+            n-=Double.parseDouble(x.toString());
+        return n+aux;
+    }
+
+    @Override
+    public double multiplicar() {
+        double n=1;
+        for(Data x:lista)
+            n*=Double.parseDouble(x.toString());
+        return n;
+    }
+
+    @Override
+    public double dividir() {
+        double n=Double.parseDouble(lista.getFirst().toString());
+        double aux=n;
+        for(Data x:lista)
+            n/=Double.parseDouble(x.toString());
+        return n*aux;
     }
 
     @Override

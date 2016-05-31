@@ -14,6 +14,40 @@ public class Vector implements Data, VLS, VL {
     }
 
     @Override
+    public double suma() {
+        double n=0;
+        for(Data x:vector)
+            n+=Double.parseDouble(x.toString());
+        return n;
+    }
+
+    @Override
+    public double restar() {
+        double n=Double.parseDouble(vector.getFirst().toString());
+        double aux=n;
+        for(Data x:vector)
+            n-=Double.parseDouble(x.toString());
+        return n+aux;
+    }
+
+    @Override
+    public double multiplicar() {
+        double n=1;
+        for(Data x:vector)
+            n*=Double.parseDouble(x.toString());
+        return n;
+    }
+
+    @Override
+    public double dividir() {
+        double n=Double.parseDouble(vector.getFirst().toString());
+        double aux=n;
+        for(Data x:vector)
+            n/=Double.parseDouble(x.toString());
+        return n*aux;
+    }
+
+    @Override
     public Data functionget(Data element, Data defecto) {
         if (defecto!=null)
             return defecto;
@@ -23,9 +57,9 @@ public class Vector implements Data, VLS, VL {
     }
 
     @Override
-    public Data functionfirst(Data element) {
+    public Data functionfirst() {
 
-        return functionget(new Numero(0),null);
+        return vector.getFirst();
     }
 
     public void addDataLista(Data data){

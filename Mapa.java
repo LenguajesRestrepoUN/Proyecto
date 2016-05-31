@@ -2,7 +2,27 @@ import java.util.*;
 
 public class Mapa implements Data, VLS, VL{
     @Override
-    public Data functionfirst(Data element) {
+    public double suma() {
+        return 0;
+    }
+
+    @Override
+    public double restar() {
+        return 0;
+    }
+
+    @Override
+    public double multiplicar() {
+        return 0;
+    }
+
+    @Override
+    public double dividir() {
+        return 0;
+    }
+
+    @Override
+    public Data functionfirst() {
         Mapa mapa = new Mapa();
         if (map.size()!=0)
 

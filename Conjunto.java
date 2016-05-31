@@ -7,6 +7,40 @@ public class Conjunto implements Data, VLS{
     public Conjunto() {
         set = new LinkedHashSet<>();
     }
+    @Override
+    public double suma() {
+        double n=0;
+        for(Data x:set)
+            n+=Double.parseDouble(x.toString());
+        return n;
+    }
+
+    @Override
+    public double restar() {
+        double n=Double.parseDouble(functionfirst().toString());
+        double aux=n;
+        for(Data x:set)
+            n-=Double.parseDouble(x.toString());
+        return n+aux;
+    }
+
+    @Override
+    public double multiplicar() {
+        double n=1;
+        for(Data x:set)
+            n*=Double.parseDouble(x.toString());
+        return n;
+    }
+
+    @Override
+    public double dividir() {
+        double n=Double.parseDouble(functionfirst().toString());
+        double aux=n;
+        for(Data x:set)
+            n/=Double.parseDouble(x.toString());
+        return n*aux;
+    }
+
     public void addData(Data data){
         set.add(data);
     }
@@ -24,7 +58,7 @@ public class Conjunto implements Data, VLS{
     }
 
     @Override
-    public Data functionfirst(Data element) {
+    public Data functionfirst() {
         return functionget(new Numero(1),null);
     }
 
