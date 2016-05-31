@@ -524,6 +524,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         Data data = vl.getDataWithNTH( (int) (((Numero)(n)).numero));
 
+        updateFrames();
+        block();
+
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
         updateFrames();
@@ -624,8 +627,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         else
             currentReclaimer = null;
 
-        //if(currentReclaimer != null)
-         //   currentReclaimer.addArgument(r);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(c.functionget(element,defecto));
 
         return c.functionget(element,defecto);
     }
@@ -676,6 +679,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         for(Data a: currentReclaimer.getArguments())
             set.addData(a);
 
+        updateFrames();
+        block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
         updateFrames();
@@ -703,6 +708,8 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             intel.append("--> " + a + "\n");
         }
 
+        updateFrames();
+        block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
         updateFrames();
@@ -936,6 +943,64 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         return  symbol.value;
     }
 
+    //letParams : symbol form letParams
+    @Override public Data visitLetParamsSymbolParams(ClojureParser.LetParamsSymbolParamsContext ctx) {
+        String name = ctx.symbol().getText();
+        Symbol symbol = currentScope.resolve(name);
+        symbol.value = visit(ctx.form());
+        visit(ctx.letParams());
+        return  symbol.value;
+    }
+
+    @Override public Data visitLetParamsSymbol(ClojureParser.LetParamsSymbolContext ctx) {
+        String name = ctx.symbol().getText();
+        Symbol symbol = currentScope.resolve(name);
+        symbol.value = visit(ctx.form());
+        return  symbol.value;
+    }
+
+    //let: '(' '[' letParams ']' forms ')'
+    @Override public Data visitLet(ClojureParser.LetContext ctx) {
+        BlockScope symbol = (BlockScope) currentScope.resolve("let");
+        currentScope = symbol;
+        symbol.addFrame();
+
+        FormReclaimer reclaimer = new FormReclaimer("let");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        updateFrames();
+        block();
+
+        visit(ctx.letParams());
+        currentReclaimer.arguments.clear();
+        visit(ctx.forms());
+
+        Data r;
+        if(currentReclaimer.arguments.size() > 0)
+            r = currentReclaimer.getArgument(currentReclaimer.arguments.size());
+        else
+            r = new Nil();
+
+        updateFrames();
+        block();
+
+        symbol.deleteFrame();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(r);
+
+        currentScope = currentScope.getEnclosingScope();
+        return r;
+    }
+
     //loop: '(' LOOP '[' optLoopParams ']' forms ')'
     @Override public Data visitLoop(ClojureParser.LoopContext ctx) {
         Symbol symbol = currentScope.resolve("loop");
@@ -952,6 +1017,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
 
         visit(ctx.optLoopParams());
+        currentReclaimer.arguments.clear();
         visit(ctx.auxforms());
 
         Data r;

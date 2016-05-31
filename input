@@ -1,4 +1,7 @@
-(first [3 2 4 5])
-(first #{7 2 4 5})
-(first '(8 2 4 5))
-(first {8 2 4 5})
+(loop [iteration 0]
+  (println (str "Iteration " iteration))
+  (if (> iteration 3)
+    (println "Goodbye!")
+    (recur (inc iteration))
+  )
+)
