@@ -6,12 +6,23 @@ public class BlockScope extends Symbol implements Scope {
 
     Map<String, Symbol> arguments = new LinkedHashMap<String, Symbol>();
     Scope enclosingScope;
-    JFrame frame;
-    JTextArea intel;
+    JPanel fPanel;
+    JTextArea fIntel;
 
     public BlockScope(String name, Scope scope){
         super(name);
         enclosingScope = scope;
+        fIntel = new JTextArea(15, 40);
+        fIntel.setLineWrap(true);
+        fIntel.setWrapStyleWord(true);
+        fIntel.setEditable(false);
+        JScrollPane scroller = new JScrollPane(fIntel);
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        fPanel = new JPanel();
+        fPanel.add(scroller);
+        fIntel.append(toString());
+        value = new Cadena(name);
     }
 
     public Symbol resolve(String name) {
@@ -38,12 +49,34 @@ public class BlockScope extends Symbol implements Scope {
         return name;
     }
 
-    public String toString() { return "Block<" + name + ">:" + arguments.values(); }
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Scope let \n");
+        if(enclosingScope != null)
+            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
+
+        builder.append("Variables en memoria:\n");
+
+        for(Symbol s : arguments.values())
+            builder.append(s.toString() + "\n");
+
+        return builder.toString();
+    }
 
     public void updateFrame(){
-        intel.setText(toString());
-        frame.setVisible(true);
+        fIntel.setText(toString());
         if(enclosingScope != null)
             enclosingScope.updateFrame();
+    }
+
+    public void addFrame(){
+        FunctionSymbol.scopesNumber++;
+        Visitor.scopesTabs.add("Local Scope " + name, fPanel);
+        Visitor.scopesTabs.setSelectedIndex(FunctionSymbol.scopesNumber);
+    }
+
+    public void deleteFrame(){
+        FunctionSymbol.scopesNumber--;
+        Visitor.scopesTabs.remove(fPanel);
     }
 }
