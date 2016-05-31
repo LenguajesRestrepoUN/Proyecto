@@ -1,13 +1,12 @@
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class Conjunto implements Data, VLS{
 
-    public HashSet<Data> set;
+    public LinkedHashSet<Data> set;
 
     public Conjunto() {
-        set = new HashSet<>();
+        set = new LinkedHashSet<>();
     }
-
     public void addData(Data data){
         set.add(data);
     }
@@ -21,7 +20,12 @@ public class Conjunto implements Data, VLS{
     }
 
     public void setData(Object l) {
-        set = ((HashSet<Data>) (l));
+        set = ((LinkedHashSet<Data>) (l));
+    }
+
+    @Override
+    public Data functionfirst(Data element) {
+        return functionget(new Numero(1),null);
     }
 
     @Override

@@ -1,6 +1,18 @@
 import java.util.*;
 
 public class Mapa implements Data, VLS, VL{
+    @Override
+    public Data functionfirst(Data element) {
+        Mapa mapa = new Mapa();
+        if (map.size()!=0)
+
+            for (Data x:map.keySet()){
+                mapa.addDataMap(x,map.get(x));
+                return mapa;
+            }
+        return null;
+    }
+
     public Map<Data,Data> map;
 
     public Mapa() {

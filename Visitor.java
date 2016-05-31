@@ -1983,4 +1983,31 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         return r;
     }
+
+    @Override public Data visitFirst(ClojureParser.FirstContext ctx) {
+
+        updateFrames();
+        block();
+        FormReclaimer reclaimer = new FormReclaimer("la funcion First");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+        VLS c =  (VLS)(visit(ctx.form()));
+
+        Data result = c.functionfirst(c);
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        //if(currentReclaimer != null)
+        //   currentReclaimer.addArgument(r);
+
+        return result;
+    }
 }

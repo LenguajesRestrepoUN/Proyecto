@@ -22,6 +22,12 @@ public class Vector implements Data, VLS, VL {
         return new Nil();
     }
 
+    @Override
+    public Data functionfirst(Data element) {
+
+        return functionget(new Numero(0),null);
+    }
+
     public void addDataLista(Data data){
         vector.addFirst(data);
     }

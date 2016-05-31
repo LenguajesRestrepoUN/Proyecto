@@ -6,5 +6,5 @@ public interface VLS extends Data{
     public Data functionget(Data element,Data defecto);
     public void addDataLista(Data a);
     public  Boolean contains( Data element);
-
+    public Data functionfirst(Data element);
 }

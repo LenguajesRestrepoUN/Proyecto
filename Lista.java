@@ -1,6 +1,12 @@
 import java.util.LinkedList;
 
 public class Lista implements Data, VLS, VL{
+    @Override
+    public Data functionfirst(Data element) {
+        if (lista.size()!=0)
+            return lista.get(0);
+        return new Nil();
+    }
 
     public LinkedList<Data> lista;
     public int size(){return lista.size();}
