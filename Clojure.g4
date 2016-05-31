@@ -48,6 +48,7 @@ form: literal       #formLiteral
     | recur         #formRecur
     | reader_macro  #formReader_macro
     | callFunction2 #formCallFunction2
+    | fn            #formFn
     ;
 
 literal
@@ -129,6 +130,8 @@ args : form args    #argsSymbolArgs
 defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')'    #singleDefn //ya
     | '(' DEFN symbol optDescription  arity+ ')'                    #defnArity
     ;
+
+fn: '(' FN '[' optparams ']' auxforms ')';
 
 arity: '(' '[' optparams ']' forms ')'; //ya
 
@@ -343,6 +346,7 @@ NIL: 'nil';
 LET: 'let';
 TAKE: 'take';
 REDUCE: 'reduce';
+FN: 'fn';
 
 FLOAT
     : '-'? [0-9]+ FLOAT_TAIL

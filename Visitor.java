@@ -150,9 +150,19 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     public Data callFunction(String name, ClojureParser.OptargsContext optargs) {
         Symbol symbol = currentScope.resolve(name);
-        currentFunction = ((FunctionSymbol) symbol);
+        System.out.println("Lol");
+
+        Symbol aux = null;
+        if(symbol.value != null  && symbol.value instanceof Cadena )
+            aux = currentScope.resolve(((Cadena) symbol.value).cadena);
+        if(aux != null && (aux instanceof FunctionSymbol))
+            currentFunction = ((FunctionSymbol) aux);
+        else
+            currentFunction = ((FunctionSymbol) symbol);
+
+        System.out.println("Lol1");
         currentCall.addLast(currentFunction);
-        currentScope = ((FunctionSymbol) symbol);
+        currentScope = currentFunction;
         currentFunction.addFrame();
 
         FormReclaimer reclaimer = new FormReclaimer(name);
@@ -878,6 +888,12 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         else
             currentReclaimer = null;
         return new Cadena("Variable " + name);
+    }
+
+    //fn: '(' FN '[' optparams ']' auxforms ')'
+    @Override public Data visitFn(ClojureParser.FnContext ctx) {
+        updateFrames();
+        return new Cadena("fn");
     }
 
     //defn: '(' DEFN symbol optDescription  arity+ ')'
@@ -1780,6 +1796,9 @@ public class Visitor extends ClojureBaseVisitor<Data>{
     @Override public Data visitCallFunction2(ClojureParser.CallFunction2Context ctx) {
         Cadena cadena = (Cadena)(visit(ctx.form()));
         Data r;
+        if(cadena.cadena.equals("fn")){
+            return callFunction("fn", ctx.optargs());
+        }
         if(cadena.cadena.equals("+")) {
             Symbol symbol = currentScope.resolve("+");
             currentFunction = ((FunctionSymbol) symbol);

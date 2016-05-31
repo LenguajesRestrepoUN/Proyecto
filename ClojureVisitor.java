@@ -302,6 +302,13 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormCallFunction2(ClojureParser.FormCallFunction2Context ctx);
 	/**
+	 * Visit a parse tree produced by the {@code formFn}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormFn(ClojureParser.FormFnContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code literalString}
 	 * labeled alternative in {@link ClojureParser#literal}.
 	 * @param ctx the parse tree
@@ -644,6 +651,12 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#fn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFn(ClojureParser.FnContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ClojureParser#arity}.
 	 * @param ctx the parse tree

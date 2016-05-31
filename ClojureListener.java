@@ -507,6 +507,18 @@ public interface ClojureListener extends ParseTreeListener {
 	 */
 	void exitFormCallFunction2(ClojureParser.FormCallFunction2Context ctx);
 	/**
+	 * Enter a parse tree produced by the {@code formFn}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormFn(ClojureParser.FormFnContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code formFn}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormFn(ClojureParser.FormFnContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code literalString}
 	 * labeled alternative in {@link ClojureParser#literal}.
 	 * @param ctx the parse tree
@@ -1090,6 +1102,16 @@ public interface ClojureListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDefnArity(ClojureParser.DefnArityContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ClojureParser#fn}.
+	 * @param ctx the parse tree
+	 */
+	void enterFn(ClojureParser.FnContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ClojureParser#fn}.
+	 * @param ctx the parse tree
+	 */
+	void exitFn(ClojureParser.FnContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ClojureParser#arity}.
 	 * @param ctx the parse tree

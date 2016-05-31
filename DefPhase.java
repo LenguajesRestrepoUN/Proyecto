@@ -187,6 +187,21 @@ public class DefPhase extends ClojureBaseListener {
         defineVar(null, name);
     }
 
+    //fn: '(' FN '[' optparams ']' auxforms ')'
+    @Override public void enterFn(ClojureParser.FnContext ctx) {
+        flag = true;
+        String name = "fn";
+        FunctionSymbol var = new FunctionSymbol(name, currentScope);
+        currentScope.define(var);
+        var.setCtx(ctx.auxforms());
+        currentFunction = var;
+        currentFunction.setCurrentArityNumber(currentFunction.getCurrentArityNumber() + 1);
+        currentFunction.arity.put(currentFunction.getCurrentArityNumber(), new Arity());
+        currentFunction.establishCurrentArity();
+        currentCall.addLast(currentFunction);
+        currentScope = var;
+    }
+
     //defn: '(' DEFN symbol optDescription '[' optparams ']' auxforms ')
     @Override public void enterSingleDefn(ClojureParser.SingleDefnContext ctx) {
         String name = ctx.symbol().getText();
@@ -225,6 +240,7 @@ public class DefPhase extends ClojureBaseListener {
     }
 
     @Override public void exitLoop(ClojureParser.LoopContext ctx) {
+        currentScope = currentScope.getEnclosingScope();
         currentScope = currentScope.getEnclosingScope();
         currentFunction.setInDeclaration(false);
         currentCall.removeLast();
@@ -360,11 +376,28 @@ public class DefPhase extends ClojureBaseListener {
             Interpreter.error(ctx.symbol().getStart(), "la funcion con nombre \"" + name + "\" no ha sido declarada");
             return;
         }
-        if(!(symbol instanceof FunctionSymbol)){
+        Symbol aux = null;
+        if(symbol.value != null  && symbol.value instanceof Cadena )
+             aux = currentScope.resolve(((Cadena) symbol.value).cadena);
+
+        if(aux != null && (aux instanceof FunctionSymbol)){
+            //aux.name = name;
+            //currentScope.define(aux);
+            //symbol = (Symbol) aux;
+            //System.out.println(currentScope.resolve(name));
+            currentFunction = (FunctionSymbol)aux;
+            currentCall.addLast(currentFunction);
+            return;
+        }
+        if(!(symbol instanceof FunctionSymbol) && symbol.value != null && !(symbol.value instanceof FunctionSymbol)){
             Interpreter.error(ctx.symbol().getStart(), "la variable con nombre \"" + name + "\" no es una funcion");
             return;
         }
-        currentFunction = ((FunctionSymbol) symbol);
+
+        if(symbol instanceof FunctionSymbol)
+            currentFunction = ((FunctionSymbol) symbol);
+        else
+            currentFunction = ((FunctionSymbol) symbol.value);
         currentCall.addLast(currentFunction);
     }
 

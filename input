@@ -1,5 +1,7 @@
-(loop [iteration 0]
-  (println (str "Iteration " iteration))
-  (if (> iteration 3)
-    (println "Goodbye!")
-    (recur (inc iteration)) ))
+((fn [x] (* x 3)) 8)
+(def my-special-multiplier (fn [x] (* x 3)))
+(my-special-multiplier 12)
+(def lista (conj '(4 5 6) "hola"))
+(println lista)
+(def name (nth lista 0))
+(println name)

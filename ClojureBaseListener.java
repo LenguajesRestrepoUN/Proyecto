@@ -519,6 +519,18 @@ public class ClojureBaseListener implements ClojureListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFormFn(ClojureParser.FormFnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFormFn(ClojureParser.FormFnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLiteralString(ClojureParser.LiteralStringContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1126,6 +1138,18 @@ public class ClojureBaseListener implements ClojureListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDefnArity(ClojureParser.DefnArityContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFn(ClojureParser.FnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFn(ClojureParser.FnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
