@@ -37,6 +37,7 @@ form: literal       #formLiteral
     | isNil         #formIsNil
     | nth           #formNth
     | into          #formInto
+    | mapF          #formMapF
     | contains      #formContains
     | conj          #formConj
     | get           #formGet
@@ -157,34 +158,12 @@ inc: '(' INC form ')'; //ya
 when: '(' WHEN forms ')';
 isNil: '(' ISNIL form ')';
 
-/*vl: vector     #vlVector
-  | list       #vlList
-  ;*/
-
-/*vm: vector  #vmVector
-  | map     #vmMap
-  ;*/
-
-/*vls: vector     #vlsVector
-   | list       #vlsList
-   | set        #vlsSet
-   ;*/
-
-/*ms: map     #msMap
-  | set     #msSet
-  ;*/
-
-/*vlsm: vector    #vlsmVector
-   | list       #vlsmList
-   | set        #vlsmSet
-   | map        #vlsmMap
-   ;*/
-
 defecto: form   #defaultForm
        |        #defaultEpsilon
        ;
 
-into: '(' INTO form form')';
+mapF: '(' MAP form form ')';
+into: '(' INTO form form')'; //ya
 nth: '(' NTH form form')'; // ya, just vl
 get: '(' GET form form defecto')'; //ya
 contains: '(' CONTAINS set form ')'  #containsset //ya

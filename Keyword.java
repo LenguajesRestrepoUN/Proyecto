@@ -28,4 +28,13 @@ public class Keyword implements Data {
     public int hashCode() {
         return keyword.hashCode();
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

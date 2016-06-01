@@ -38,4 +38,13 @@ public class Numero implements Data, Comparable<Numero>{
     public int compareTo(Numero o) {
         return Double.compare(((Numero) o).numero, numero);
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

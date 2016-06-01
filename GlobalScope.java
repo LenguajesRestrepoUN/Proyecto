@@ -47,17 +47,17 @@ public class GlobalScope implements Scope{
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Scope: " + "Globals\n");
+        builder.append("Scope: " + "Globals\n\n");
         if(enclosingScope != null)
             builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
 
-        builder.append("Variables en memoria:\n");
+        builder.append("Variables en memoria:\n\n");
         for(Symbol s : symbols.values()) {
             if(!(s instanceof FunctionSymbol))
                 builder.append(s.toString() + "\n");
             else
                 if(((FunctionSymbol) s).isDefault)
-                    builder.append("funcion " + s.name + " con Arity igual a " + ((FunctionSymbol) s).arity.size() + "\n");
+                    builder.append("funcion " + s.name + " con Arity igual a " + ((FunctionSymbol) s).arity.size() + "\n\n");
         }
         return builder.toString();
     }

@@ -150,7 +150,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     public Data callFunction(String name, ClojureParser.OptargsContext optargs) {
         Symbol symbol = currentScope.resolve(name);
-        System.out.println("Lol");
 
         Symbol aux = null;
         if(symbol.value != null  && symbol.value instanceof Cadena )
@@ -160,7 +159,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         else
             currentFunction = ((FunctionSymbol) symbol);
 
-        System.out.println("Lol1");
         currentCall.addLast(currentFunction);
         currentScope = currentFunction;
         currentFunction.addFrame();
@@ -220,7 +218,10 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         else
             currentFunction = null;
 
-        currentScope = currentScope.getEnclosingScope();
+        if(currentFunction == null)
+            currentScope = currentScope.getEnclosingScope();
+        else
+            currentScope = currentFunction;
         return r;
     }
 
@@ -274,7 +275,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -384,7 +384,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -465,7 +464,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -740,7 +738,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -782,6 +779,52 @@ public class Visitor extends ClojureBaseVisitor<Data>{
             currentReclaimer.addArgument(cadena);
 
         return cadena;
+    }
+
+    ////reduce: '(' REDUCE form vls')';
+    @Override public Data visitReduce(ClojureParser.ReduceContext ctx) {
+        updateFrames();
+        block();
+        FormReclaimer reclaimer;
+        String name = ctx.form(0).getText();
+        if(name.equals("+"))
+            reclaimer= new FormReclaimer("la funcion sumar");
+        else if(name.equals("-"))
+            reclaimer= new FormReclaimer("la funcion restar");
+        else if(name.equals("*"))
+            reclaimer= new FormReclaimer("la funcion multiplicar");
+        else
+            reclaimer= new FormReclaimer("la funcion dividir");
+
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
+        VLS c=(VLS)(visit(ctx.form(1)));
+        double result=0;
+        if(name.equals("+"))
+            result=c.suma();
+        else if(name.equals("-"))
+            result=c.restar();
+        else if(name.equals("*"))
+            result=c.multiplicar();
+        else if(name.equals("/"))
+            result=c.dividir();
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+        updateFrames();
+        if(reclaimers.size() > 0)
+            currentReclaimer = reclaimers.getLast();
+        else
+            currentReclaimer = null;
+
+        Numero numero = new Numero(result);
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(numero);
+
+        return numero;
     }
 
     //sum: '(' SUM forms ')'
@@ -832,6 +875,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         updateFrames();
         block();
 
+        reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
@@ -917,18 +961,22 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         Symbol s = currentScope.resolve(name);
         s.value = visit(ctx.form());
 
+        reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
             currentReclaimer = null;
-        return new Cadena("Variable " + name);
+        return new Cadena("Variable " + name + ", valor: " + s.value.toString());
     }
 
     //fn: '(' FN '[' optparams ']' auxforms ')'
     @Override public Data visitFn(ClojureParser.FnContext ctx) {
         updateFrames();
-        return new Cadena("fn");
+        Cadena cadena = new Cadena("fn");
+        if(currentReclaimer != null)
+            currentReclaimer.addArgument(cadena);
+        return cadena;
     }
 
     //defn: '(' DEFN symbol optDescription  arity+ ')'
@@ -951,7 +999,7 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
         updateFrames();
         block();
-        return currentScope.resolve(name).value;
+        return (Data)currentScope.resolve(name).value.clone();
     }
 
     //loopParams :  symbol form
@@ -1015,7 +1063,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         symbol.deleteFrame();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
 
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
@@ -1058,7 +1105,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         block();
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -1393,7 +1439,6 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         currentFunction.setCurrentArgument(0);
         reclaimers.removeLast();
         currentReclaimer.destroyReclaimer();
-        updateFrames();
         if(reclaimers.size() > 0)
             currentReclaimer = reclaimers.getLast();
         else
@@ -1888,7 +1933,18 @@ public class Visitor extends ClojureBaseVisitor<Data>{
 
     //callFunction2: '(' form optargs ')'
     @Override public Data visitCallFunction2(ClojureParser.CallFunction2Context ctx) {
+
+        FormReclaimer reclaimer = new FormReclaimer("llamar funcion");
+        reclaimers.addLast(reclaimer);
+        currentReclaimer = reclaimer;
+
         Cadena cadena = (Cadena)(visit(ctx.form()));
+
+        updateFrames();
+        block();
+        reclaimers.removeLast();
+        currentReclaimer.destroyReclaimer();
+
         Data r;
         if(cadena.cadena.equals("fn")){
             return callFunction("fn", ctx.optargs());
@@ -2103,50 +2159,5 @@ public class Visitor extends ClojureBaseVisitor<Data>{
         //   currentReclaimer.addArgument(r);
 
         return result;
-    }
-
-    @Override public Data visitReduce(ClojureParser.ReduceContext ctx) {
-        updateFrames();
-        block();
-        FormReclaimer reclaimer =new FormReclaimer("");
-        if(ctx.form(0).getText().equals("+"))
-             reclaimer= new FormReclaimer("la funcion sumar");
-        if(ctx.form(0).getText().equals("-"))
-            reclaimer= new FormReclaimer("la funcion restar");
-        if(ctx.form(0).getText().equals("*"))
-            reclaimer= new FormReclaimer("la funcion multiplicar");
-        if(ctx.form(0).getText().equals("/"))
-            reclaimer= new FormReclaimer("la funcion dividir");
-
-        reclaimers.addLast(reclaimer);
-        currentReclaimer = reclaimer;
-
-        visit(ctx.form(1));
-        VLS c=(VLS)(visit(ctx.form(1)));
-        double result=0;
-        if(ctx.form(0).getText().equals("+"))
-            result=c.suma();
-        if(ctx.form(0).getText().equals("-"))
-            result=c.restar();
-        if(ctx.form(0).getText().equals("*"))
-            result=c.multiplicar();
-        if(ctx.form(0).getText().equals("/"))
-            result=c.dividir();
-
-        updateFrames();
-        block();
-        reclaimers.removeLast();
-        currentReclaimer.destroyReclaimer();
-        updateFrames();
-        if(reclaimers.size() > 0)
-            currentReclaimer = reclaimers.getLast();
-        else
-            currentReclaimer = null;
-
-        Numero numero = new Numero(result);
-        if(currentReclaimer != null)
-            currentReclaimer.addArgument(numero);
-
-        return numero;
     }
 }

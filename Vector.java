@@ -138,4 +138,13 @@ public class Vector implements Data, VLS, VL, VLSM {
     public List<Data> copyData() {
         return vector;
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

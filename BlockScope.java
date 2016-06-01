@@ -53,12 +53,21 @@ public class BlockScope extends Symbol implements Scope {
         StringBuilder builder = new StringBuilder();
         builder.append("Scope let \n");
         if(enclosingScope != null)
-            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
+            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n\n");
 
-        builder.append("Variables en memoria:\n");
+        builder.append("Variables en memoria:\n\n");
 
         for(Symbol s : arguments.values())
             builder.append(s.toString() + "\n");
+
+        return builder.toString();
+    }
+
+    public String toString2() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Scope let \n");
+        if(enclosingScope != null)
+            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
 
         return builder.toString();
     }

@@ -1,22 +1,113 @@
-(= 1)
-(= 1 1)
-(> 4 3 2 1)
-(> 4 3 2 3)
-(def lista (conj '(4 5 6) "hola"))
-(println lista)
-(def name (nth lista 0))
-(println name)
+(or false nil 1 2 3)
+(or nil nil false false)
+(and 1 2 false nil 1 2 3)
+(and 1 2 3 '(1 2 3))
+
+
+
+(def a  ( (and * str inc) 1 ) )
+(def a '(1 2 3))
+(println a)
+(conj a 4)
+(conj '(1 2 3) "Hola")
+(conj a '(8 "Hola2"))
+(reduce + [1 2 3 4])
+(+ (+ (+ 1 2) 3) 4)
+
+
+
+
+(if (<= 1 -1)
+    (do
+        (+ 1 2)
+        (- 1 2)
+        (* 4 4)
+    )
+    (- 1 2)
+)
+
+
+(defn hola "hola"
+([a]
+ (+ a 1) (* a 4))
+([c d]
+(println (+ c c))
+ (* d d))
+)
+
+(hola 1 2)
+
+
+
+(def flag 4)
+(defn hola [a b] (println ((or nil + 2 3) a b)) )
 
 (defn x-chop
   "Describe the kind of chop you're inflicting on someone"
   ([name chop-type]
-     (+ 1 2)
+     (if (<= 1 2 3 4 flag)
+         (do
+             ((and 1 4 "hola" hola ) 1 2)
+             ((or * str inc) 4 8)
+         )
+         (do
+            (def x 0)
+            (let [x 1] (println x))
+            (println x)
+         )
+     )
      (str "I " chop-type " chop " name "! Take that!"))
   ([name]
      (recur name "karate")))
 
 (x-chop "Kanye West" "slap")
+(def flag 3)
 (x-chop "Kanye East")
+
+
+
+(def v [1])
+(def i 2)
+(loop [iteration 1]
+  (println (str "Iteration " iteration))
+  (let [aux i] (conj v aux))
+  (println (reduce + v) )
+  (def i (inc i))
+  (if (> iteration 2)
+    (println "Goodbye!")
+    (recur (inc iteration))
+  )
+)
+
+
+
+( (and * 1 str (fn [a] (* a a)) ) 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(def lista (conj '(4 5 6) "hola"))
+(println lista)
+(def name (nth lista 0))
+(println name)
 
 (defn hola "hola"
 ([a] (+ a 1) (* a 4))
@@ -41,14 +132,6 @@
 (hola2 4 2 3)
 (hola (hola2 1 2 3) 4 6 7)
 
-(loop [iteration 0]
-  (println (str "Iteration " iteration))
-  (if (> iteration 3)
-    (println "Goodbye!")
-    (recur (inc iteration))
-  )
-)
-
 (defn my-first
   [ a b [first-thing] c [second-thing]]
   (println a)
@@ -60,18 +143,6 @@
 
 (my-first "hola1" "hola2" ["oven" "bike" "war-axe"] "hola3" ["oven" "bike" "war-axe"])
 
-(defn x-chop
-  "Describe the kind of chop you're inflicting on someone"
-  ([name chop-type]
-     (str "I " chop-type " chop " name "! Take that!")
-     (recur name chop-type)
-     )
-  ([name]
-     (recur name "lol")
-     ))
-
-(def x 0)
-(let [x 1] x)
 
 '(1 2 3)
 (def a '(1 2 3))
@@ -82,27 +153,23 @@
 #{11 1 1 2 2 4 3 "Hola" "Hola" #{1 2 3 4} #{1 2 3 4 5} #{1 2 3 4} '(1 2 3) '(1 2 3)}
 (conj #{1 2 3 4 5 #{1 2}} 1)
 
-(if (<= 1 -1)
-    (do
-        (+ 1 2)
-        (- 1 2)
-        (* 4 4)
-    )
-    (- 1 2)
-)
+
 
 (or false nil 1 2 3)
 (or nil nil false false)
 (and 1 2 false nil 1 2 3)
 (and 1 2 3 '(1 2 3))
 
-(defn hola [a b] ((or nil + 2 3) 1 2 3 4) )
-((and 1 4 "hola" hola ) 1 2)
-((and * str inc) 1)
 
 (loop [iteration 0]
   (println (str "Iteration " iteration))
   (if (> iteration 3)
     (println "Goodbye!")
     (recur (inc iteration)) ))
+
+(= 1)
+(= 1 1)
+(> 4 3 2 1)
+
+
 

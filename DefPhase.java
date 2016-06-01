@@ -107,8 +107,10 @@ public class DefPhase extends ClojureBaseListener {
     //def: '(' DEF symbol form')'
     @Override public void enterDefSymbolForm(ClojureParser.DefSymbolFormContext ctx) {
         String name = ctx.symbol().getText();
-        VariableSymbol var = new VariableSymbol(name, null);
-        globals.define(var);
+        if(currentScope.resolve(name) == null) {
+            VariableSymbol var = new VariableSymbol(name, null);
+            globals.define(var);
+        }
     }
 
     //symbols: symbol symbols

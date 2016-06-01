@@ -99,12 +99,15 @@ public class FunctionSymbol extends Symbol implements Scope, Data {
         StringBuilder builder = new StringBuilder();
         builder.append("Scope: " + "Funcion " +  name + " con Arity igual a " + arity.size() + "\n");
         if(enclosingScope != null)
-            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n");
+            builder.append("Enclosing scope: " + enclosingScope.getScopeName() + "\n\n");
 
-        builder.append("Variables en memoria:\n");
+        builder.append("Variables en memoria:\n\n");
         if(currentArity != null)
             for(Symbol s : currentArity.arguments.values()) {
+                if(!(s instanceof BlockScope))
                     builder.append(s.toString() + "\n");
+                else
+                    builder.append(((BlockScope) s).toString2());
             }
         return builder.toString();
     }
@@ -190,5 +193,14 @@ public class FunctionSymbol extends Symbol implements Scope, Data {
     @Override
     public void setData(Object data) {
         value = (Cadena)(data);
+    }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
     }
 }

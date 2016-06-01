@@ -225,6 +225,13 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormInto(ClojureParser.FormIntoContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code formMapF}
+	 * labeled alternative in {@link ClojureParser#form}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormMapF(ClojureParser.FormMapFContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code formContains}
 	 * labeled alternative in {@link ClojureParser#form}.
 	 * @param ctx the parse tree
@@ -776,6 +783,12 @@ public interface ClojureVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDefaultEpsilon(ClojureParser.DefaultEpsilonContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ClojureParser#mapF}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMapF(ClojureParser.MapFContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ClojureParser#into}.
 	 * @param ctx the parse tree

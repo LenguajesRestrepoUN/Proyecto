@@ -28,4 +28,13 @@ public class Booleano implements Data {
     public int hashCode() {
         return flag.hashCode();
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

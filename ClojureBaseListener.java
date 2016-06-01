@@ -387,6 +387,18 @@ public class ClojureBaseListener implements ClojureListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFormMapF(ClojureParser.FormMapFContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFormMapF(ClojureParser.FormMapFContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFormContains(ClojureParser.FormContainsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1378,6 +1390,18 @@ public class ClojureBaseListener implements ClojureListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDefaultEpsilon(ClojureParser.DefaultEpsilonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMapF(ClojureParser.MapFContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMapF(ClojureParser.MapFContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

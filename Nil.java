@@ -25,4 +25,13 @@ public class Nil implements Data {
     public int hashCode() {
         return super.hashCode();
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

@@ -130,4 +130,13 @@ public class Lista implements Data, VLS, VL, VLSM{
     public List<Data> copyData() {
         return lista;
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

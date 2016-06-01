@@ -29,4 +29,13 @@ public class Cadena implements Data{
     public int hashCode() {
         return cadena.hashCode();
     }
+
+    @Override
+    public Object clone()  {
+        try {
+            return super.clone();
+        } catch (Exception e){
+            return null;
+        }
+    }
 }
